@@ -11,9 +11,7 @@ import utila
 
 
 def prepare(source, pages, testdir):
-    # run rawmaker
-    pages = f'--pages={pages}'
-    utila.run(f'rawmaker -i {source} -o {testdir.tmpdir} {pages} '
+    utila.run(f'rawmaker -i {source} -o {testdir.tmpdir} --pages={pages} '
               '--text --fonts --images')
     utila.run(f'figureo -i {source} '
-              f'-i {testdir.tmpdir} -o {testdir.tmpdir} {pages}')
+              f'-i {testdir.tmpdir} -o {testdir.tmpdir} --pages={pages}')
