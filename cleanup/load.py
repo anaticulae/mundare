@@ -32,10 +32,11 @@ def codes_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.codero_result(inpath)
-        if os.path.exists(path):
-            utila.debug(f'codes: {path}')
-            loaded = serializeraw.load_codes(path, pages=pages)
-            result.extend(loaded)
+        if not os.path.exists(path):
+            continue
+        utila.debug(f'codes: {path}')
+        loaded = serializeraw.load_codes(path, pages=pages)
+        result.extend(loaded)
     return result
 
 
@@ -43,10 +44,11 @@ def formulas_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.formula(inpath)
-        if os.path.exists(path):
-            utila.debug(f'formulas: {path}')
-            loaded = serializeraw.load_rawformulas(path, pages=pages)
-            result.extend(loaded)
+        if not os.path.exists(path):
+            continue
+        utila.debug(f'formulas: {path}')
+        loaded = serializeraw.load_rawformulas(path, pages=pages)
+        result.extend(loaded)
     return result
 
 
@@ -54,10 +56,11 @@ def captions_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.caption_result(inpath)
-        if os.path.exists(path):
-            utila.debug(f'formulas: {path}')
-            loaded = serializeraw.load_captions(path, pages=pages)
-            result.extend(loaded)
+        if not os.path.exists(path):
+            continue
+        utila.debug(f'formulas: {path}')
+        loaded = serializeraw.load_captions(path, pages=pages)
+        result.extend(loaded)
     return result
 
 
