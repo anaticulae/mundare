@@ -38,6 +38,7 @@ def test_cleanup_bachelor56(testdir, monkeypatch):
     assert len(utila.file_list(testdir.tmpdir)) == 8
 
 
+@utilatest.longrun
 @pytest.mark.parametrize('source, pages', [
     pytest.param(power.BACHELOR056_PDF, '0:10,20:25', id='partial'),
     pytest.param(power.BACHELOR056_PDF, '15', id='fifteen'),
@@ -48,7 +49,6 @@ def test_cleanup_bachelor56(testdir, monkeypatch):
     pytest.param(power.HOME040_PDF, ':', id='home40'),
     pytest.param(power.DISS143_PDF, '27', id='diss143'),
 ])
-@utilatest.longrun
 def test_cleanup_source_compare_reduction(
     source,
     pages,
@@ -113,7 +113,6 @@ def test_cleanup_figures(testdir, monkeypatch):
     assert len(clean) + 4 == len(before)
 
 
-@utilatest.longrun
 @utilatest.requires(power.BACHELOR051_PDF)
 def test_cleanup_tables(testdir, monkeypatch):
     """Verify multiple input soruces and tablero cleanup."""
@@ -144,8 +143,8 @@ def test_cleanup_tables(testdir, monkeypatch):
     assert len(clean) < len(before)
 
 
-@utilatest.requires(power.DISS143_PDF)
 @utilatest.longrun
+@utilatest.requires(power.DISS143_PDF)
 def test_cleanup_formulas(testdir, monkeypatch):
     source = power.link(power.DISS143_PDF)
     outdir = testdir.tmpdir

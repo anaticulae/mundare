@@ -9,12 +9,10 @@
 
 import power
 import serializeraw
-import utilatest
 
 import tests.utils
 
 
-@utilatest.longrun
 def test_translate_diss143page25(testdir, monkeypatch):
     """Regression test to ensure that all lines are matched together.
 
@@ -34,7 +32,6 @@ def test_translate_diss143page25(testdir, monkeypatch):
     tests.run('', monkeypatch=monkeypatch)
 
 
-@utilatest.longrun
 def test_master116p18table(testdir, monkeypatch):
     """Do not remove very near caption line in table."""
     source = power.MASTER116_PDF
