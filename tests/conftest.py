@@ -7,4 +7,40 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import genex
+import power
+import pytest
+
+import cleanup
+
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
+
+PACKAGE = cleanup.PROCESS
+WORKER = 6
+
+power.setup(cleanup.ROOT)
+
+RESOURCES = [
+    power.BACHELOR037_PDF,
+    power.BACHELOR051_PDF,
+    power.BACHELOR056_PDF,
+    power.DISS143_PDF,
+    power.HOME040_PDF,
+]
+
+
+def extract(resources):
+    genex.extract(
+        files=resources,
+        destination=power.generated(),
+        oneline=None,
+        pdfinfo=False,
+        pages=':',
+        worker=WORKER,
+        base=power.REPOSITORY,
+    )
+
+
+@pytest.mark.usefixtures('session')
+def pytest_sessionstart():
+    power.run()

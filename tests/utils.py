@@ -7,8 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utila
 
-import cleanup
 
-run, failure = utilatest.create_cli_runner(cleanup)  #pylint: disable=invalid-name
+def prepare(source, pages, testdir):
+    # run rawmaker
+    pages = f'--pages={pages}'
+    utila.run(f'rawmaker -i {source} -o {testdir.tmpdir} {pages} '
+              '--text --fonts --images')
+    utila.run(f'figureo -i {source} '
+              f'-i {testdir.tmpdir} -o {testdir.tmpdir} {pages}')
