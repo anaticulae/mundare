@@ -27,18 +27,23 @@ def test_translate_diss143page25(testdir, monkeypatch):
     transformation: 2. B -> 1. B
     """
     source = power.DISS143_PDF
-    tests.utils.prepare(source, '25', testdir)
     # fails before
-    tests.run('', monkeypatch=monkeypatch)
+    raw = translate(source, 25, testdir, monkeypatch)
+    assert raw
 
 
 def test_master116p18table(testdir, monkeypatch):
     """Do not remove very near caption line in table."""
     source = power.MASTER116_PDF
-    tests.utils.prepare(source, '18', testdir)
+    raw = translate(source, 18, testdir, monkeypatch)
+    # ensure that caption line in table is not cleaned
+    assert 'Tab. 2.1.: Übersicht Hybridlokomotiven [Kon13]' in raw
+
+
+def translate(source, page: int, testdir, monkeypatch) -> str:
+    tests.utils.prepare(source, page, testdir)
     tests.run('', monkeypatch=monkeypatch)
     serializeraw.load_document.cache_clear()
     ptn = serializeraw.ptn_frompath(testdir.tmpdir)[0]
     raw = ptn.debug
-    # ensure that caption line in table is not cleaned
-    assert 'Tab. 2.1.: Übersicht Hybridlokomotiven [Kon13]' in raw
+    return raw
