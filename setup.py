@@ -44,6 +44,8 @@ if __name__ == "__main__":
         ],
         packages=[
             'cleanup',
+            'cleanup.features',
+            'cleanup.translate',
         ],
         entry_points={
             'console_scripts': ['cleanup = cleanup.cli:main'],

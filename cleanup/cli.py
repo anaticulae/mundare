@@ -1,28 +1,73 @@
-#==============================================================================
+# =============================================================================
 # C O P Y R I G H T
-#------------------------------------------------------------------------------
-# Copyright (c) 2022 by Helmut Konrad Fahrendholz. All rights reserved.
+# -----------------------------------------------------------------------------
+# Copyright (c) 2021-2022 by Helmut Konrad Fahrendholz. All rights reserved.
 # This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
-#==============================================================================
+# =============================================================================
 
 import utila
-import utila.cli
 
 import cleanup
+
+DESCRIPTION = """\
+Load PageTextNavigators, codes, figures and tables.
+
+It removes text which is inside codes, figures and or tables and writes
+PageTextNavigators afterwards.
+"""
+
+WORKPLAN = [
+    utila.create_step('backup'),
+    utila.create_step(
+        'cleanup',
+        inputs=[
+            utila.Value('postfix', str, defaultvar=''),
+        ],
+    ),
+    utila.create_step(
+        'translate',
+        inputs=[
+            utila.ResultFile(
+                producer='cleanup',
+                name='text_text',
+                optional=True,
+            ),
+            utila.ResultFile(
+                producer='cleanup',
+                name='text_text',
+                ext='baml',
+                optional=True,
+            ),
+            utila.ResultFile(
+                producer='cleanup',
+                name='oneline_text_text',
+                optional=True,
+            ),
+            utila.ResultFile(
+                producer='cleanup',
+                name='oneline_text_text',
+                ext='baml',
+                optional=True,
+            ),
+        ],
+        output=('text',),
+    ),
+]
 
 
 @utila.saveme
 def main():
-    parser = utila.cli.create_parser(
-        [],
-        version=cleanup.__version__,
-        config=utila.ParserConfiguration(
-            outputparameter=True,
-            inputparameter=True,
+    utila.featurepack(
+        root=cleanup.ROOT,
+        workplan=WORKPLAN,
+        featurepackage='cleanup.features',
+        config=utila.FeaturePackConfig(
+            description=DESCRIPTION,
+            multiprocessed=False,
+            name=cleanup.PROCESS,
+            pages=True,
+            version=cleanup.__version__,
         ),
     )
-    args = utila.parse(parser)
-    inputpath, output, _ = utila.sources(args)  # pylint:disable=W0612,W0632
-    return utila.SUCCESS
