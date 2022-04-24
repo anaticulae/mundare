@@ -33,8 +33,9 @@ def extract(resources):
     genex.extract(
         files=resources,
         destination=power.generated(),
-        oneline=None,
         pdfinfo=False,
+        groupme=True,
+        codero=True,
         pages=':',
         worker=WORKER,
         base=power.REPOSITORY,
