@@ -16,18 +16,14 @@ import utilatest
 import tests
 
 
-@utilatest.longrun
 @pytest.mark.parametrize('source, pages', [
     pytest.param(power.BACHELOR056_PDF, '0:10,20:25', id='partial'),
     pytest.param(power.BACHELOR056_PDF, '15', id='fifteen'),
     pytest.param(power.BACHELOR056_PDF, '27', id='27'),
     pytest.param(power.BACHELOR056_PDF, '5,6,7', id='fiveSixSeven'),
-    pytest.param(power.BACHELOR056_PDF, ':', id='all'),
-    pytest.param(power.BACHELOR051_PDF, ':', id='bachelor51_all'),
-    pytest.param(power.HOME040_PDF, ':', id='home40'),
     pytest.param(power.DISS143_PDF, '27', id='diss143'),
 ])
-def test_source_compare_reduction(
+def test_source_compare_reduction_fast(
     source,
     pages,
     testdir,
@@ -38,6 +34,21 @@ def test_source_compare_reduction(
     This is required before we can test that cleanup reduces some data
     out of ptn.
     """
+    compare(source, pages, testdir, monkeypatch)
+
+
+@utilatest.longrun
+@pytest.mark.parametrize('source, pages', [
+    pytest.param(power.BACHELOR056_PDF, ':', id='all'),
+    pytest.param(power.BACHELOR051_PDF, ':', id='bachelor51_all'),
+    pytest.param(power.HOME040_PDF, ':', id='home40'),
+])
+def test_source_compare_reduction_slow(
+    source,
+    pages,
+    testdir,
+    monkeypatch,
+):
     compare(source, pages, testdir, monkeypatch)
 
 
