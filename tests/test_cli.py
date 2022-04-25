@@ -22,7 +22,7 @@ def test_run_cleanup(monkeypatch):
 
 
 @utilatest.requires(power.BACHELOR056_PDF)
-def test_cleanup_bachelor56(testdir, monkeypatch):
+def test_bachelor56(testdir, monkeypatch):
     source = power.link(power.BACHELOR056_PDF)
     utila.copy_content(
         source,
@@ -38,7 +38,7 @@ def test_cleanup_bachelor56(testdir, monkeypatch):
 
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_cleanup_figures(testdir, monkeypatch):
+def test_figures(testdir, monkeypatch):
     """Remove text in figure area."""
     source = power.link(power.BACHELOR051_PDF)
     tests.run(
@@ -55,7 +55,7 @@ def test_cleanup_figures(testdir, monkeypatch):
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_cleanup_tables(testdir, monkeypatch):
+def test_tables(testdir, monkeypatch):
     """Verify multiple input soruces and tablero cleanup."""
     source = power.link(power.BACHELOR051_PDF)
     page = 25
@@ -86,7 +86,7 @@ def test_cleanup_tables(testdir, monkeypatch):
 
 @utilatest.longrun
 @utilatest.requires(power.DISS143_PDF)
-def test_cleanup_formulas(testdir, monkeypatch):
+def test_formulas(testdir, monkeypatch):
     source = power.link(power.DISS143_PDF)
     outdir = testdir.tmpdir
     page = 27
@@ -108,7 +108,7 @@ def test_cleanup_formulas(testdir, monkeypatch):
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_cleanup_backup(testdir, monkeypatch):
+def test_backup(testdir, monkeypatch):
     """Copy source files as backup files(change data type)."""
     source = power.link(power.BACHELOR051_PDF)
     tests.run(

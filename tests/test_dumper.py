@@ -27,7 +27,7 @@ import tests
     pytest.param(power.HOME040_PDF, ':', id='home40'),
     pytest.param(power.DISS143_PDF, '27', id='diss143'),
 ])
-def test_cleanup_source_compare_reduction(
+def test_source_compare_reduction(
     source,
     pages,
     testdir,

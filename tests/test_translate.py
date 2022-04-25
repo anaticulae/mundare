@@ -33,7 +33,7 @@ def test_translate_lines(testdir):
 
 
 @utilatest.longrun
-def test_cleanup_translate(testdir, monkeypatch):
+def test_translate(testdir, monkeypatch):
     source, pages = power.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, testdir)
     tests.run(
