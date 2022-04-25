@@ -9,12 +9,10 @@
 
 import iamraw
 import power
-import pytest
 import serializeraw
 import utila
 import utilatest
 
-import cleanup.cli
 import cleanup.features.backup
 import tests
 
@@ -36,63 +34,6 @@ def test_cleanup_bachelor56(testdir, monkeypatch):
         monkeypatch=monkeypatch,
     )
     assert len(utila.file_list(testdir.tmpdir)) == 8
-
-
-@utilatest.longrun
-@pytest.mark.parametrize('source, pages', [
-    pytest.param(power.BACHELOR056_PDF, '0:10,20:25', id='partial'),
-    pytest.param(power.BACHELOR056_PDF, '15', id='fifteen'),
-    pytest.param(power.BACHELOR056_PDF, '27', id='27'),
-    pytest.param(power.BACHELOR056_PDF, '5,6,7', id='fiveSixSeven'),
-    pytest.param(power.BACHELOR056_PDF, ':', id='all'),
-    pytest.param(power.BACHELOR051_PDF, ':', id='bachelor51_all'),
-    pytest.param(power.HOME040_PDF, ':', id='home40'),
-    pytest.param(power.DISS143_PDF, '27', id='diss143'),
-])
-def test_cleanup_source_compare_reduction(
-    source,
-    pages,
-    testdir,
-    monkeypatch,
-):
-    """Ensure that resource is loaded and dumped correctly.
-
-    This is required before we can test that cleanup reduces some data
-    out of ptn.
-    """
-    utilatest.fixture_requires(source)
-    source = power.link(source)
-    utila.copy_content(
-        source,
-        testdir.tmpdir,
-        pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
-    )
-    tests.run(
-        f'-i {testdir.tmpdir} -o {testdir.tmpdir} --postfix=cleaned --pages={pages}',
-        monkeypatch=monkeypatch,
-    )
-    pages = utila.parse_pages(pages)
-    ptn = serializeraw.ptn_frompath(
-        testdir.tmpdir,
-        pages=pages,
-    )
-    ptn_dumped = serializeraw.ptn_frompath(
-        testdir.tmpdir,
-        prefix='cleaned',
-        pages=pages,
-    )
-    assert ptn_dumped == ptn
-    fontstore = serializeraw.fs_frompath(
-        testdir.tmpdir,
-        pages=pages,
-    )
-    fontstore_dumped = serializeraw.fs_frompath(
-        testdir.tmpdir,
-        prefix='cleaned',
-        pages=pages,
-    )
-    assert fontstore_dumped.pages == fontstore.pages
-    assert fontstore_dumped.header == fontstore.header
 
 
 @utilatest.longrun
