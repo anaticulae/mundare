@@ -38,6 +38,10 @@ def test_source_compare_reduction(
     This is required before we can test that cleanup reduces some data
     out of ptn.
     """
+    compare(source, pages, testdir, monkeypatch)
+
+
+def compare(source, pages, testdir, monkeypatch):
     utilatest.fixture_requires(source)
     source = power.link(source)
     utila.copy_content(
