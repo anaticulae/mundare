@@ -21,11 +21,11 @@ WORKER = 6
 power.setup(cleanup.ROOT)
 
 RESOURCES = [
+    (power.DISS205_PDF, '130:140'),
     power.BACHELOR037_PDF,
     power.BACHELOR051_PDF,
     power.BACHELOR056_PDF,
     power.DISS143_PDF,
-    (power.DISS205_PDF, '130:140'),
     power.HOME040_PDF,
 ]
 
