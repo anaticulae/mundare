@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utilatest
 
 import tests.utils
 
@@ -41,6 +42,7 @@ def test_master116p18table(testdir, monkeypatch):
 
 
 def translate(source, page: int, testdir, monkeypatch) -> str:
+    utilatest.fixture_requires(source)
     tests.utils.prepare(source, page, testdir)
     tests.run('', monkeypatch=monkeypatch)
     serializeraw.load_document.cache_clear()

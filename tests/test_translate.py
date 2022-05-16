@@ -18,6 +18,7 @@ import tests.utils
 
 
 @utilatest.longrun
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_translate_lines(testdir):
     source, pages = power.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, testdir)
@@ -33,6 +34,7 @@ def test_translate_lines(testdir):
 
 
 @utilatest.longrun
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_translate(testdir, monkeypatch):
     source, pages = power.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, testdir)

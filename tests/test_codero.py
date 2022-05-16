@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests.utils
 
 
+@utilatest.requires(power.DISS205_PDF)
 def test_diss205p139(testdir, monkeypatch):
     """Ensure that code example is hidden correctly."""
     source, page = power.link(power.DISS205_PDF), 139
