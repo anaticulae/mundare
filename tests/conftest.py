@@ -22,6 +22,7 @@ power.setup(cleanup.ROOT)
 
 RESOURCES = [
     (power.DISS205_PDF, '130:140'),
+    (power.MASTER116_PDF, '15:25'),
     power.BACHELOR037_PDF,
     power.BACHELOR051_PDF,
     power.BACHELOR056_PDF,
