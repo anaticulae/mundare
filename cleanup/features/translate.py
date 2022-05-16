@@ -24,25 +24,27 @@ def work(
     if prefix == 'oneline':
         text = determine_translation(
             source=oneline_text_baml,
-            destination=oneline_text,
+            dest=oneline_text,
             pages=pages,
         )
     else:
         text = determine_translation(
             source=text_baml,
-            destination=text,
+            dest=text,
             pages=pages,
         )
     return text
 
 
-def determine_translation(source, destination, pages: tuple = None) -> str:
+def determine_translation(source, dest, pages: tuple = None) -> str:
     if not utila.exists(source):
+        utila.error(f'missing source: {source}')
         return utila.NO_RESULT
-    if not utila.exists(destination):
+    if not utila.exists(dest):
+        utila.error(f'missing dest: {dest}')
         return utila.NO_RESULT
     text_before = serializeraw.load_document(source, pages=pages)
-    text = serializeraw.load_document(destination, pages=pages)
+    text = serializeraw.load_document(dest, pages=pages)
     text_translated = cleanup.translate.lines.translates(
         sources=text_before,
         destinations=text,
