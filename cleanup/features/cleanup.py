@@ -177,14 +177,19 @@ def cleanup_images(images, invalids):
     return images
 
 
-def valid_bounding(bounding, invalids, page: int) -> bool:
+def valid_bounding(
+    bounding: tuple,
+    invalids: dict,
+    page: int,
+    overlapping_min: float = 0.9,
+) -> bool:
     try:
         invalid_area = invalids[page]
     except KeyError:
         return True
     for invalid in invalid_area:
         overlapping_rate = utila.rectangle_overlapping(invalid, bounding)
-        if overlapping_rate > 0.9:  # TODO: HOLY VALUE
+        if overlapping_rate > overlapping_min:
             return False
     return True
 
