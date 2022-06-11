@@ -10,3 +10,5 @@
 # Internal packages
 utila>=2.76.0<3.0.0
 iamraw>=4.72.3<5.0.0
+
+configo>=0.18.0<1.0.0
