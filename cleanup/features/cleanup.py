@@ -192,7 +192,7 @@ def valid_bounding(
     except KeyError:
         return True
     for invalid in invalid_area:
-        overlapping_rate = utila.rectangle_overlapping(invalid, bounding)
+        overlapping_rate = utila.rect_overlapping(invalid, bounding)
         if overlapping_rate >= overlapping_min:
             return False
     return True
