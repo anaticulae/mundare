@@ -10,6 +10,7 @@
 import collections
 import os
 
+import configo
 import iamraw
 import serializeraw
 import utila
@@ -177,11 +178,14 @@ def cleanup_images(images, invalids):
     return images
 
 
+OVERLAPPING_RATE_MIN = configo.HV_PERCENT_PLUS(default=90)
+
+
 def valid_bounding(
     bounding: tuple,
     invalids: dict,
     page: int,
-    overlapping_min: float = 0.9,
+    overlapping_min: float = OVERLAPPING_RATE_MIN,
 ) -> bool:
     try:
         invalid_area = invalids[page]
@@ -189,7 +193,7 @@ def valid_bounding(
         return True
     for invalid in invalid_area:
         overlapping_rate = utila.rectangle_overlapping(invalid, bounding)
-        if overlapping_rate > overlapping_min:
+        if overlapping_rate >= overlapping_min:
             return False
     return True
 
