@@ -17,37 +17,37 @@ import cleanup.features.backup
 import tests
 
 
-def test_run_cleanup(monkeypatch):
-    tests.run('--help', monkeypatch=monkeypatch)
+def test_run_cleanup(mp):
+    tests.run('--help', monkeypatch=mp)
 
 
 @utilatest.requires(power.BACHELOR056_PDF)
-def test_bachelor56(testdir, monkeypatch):
+def test_bachelor56(td, mp):
     source = power.link(power.BACHELOR056_PDF)
     utila.copy_content(
         source,
-        testdir.tmpdir,
+        td.tmpdir,
         pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
         unlock=True,
     )
     tests.run(
         '-i . -o . --cleanup --postfix=cleaned --pages=0',
-        monkeypatch=monkeypatch,
+        monkeypatch=mp,
     )
-    assert len(utila.file_list(testdir.tmpdir)) == 8
+    assert len(utila.file_list(td.tmpdir)) == 8
 
 
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_figures(testdir, monkeypatch):
+def test_figures(td, mp):
     """Remove text in figure area."""
     source = power.link(power.BACHELOR051_PDF)
     tests.run(
-        f'-i {source} -o {testdir.tmpdir}',
-        monkeypatch=monkeypatch,
+        f'-i {source} -o {td.tmpdir}',
+        monkeypatch=mp,
     )
     ptn = serializeraw.ptn_frompath(source)
-    ptn_dumped = serializeraw.ptn_frompath(testdir.tmpdir)
+    ptn_dumped = serializeraw.ptn_frompath(td.tmpdir)
     assert ptn_dumped != ptn
     before = utila.select_page(ptn, page=29)
     clean = utila.select_page(ptn_dumped, page=29)
@@ -56,7 +56,7 @@ def test_figures(testdir, monkeypatch):
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_tables(testdir, monkeypatch):
+def test_tables(td, mp):
     """Verify multiple input soruces and tablero cleanup."""
     source = power.link(power.BACHELOR051_PDF)
     page = 25
@@ -71,12 +71,12 @@ def test_tables(testdir, monkeypatch):
     utila.file_create('tablero__decide_decide.yaml', dumped)
     # run cleanup
     tests.run(
-        f'-i {source} -i {testdir.tmpdir} -o {testdir.tmpdir} --pages={page}',
-        monkeypatch=monkeypatch,
+        f'-i {source} -i {td.tmpdir} -o {td.tmpdir} --pages={page}',
+        monkeypatch=mp,
     )
     # load result
     ptn = serializeraw.ptn_frompath(source)
-    ptn_dumped = serializeraw.ptn_frompath(testdir.tmpdir)
+    ptn_dumped = serializeraw.ptn_frompath(td.tmpdir)
     assert ptn_dumped != ptn
     before = utila.select_page(ptn, page=page)
     clean = utila.select_page(ptn_dumped, page=page)
@@ -87,19 +87,19 @@ def test_tables(testdir, monkeypatch):
 
 @utilatest.longrun
 @utilatest.requires(power.DISS143_PDF)
-def test_formulas(testdir, monkeypatch):
+def test_formulas(td, mp):
     source = power.link(power.DISS143_PDF)
-    outdir = testdir.tmpdir
+    outdir = td.tmpdir
     page = 27
     utila.run(f'formulero -i {power.DISS143_PDF} -o {outdir} --pages={page}')
     # run cleanup
     tests.run(
-        f'-i {source} -i {testdir.tmpdir} -o {outdir} --pages={page}',
-        monkeypatch=monkeypatch,
+        f'-i {source} -i {td.tmpdir} -o {outdir} --pages={page}',
+        monkeypatch=mp,
     )
     # load result
     ptn = serializeraw.ptn_frompath(source)
-    ptn_dumped = serializeraw.ptn_frompath(testdir.tmpdir)
+    ptn_dumped = serializeraw.ptn_frompath(td.tmpdir)
     assert ptn_dumped != ptn
     before = utila.select_page(ptn, page=page)
     clean = utila.select_page(ptn_dumped, page=page)
@@ -109,16 +109,16 @@ def test_formulas(testdir, monkeypatch):
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
-def test_backup(testdir, monkeypatch):
+def test_backup(td, mp):
     """Copy source files as backup files(change data type)."""
     source = power.link(power.BACHELOR051_PDF)
     tests.run(
-        f'-i {source} -o {testdir.tmpdir} --backup',
-        monkeypatch=monkeypatch,
+        f'-i {source} -o {td.tmpdir} --backup',
+        monkeypatch=mp,
     )
     # four backup files written
     backupfiles = utila.file_list(
-        testdir.tmpdir,
+        td.tmpdir,
         include=cleanup.features.backup.BACKUP_EXT,
     )
     assert len(backupfiles) == 6

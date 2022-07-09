@@ -19,14 +19,13 @@ import tests.utils
 
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR037_PDF)
-def test_translate_lines(testdir):
+def test_translate_lines(td):
     source, pages = power.BACHELOR037_PDF, '22,23,24'
-    tests.utils.prepare(source, pages, testdir)
+    tests.utils.prepare(source, pages, td)
     # do not cache load_documents, do not use tests.run
-    utila.run('cleanup --cleanup --backup '
-              f'-i {testdir.tmpdir} -o {testdir.tmpdir}')
-    ptn = serializeraw.ptn_frompath(testdir.tmpdir)
-    backup = serializeraw.ptn_frompath(testdir.tmpdir, backup=True)
+    utila.run('cleanup --cleanup --backup ' f'-i {td.tmpdir} -o {td.tmpdir}')
+    ptn = serializeraw.ptn_frompath(td.tmpdir)
+    backup = serializeraw.ptn_frompath(td.tmpdir, backup=True)
     assert ptn != backup, 'cached load_documents? check backup=False'
     translated = cleanup.translate.lines.translates(backup, ptn)
     # changes on two pages, no change on page 22
@@ -35,15 +34,15 @@ def test_translate_lines(testdir):
 
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR037_PDF)
-def test_translate(testdir, monkeypatch):
+def test_translate(td, mp):
     source, pages = power.BACHELOR037_PDF, '22,23,24'
-    tests.utils.prepare(source, pages, testdir)
+    tests.utils.prepare(source, pages, td)
     tests.run(
-        f'-i {testdir.tmpdir} -o {testdir.tmpdir}',
-        monkeypatch=monkeypatch,
+        f'-i {td.tmpdir} -o {td.tmpdir}',
+        monkeypatch=mp,
     )
     done = utila.file_list(
-        testdir.tmpdir,
+        td.tmpdir,
         recursive=False,
     )
     assert len(done) == 8

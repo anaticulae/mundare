@@ -14,7 +14,7 @@ import utilatest
 import tests.utils
 
 
-def test_translate_diss143page25(testdir, monkeypatch):
+def test_translate_diss143page25(td, mp):
     """Regression test to ensure that all lines are matched together.
 
     LEFT:           RIGHT
@@ -29,23 +29,23 @@ def test_translate_diss143page25(testdir, monkeypatch):
     """
     source = power.DISS143_PDF
     # fails before
-    raw = translate(source, 25, testdir, monkeypatch)
+    raw = translate(source, 25, td, mp)
     assert raw
 
 
-def test_master116p18table(testdir, monkeypatch):
+def test_master116p18table(td, mp):
     """Do not remove very near caption line in table."""
     source = power.MASTER116_PDF
-    raw = translate(source, 18, testdir, monkeypatch)
+    raw = translate(source, 18, td, mp)
     # ensure that caption line in table is not cleaned
     assert 'Tab. 2.1.: Übersicht Hybridlokomotiven [Kon13]' in raw
 
 
-def translate(source, page: int, testdir, monkeypatch) -> str:
+def translate(source, page: int, td, mp) -> str:
     utilatest.fixture_requires(source)
-    tests.utils.prepare(source, page, testdir)
-    tests.run('', monkeypatch=monkeypatch)
+    tests.utils.prepare(source, page, td)
+    tests.run('', monkeypatch=mp)
     serializeraw.load_document.cache_clear()
-    ptn = serializeraw.ptn_frompath(testdir.tmpdir)[0]
+    ptn = serializeraw.ptn_frompath(td.tmpdir)[0]
     raw = ptn.debug
     return raw

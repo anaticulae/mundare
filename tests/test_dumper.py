@@ -26,15 +26,15 @@ import tests
 def test_source_compare_reduction_fast(
     source,
     pages,
-    testdir,
-    monkeypatch,
+    td,
+    mp,
 ):
     """Ensure that resource is loaded and dumped correctly.
 
     This is required before we can test that cleanup reduces some data
     out of ptn.
     """
-    compare(source, pages, testdir, monkeypatch)
+    compare(source, pages, td, mp)
 
 
 @utilatest.longrun
@@ -46,42 +46,42 @@ def test_source_compare_reduction_fast(
 def test_source_compare_reduction_slow(
     source,
     pages,
-    testdir,
-    monkeypatch,
+    td,
+    mp,
 ):
-    compare(source, pages, testdir, monkeypatch)
+    compare(source, pages, td, mp)
 
 
-def compare(source, pages, testdir, monkeypatch):
+def compare(source, pages, td, mp):
     utilatest.fixture_requires(source)
     source = power.link(source)
     utila.copy_content(
         source,
-        testdir.tmpdir,
+        td.tmpdir,
         pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
         unlock=True,
     )
     tests.run(
-        f'-i {testdir.tmpdir} -o {testdir.tmpdir} --postfix=cleaned --pages={pages}',
-        monkeypatch=monkeypatch,
+        f'-i {td.tmpdir} -o {td.tmpdir} --postfix=cleaned --pages={pages}',
+        monkeypatch=mp,
     )
     pages = utila.parse_pages(pages)
     ptn = serializeraw.ptn_frompath(
-        testdir.tmpdir,
+        td.tmpdir,
         pages=pages,
     )
     ptn_dumped = serializeraw.ptn_frompath(
-        testdir.tmpdir,
+        td.tmpdir,
         prefix='cleaned',
         pages=pages,
     )
     assert ptn_dumped == ptn
     fontstore = serializeraw.fs_frompath(
-        testdir.tmpdir,
+        td.tmpdir,
         pages=pages,
     )
     fontstore_dumped = serializeraw.fs_frompath(
-        testdir.tmpdir,
+        td.tmpdir,
         prefix='cleaned',
         pages=pages,
     )
