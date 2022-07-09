@@ -59,6 +59,7 @@ def compare(source, pages, testdir, monkeypatch):
         source,
         testdir.tmpdir,
         pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
+        unlock=True,
     )
     tests.run(
         f'-i {testdir.tmpdir} -o {testdir.tmpdir} --postfix=cleaned --pages={pages}',

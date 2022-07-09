@@ -28,6 +28,7 @@ def test_bachelor56(testdir, monkeypatch):
         source,
         testdir.tmpdir,
         pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
+        unlock=True,
     )
     tests.run(
         '-i . -o . --cleanup --postfix=cleaned --pages=0',

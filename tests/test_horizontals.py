@@ -22,6 +22,7 @@ def test_horizontals_diss172p138(testdir, monkeypatch):
     utila.copy_content(
         source,
         testdir.tmpdir,
+        unlock=True,
     )
     before = serializeraw.load_horizontals(testdir.tmpdir, pages=page)
     tests.run(

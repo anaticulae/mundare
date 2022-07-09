@@ -22,6 +22,7 @@ def work(inputs: list, outputs, prefix: str = ''):
             outputs,
             pattern=pattern,
             rename=rename_backup,
+            unlock=True,
         )
     return utila.NO_RESULT
 

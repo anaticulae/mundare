@@ -22,6 +22,7 @@ def test_diss205p139(testdir, monkeypatch):
     utila.copy_content(
         source,
         testdir.tmpdir,
+        unlock=True,
     )
     tests.run(f'--pages {page} -o {testdir.tmpdir}', monkeypatch=monkeypatch)
     serializeraw.load_document.cache_clear()
