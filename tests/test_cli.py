@@ -52,7 +52,7 @@ def test_figures(td, mp):
     before = utila.select_page(ptn, page=29)
     clean = utila.select_page(ptn_dumped, page=29)
     # remove 4 lines on page 29
-    assert len(clean) + 4 == len(before)
+    assert len(clean) + 4 <= len(before)
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
