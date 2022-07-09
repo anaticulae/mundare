@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.4
+
+### Fix
+
+* do not fail on white page document, single page (0a38e08349ec)
+
 ## v0.1.3
 
 ## v0.1.2
