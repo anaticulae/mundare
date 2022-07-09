@@ -33,13 +33,13 @@ def test_source_compare_reduction_fast(source, pages, td, mp):
 
 
 @utilatest.longrun
-@pytest.mark.parametrize('source, pages', [
-    pytest.param(power.BACHELOR056_PDF, ':', id='all'),
-    pytest.param(power.BACHELOR051_PDF, ':', id='bachelor51_all'),
-    pytest.param(power.HOME040_PDF, ':', id='home40'),
+@pytest.mark.parametrize('source', [
+    pytest.param(power.BACHELOR056_PDF, id='bachelor56'),
+    pytest.param(power.BACHELOR051_PDF, id='bachelor51'),
+    pytest.param(power.HOME040_PDF, id='home040'),
 ])
-def test_source_compare_reduction_slow(source, pages, td, mp):
-    compare(source, pages, td, mp)
+def test_source_compare_reduction_slow(source, td, mp):
+    compare(source, ':', td, mp)
 
 
 def compare(source, pages, td, mp):
