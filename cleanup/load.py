@@ -23,7 +23,7 @@ def ptn_frompath(inpaths, prefix, pages):
             pages=pages,
             sort=False,
         )
-        if ptns:
+        if ptns is not None:
             return ptns
     return None
 

@@ -16,7 +16,9 @@ import utila
 
 
 def dump_ptn(ptns: texmex.PageTextNavigators, fontstore: iamraw.FontStore):
-    document = iamraw.Document(dimension=ptns[0].pagesize)
+    # TODO: USE BETTER DEFAULT?
+    dimension = ptns[0].pagesize if ptns else (595.28, 841.86)
+    document = iamraw.Document(dimension=dimension)
     textpositions = []
     for page in ptns:
         children, posis = create_page(page, fontstore)
