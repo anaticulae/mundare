@@ -35,14 +35,11 @@ RESOURCES = [
 def extract(resources):
     genex.extract(
         files=resources,
-        destination=power.generated(),
         pdfinfo=False,
         codero=True,
         groupme=True,
         tablero=True,
-        pages=':',
         worker=WORKER,
-        base=power.REPOSITORY,
     )
 
 
