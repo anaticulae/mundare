@@ -20,6 +20,3 @@ figureo>=0.17.3<1.0.0
 formulero>=0.6.1<1.0.0
 groupme>=0.34.4<1.0.0
 codero>=0.5.0<1.0.0
-
-# font parser TODO: REMOVE LATER
-rawmaker>=2.37.5<3.0.0
