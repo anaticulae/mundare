@@ -49,3 +49,14 @@ def translate(source, page: int, td, mp) -> str:
     ptn = serializeraw.ptn_frompath(td.tmpdir)[0]
     raw = ptn.debug
     return raw
+
+
+@utilatest.requires(power.HC_DISS128)
+def test_hc_diss128_rawmaker_error(td, mp):
+    """Negative font size produces an error while using rawmaker
+
+    scale_fromchar(char).
+    """
+    source = power.link(power.HC_DISS128)
+    pages = '32,45,62,83,97,98'
+    tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
