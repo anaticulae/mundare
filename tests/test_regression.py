@@ -44,7 +44,7 @@ def test_master116p18table(td, mp):
 def translate(source, page: int, td, mp) -> str:
     utilatest.fixture_requires(source)
     tests.utils.prepare(source, page, td)
-    tests.run('', monkeypatch=mp)
+    tests.run('', mp=mp)
     serializeraw.load_document.cache_clear()
     ptn = serializeraw.ptn_frompath(td.tmpdir)[0]
     raw = ptn.debug

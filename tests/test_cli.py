@@ -18,7 +18,7 @@ import tests
 
 
 def test_run_cleanup(mp):
-    tests.run('--help', monkeypatch=mp)
+    tests.run('--help', mp=mp)
 
 
 @utilatest.requires(power.BACHELOR056_PDF)
@@ -32,7 +32,7 @@ def test_bachelor56(td, mp):
     )
     tests.run(
         '-i . -o . --cleanup --postfix=cleaned --pages=0',
-        monkeypatch=mp,
+        mp=mp,
     )
     assert len(utila.file_list(td.tmpdir)) == 8
 
@@ -44,7 +44,7 @@ def test_figures(td, mp):
     source = power.link(power.BACHELOR051_PDF)
     tests.run(
         f'-i {source} -o {td.tmpdir}',
-        monkeypatch=mp,
+        mp=mp,
     )
     ptn = serializeraw.ptn_frompath(source)
     ptn_dumped = serializeraw.ptn_frompath(td.tmpdir)
@@ -72,7 +72,7 @@ def test_tables(td, mp):
     # run cleanup
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {td.tmpdir} --pages={page}',
-        monkeypatch=mp,
+        mp=mp,
     )
     # load result
     ptn = serializeraw.ptn_frompath(source)
@@ -95,7 +95,7 @@ def test_formulas(td, mp):
     # run cleanup
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {outdir} --pages={page}',
-        monkeypatch=mp,
+        mp=mp,
     )
     # load result
     ptn = serializeraw.ptn_frompath(source)
@@ -114,7 +114,7 @@ def test_backup(td, mp):
     source = power.link(power.BACHELOR051_PDF)
     tests.run(
         f'-i {source} -o {td.tmpdir} --backup',
-        monkeypatch=mp,
+        mp=mp,
     )
     # four backup files written
     backupfiles = utila.file_list(

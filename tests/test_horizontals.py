@@ -27,7 +27,7 @@ def test_horizontals_diss172p138(td, mp):
     before = serializeraw.load_horizontals(td.tmpdir, pages=page)
     tests.run(
         f'--pages {page} -i {td.tmpdir} -o {td.tmpdir}',
-        monkeypatch=mp,
+        mp=mp,
     )
     serializeraw.load_horizontals.cache_clear()
     after = serializeraw.load_horizontals(td.tmpdir, pages=page)

@@ -39,7 +39,7 @@ def test_translate(td, mp):
     tests.utils.prepare(source, pages, td)
     tests.run(
         f'-i {td.tmpdir} -o {td.tmpdir}',
-        monkeypatch=mp,
+        mp=mp,
     )
     done = utila.file_list(
         td.tmpdir,

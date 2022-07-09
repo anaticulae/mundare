@@ -63,7 +63,7 @@ def compare(source, pages, td, mp):
     )
     tests.run(
         f'-i {td.tmpdir} -o {td.tmpdir} --postfix=cleaned --pages={pages}',
-        monkeypatch=mp,
+        mp=mp,
     )
     pages = utila.parse_pages(pages)
     ptn = serializeraw.ptn_frompath(
