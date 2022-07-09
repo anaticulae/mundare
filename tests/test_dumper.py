@@ -23,12 +23,7 @@ import tests
     pytest.param(power.BACHELOR056_PDF, '5,6,7', id='fiveSixSeven'),
     pytest.param(power.DISS143_PDF, '27', id='diss143'),
 ])
-def test_source_compare_reduction_fast(
-    source,
-    pages,
-    td,
-    mp,
-):
+def test_source_compare_reduction_fast(source, pages, td, mp):
     """Ensure that resource is loaded and dumped correctly.
 
     This is required before we can test that cleanup reduces some data
@@ -43,12 +38,7 @@ def test_source_compare_reduction_fast(
     pytest.param(power.BACHELOR051_PDF, ':', id='bachelor51_all'),
     pytest.param(power.HOME040_PDF, ':', id='home40'),
 ])
-def test_source_compare_reduction_slow(
-    source,
-    pages,
-    td,
-    mp,
-):
+def test_source_compare_reduction_slow(source, pages, td, mp):
     compare(source, pages, td, mp)
 
 
