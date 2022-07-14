@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.1.5
+
+### Feature
+
+* log number of loaded horizontals and lines (bcfcc69d2504)
+
+### Fix
+
+* decrease required min width (52f64c2aa178)
+
 ## v0.1.4
 
 ### Fix
