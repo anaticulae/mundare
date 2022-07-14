@@ -107,6 +107,18 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
                     prefix=prefix,
                     pages=pages,
                 ))
+    if horizontals:
+        for pdfpage in horizontals:
+            utila.verbose(
+                f'p{pdfpage.page} horizontal: {len(pdfpage.content)}',
+                end=' ',
+            )
+    if lines:
+        for pdfpage in lines:
+            utila.verbose(
+                f'p{pdfpage.page} lines: {len(pdfpage.content)}',
+                end=' ',
+            )
     return horizontals, lines
 
 
