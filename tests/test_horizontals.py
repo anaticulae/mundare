@@ -45,3 +45,20 @@ def test_horizontals_diss172p138(td, mp):
     cache_clear()
     after = load_horizontals(td.tmpdir, pages=page)
     assert after != before
+
+
+def test_horizontals_master193(td, mp):
+    source = power.link(power.MASTER193_PDF)
+    utila.copy_content(
+        source,
+        td.tmpdir,
+        unlock=True,
+    )
+    before = load_horizontals(td.tmpdir)
+    tests.run(
+        f'-i {td.tmpdir} -o {td.tmpdir}',
+        mp=mp,
+    )
+    cache_clear()
+    after = load_horizontals(td.tmpdir)
+    assert after == before
