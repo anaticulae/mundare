@@ -7,12 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import power
 import serializeraw
 import utila
 import utilatest
 
+import cleanup.load
 import tests
+
+# disable skipping horizontals while loading them, see width_min
+load_horizontals = functools.partial(
+    serializeraw.load_horizontals,
+    width_min=cleanup.load.HORIZONTALS_WIDTH_MIN,
+)
+cache_clear = load_horizontals.func.cache_clear
 
 
 @utilatest.requires(power.DISS172_PDF)
@@ -24,11 +34,14 @@ def test_horizontals_diss172p138(td, mp):
         td.tmpdir,
         unlock=True,
     )
-    before = serializeraw.load_horizontals(td.tmpdir, pages=page)
+    before = load_horizontals(
+        td.tmpdir,
+        pages=page,
+    )
     tests.run(
         f'--pages {page} -i {td.tmpdir} -o {td.tmpdir}',
         mp=mp,
     )
-    serializeraw.load_horizontals.cache_clear()
-    after = serializeraw.load_horizontals(td.tmpdir, pages=page)
+    cache_clear()
+    after = load_horizontals(td.tmpdir, pages=page)
     assert after != before
