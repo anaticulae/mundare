@@ -9,9 +9,12 @@
 
 import os
 
+import configo
 import iamraw
 import serializeraw
 import utila
+
+HORIZONTALS_WIDTH_MIN = configo.HV_INT_PLUS(default=50)
 
 
 def ptn_frompath(inpaths, prefix, pages):
@@ -92,6 +95,7 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
                     inpath,
                     prefix=prefix,
                     pages=pages,
+                    width_min=HORIZONTALS_WIDTH_MIN,
                 ))
         if utila.exists(iamraw.path.line(inpath)):
             # if utila.exists(iamraw.path.line(inpath, prefix)):
