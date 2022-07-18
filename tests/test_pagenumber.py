@@ -8,14 +8,23 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utila
+import utilatest
 
 import tests
+import tests.conftest
 
 
-def test_pagenumber_remove_diss143(td, mp):
-    source = power.link(power.DISS143_PDF)
+@utilatest.longrun
+@pytest.mark.parametrize(
+    'source',
+    utilatest.test_resources(tests.conftest.RESOURCES),
+)
+def test_pagenumber_remove_x(source, td, mp):
+    """Hide detected page number to improve footnote extraction result."""
+    source = power.link(source)
     pattern = '(rawmaker__text|rawmaker__fonts|pagenumber__result)_*.yaml'
     utila.copy_content(
         source,
