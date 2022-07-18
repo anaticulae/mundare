@@ -90,6 +90,7 @@ def remove_skip_area(
     prefix,
     pages: tuple = None,
 ):
+    pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
     codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
     formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
     captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
@@ -97,11 +98,19 @@ def remove_skip_area(
         inpaths,
         pages=pages,
     )
-    invalids = create_invalid_area(images, tables, codes, formulas, captions)
+    invalids = create_invalid_area(
+        pagenumbers,
+        images,
+        tables,
+        codes,
+        formulas,
+        captions,
+    )
     ptns = cleanup_ptn(ptns, invalids)
     horizontals = cleanup_horizontals(horizontals, invalids)
     lines = cleanup_lines(lines, invalids)
     noimages = create_invalid_area(
+        pagenumbers=pagenumbers,
         images=[],
         tables=tables,
         codes=codes,
@@ -198,8 +207,17 @@ def valid_bounding(
     return True
 
 
-def create_invalid_area(images, tables, codes, formulas, captions) -> dict:
+def create_invalid_area(
+    pagenumbers,
+    images,
+    tables,
+    codes,
+    formulas,
+    captions,
+) -> dict:
     invalid = collections.defaultdict(list)
+    for number in pagenumbers:
+        invalid[number.pdfpage].append(tuple(number.bounding))
     for page in images:
         invalid[page.page].extend([item.bounding for item in page.content])
     for page in tables:
