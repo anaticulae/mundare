@@ -42,6 +42,7 @@ def extract(resources):
         pdfinfo=False,
         codero=True,
         groupme=True,
+        pagenumber=True,
         tablero=True,
         worker=WORKER,
     )
