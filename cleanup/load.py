@@ -31,6 +31,17 @@ def ptn_frompath(inpaths, prefix, pages):
     return None
 
 
+def pagenumber_frompath(inpaths, pages):
+    for inpath in inpaths:
+        path = iamraw.path.pagenumber_result(inpath)
+        if not utila.exists(path):
+            continue
+        utila.debug(f'pagenumber: {path}')
+        loaded = serializeraw.load_pagenumbers(path, pages=pages)
+        return loaded
+    return []
+
+
 def codes_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
