@@ -60,3 +60,36 @@ def test_hc_diss128_rawmaker_error(td, mp):
     source = power.link(power.HC_DISS128)
     pages = '32,45,62,83,97,98'
     tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
+
+
+def clear_cache():
+    serializeraw.load_document.cache_clear()
+    serializeraw.load_textpositions.cache_clear()
+
+
+def test_run_cleanup_multiple_times(td, mp):
+    """Ensure that hidden data is loaded before running cleanup step.
+
+    If we do not load hidden data, this data gots lost if we run cleanup
+    again. To access hidden data later, we have to load it on every
+    cleanup step.
+
+    See 2ac5651e78c02c5520d5d
+    """
+    source = power.link(power.HOME007_PDF)
+    before = [len(page) for page in serializeraw.ptn_frompath(path=source)]
+    clear_cache()
+    tests.run(
+        f'-i {source} -o {td.tmpdir}',
+        mp=mp,
+    )
+    clear_cache()
+    after = [len(page) for page in serializeraw.ptn_frompath(path=td.tmpdir)]
+    assert after != before
+    for _ in range(4):
+        tests.run(f'-i {td.tmpdir} -o {td.tmpdir}', mp=mp)
+        clear_cache()
+        current = [
+            len(page) for page in serializeraw.ptn_frompath(path=td.tmpdir)
+        ]
+        assert current == after
