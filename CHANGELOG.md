@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* hide pagenumber in cleanup step (6775ee1cceb3)
+* add pagenumber loader (7bd152b94193)
+
 ## v0.1.5
 
 ### Feature
