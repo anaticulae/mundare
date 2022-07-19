@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Fix
+
+* load hidden data (2ac5651e78c0)
+
 ## v0.2.0
 
 ### Feature
