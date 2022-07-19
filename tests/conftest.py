@@ -32,6 +32,7 @@ RESOURCES = [
     power.BACHELOR056_PDF,
     power.DISS143_PDF,
     power.HC_DISS128,
+    power.HOME007_PDF,
     power.HOME040_PDF,
 ]
 
