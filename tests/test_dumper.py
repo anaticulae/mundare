@@ -32,7 +32,7 @@ def test_source_compare_reduction_fast(source, pages, td, mp):
     compare(source, pages, td, mp)
 
 
-@utilatest.longrun
+@utilatest.nightly
 @pytest.mark.parametrize('source', [
     pytest.param(power.BACHELOR037_PDF, id='bachelor037'),
     pytest.param(power.BACHELOR051_PDF, id='bachelor51'),

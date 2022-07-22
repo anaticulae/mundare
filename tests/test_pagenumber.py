@@ -17,7 +17,7 @@ import tests
 import tests.conftest
 
 
-@utilatest.longrun
+@utilatest.nightly
 @pytest.mark.parametrize(
     'source',
     utilatest.test_resources(tests.conftest.RESOURCES),
