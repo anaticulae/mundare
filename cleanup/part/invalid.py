@@ -64,21 +64,20 @@ def create_invalid_area(
     invalid = collections.defaultdict(list)
     for number in pagenumbers:
         invalid[number.pdfpage].append(tuple(number.bounding))
-    for page in footnotes:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in images:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in tables:
-        invalid[page.page].extend([item.bounding for item in page.content])
+    for data in (
+            footnotes,
+            images,
+            tables,
+            formulas,
+            captions,
+    ):
+        for page in data:
+            invalid[page.page].extend([item.bounding for item in page.content])
     for page in codes:
         tokens = utila.flatten([item.tokens_bounding for item in page.content])
         invalid[page.page].extend(tokens)
         # caption = utila.flatten([it.caption_bounding for it in page.content])
         # invalid[page.page].extend(caption)
-    for page in formulas:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in captions:
-        invalid[page.page].extend([item.bounding for item in page.content])
     # reduce rectangle count
     result = {
         key: utila.rectangle_merge(value) for key, value in invalid.items()
