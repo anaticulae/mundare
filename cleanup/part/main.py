@@ -12,11 +12,11 @@ import os
 
 import configo
 import iamraw
-import serializeraw
 import utila
 
 import cleanup.load
 import cleanup.ptn
+import cleanup.writer.result
 
 
 def cleaner(  # pylint:disable=R0914
@@ -50,7 +50,7 @@ def cleaner(  # pylint:disable=R0914
         ptns,
         fontstore,
     )
-    write_result(
+    cleanup.writer.result.write(
         outpath,
         document,
         textpositions,
@@ -218,66 +218,3 @@ def create_invalid_area(
         key: utila.rectangle_merge(value) for key, value in invalid.items()
     }
     return result
-
-
-def write_result(
-    outpath: str,
-    document: iamraw.Document,
-    textpositions: iamraw.TextPositions,
-    fontheader: dict,
-    fontcontent: list,
-    horizontals: list,
-    lines: list,
-    images: list,
-    prefix: str = '',
-    postfix: str = '',
-):
-    prefix = prefix or ''
-    postfix = postfix or ''
-    # write document
-    utila.file_replace(
-        iamraw.path.text(outpath, prefix=prefix + postfix),
-        document,
-    )
-    utila.file_replace(
-        iamraw.path.textposition(outpath, prefix=prefix + postfix),
-        textpositions,
-    )
-    if fontheader is not None and fontcontent is not None:
-        # write reduced font store
-        utila.file_replace(
-            iamraw.path.fontheader(outpath, prefix=prefix + postfix),
-            fontheader,
-        )
-        utila.file_replace(
-            iamraw.path.fontcontent(outpath, prefix=prefix + postfix),
-            fontcontent,
-        )
-    write_images(outpath, images)
-    # write lines
-    if horizontals is not None:
-        # None signals that the source does not contain any horizontal file
-        utila.file_replace(
-            iamraw.path.horizontals(outpath, prefix=postfix),
-            serializeraw.dump_horizontals(horizontals),
-        )
-    if lines is not None:
-        # None signals that the source does not contain any line file
-        utila.file_replace(
-            iamraw.path.line(outpath, prefix=postfix),
-            serializeraw.dump_lines(lines),
-        )
-
-
-def write_images(outpath, images):
-    if not images:
-        return
-    baseimage = iamraw.path.images(outpath)
-    os.makedirs(baseimage, exist_ok=True)
-    for page in images:
-        for image in page.content:
-            if not image.hidden:
-                continue
-            imagepath = utila.join(baseimage, f'{image.hashedimage}.yaml')
-            dumped = serializeraw.dump_image_info(image)
-            utila.file_replace(imagepath, dumped)
