@@ -290,8 +290,7 @@ def write_result(
 def write_images(outpath, images):
     if not images:
         return
-    # TODO: REMOVE ftype later
-    baseimage = iamraw.path.images(outpath, ftype='')
+    baseimage = iamraw.path.images(outpath)
     os.makedirs(baseimage, exist_ok=True)
     for page in images:
         for image in page.content:
