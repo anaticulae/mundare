@@ -81,6 +81,18 @@ def captions_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     return result
 
 
+def footnotes_frompath(inpaths, pages):  # pylint:disable=W0613
+    result = []
+    for inpath in inpaths:
+        path = iamraw.path.footnote_result(inpath)
+        if not utila.exists(path):
+            continue
+        utila.debug(f'footnote: {path}')
+        loaded = serializeraw.load_footnotes(path, pages=pages)
+        result.extend(loaded)
+    return result
+
+
 def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
     """Load lines and horizontal lines from `inpaths`.
 

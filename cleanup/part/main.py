@@ -85,6 +85,7 @@ def remove_skip_area(
         pages,
         caption=True,
         code=True,
+        footnote=True,
         formula=True,
         image=True,
         pagenumber=True,

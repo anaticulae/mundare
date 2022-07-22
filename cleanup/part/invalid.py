@@ -15,8 +15,8 @@ import cleanup.load
 
 
 def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
-    pagenumbers, codes, formulas, captions, images, tables = ([], [], [], [],
-                                                              [], [])
+    pagenumbers, codes, formulas, captions, images, tables, footnotes =\
+        ([], [], [], [], [], [], [])
     if kwargs.get('pagenumber', False):
         pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
     if kwargs.get('code', False):
@@ -29,6 +29,8 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         images = cleanup.load.load_images(inpaths, pages=pages)
     if kwargs.get('table', False):
         tables = cleanup.load.load_tables(inpaths, pages=pages)
+    if kwargs.get('footnote', False):
+        footnotes = cleanup.load.footnotes_frompath(inpaths, pages=pages)
     invalids = create_invalid_area(
         pagenumbers,
         images,
@@ -36,14 +38,16 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         codes,
         formulas,
         captions,
+        footnotes,
     )
     noimages = create_invalid_area(
-        pagenumbers=pagenumbers,
-        images=[],
-        tables=tables,
-        codes=codes,
-        formulas=formulas,
         captions=captions,
+        codes=codes,
+        footnotes=footnotes,
+        formulas=formulas,
+        images=[],
+        pagenumbers=pagenumbers,
+        tables=tables,
     )
     return invalids, noimages
 
@@ -55,10 +59,13 @@ def create_invalid_area(
     codes,
     formulas,
     captions,
+    footnotes,
 ) -> dict:
     invalid = collections.defaultdict(list)
     for number in pagenumbers:
         invalid[number.pdfpage].append(tuple(number.bounding))
+    for page in footnotes:
+        invalid[page.page].extend([item.bounding for item in page.content])
     for page in images:
         invalid[page.page].extend([item.bounding for item in page.content])
     for page in tables:

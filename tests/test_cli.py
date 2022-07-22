@@ -10,6 +10,7 @@
 import iamraw
 import power
 import serializeraw
+import texmex
 import utila
 import utilatest
 
@@ -53,6 +54,23 @@ def test_figures(td, mp):
     clean = utila.select_page(ptn_dumped, page=29)
     # remove 4 lines on page 29
     assert len(clean) + 4 <= len(before)
+
+
+@utilatest.longrun
+def test_footnotes(td, mp):
+    """Remove text in footnotes area."""
+    source = power.link(power.MASTER193_PDF)
+    utila.run(f'footnote -i {source} -o {td.tmpdir}')
+    tests.run(
+        f'-i {source} -i {td.tmpdir} -o {td.tmpdir}',
+        mp=mp,
+    )
+    footnote_only = serializeraw.ptn_frompath(
+        td.tmpdir,
+        state=texmex.TextState.FOOTNOTE,
+    )
+    content = [item for item in footnote_only if item]
+    assert content, 'could not load footnote-state-content'
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
