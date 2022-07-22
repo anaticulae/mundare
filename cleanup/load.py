@@ -82,7 +82,8 @@ def captions_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
 
 
 def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
-    """\
+    """Load lines and horizontal lines from `inpaths`.
+
     Args:
         inpaths(list): list of possible sources
         prefix(str): prefix inpath data
