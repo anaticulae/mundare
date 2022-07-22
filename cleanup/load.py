@@ -153,7 +153,7 @@ def load_images(inpaths: list, pages: tuple = None):
     result = []
     # load images and tables from multiple `inpaths`
     for inpath in inpaths:
-        imagepath = utila.join(inpath, 'rawmaker__images_images')
+        imagepath = iamraw.path.images(inpath)
         if not utila.exists(imagepath):
             continue
         result.extend(
