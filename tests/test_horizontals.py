@@ -61,4 +61,8 @@ def test_horizontals_master193(td, mp):
     )
     cache_clear()
     after = load_horizontals(td.tmpdir)
+    # page 25 is deleted cause horizontal as underline in footer is
+    # removed by new footnote skipper.
+    before = [item for item in before if item.page != 25]
+    after = [item for item in after if item.page != 25]
     assert after == before
