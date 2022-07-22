@@ -36,6 +36,9 @@ def dump_ptn(ptns: texmex.PageTextNavigators, fontstore: iamraw.FontStore):
     # write document
     dumped_document = serializeraw.dump_document(document)
     dumped_textpositions = serializeraw.dump_textpositions(textpositions)
+    if fontstore is None:
+        # do not dump empty fontstore
+        return dumped_document, dumped_textpositions, None, None
     fontstore, fontcontent = rawmaker.features.fonts.parse_fonts(document)
     dumped_header = serializeraw.dump_font_header(fontstore)
     dumped_content = serializeraw.dump_font_content(fontcontent)
@@ -99,13 +102,18 @@ def create_line(item, fontstore: iamraw.FontStore) -> iamraw.Line:
     underlines = utila.flatten([
         (item.width) * [item.underline] for item in style
     ])
-    fonts = utila.flatten([
-        (item.width) * [fontstore[item.font].pdfref] for item in style
-    ])
-    flags = utila.flatten([
-        item.width * [serializeraw.fonts.toflag(fontstore[item.font].flags)]
-        for item in style
-    ])
+    if fontstore:
+        fonts = utila.flatten([
+            (item.width) * [fontstore[item.font].pdfref] for item in style
+        ])
+        flags = utila.flatten([
+            item.width *
+            [serializeraw.fonts.toflag(fontstore[item.font].flags)]
+            for item in style
+        ])
+    else:
+        fonts = utila.flatten([item.width * [None] for item in style])
+        flags = utila.flatten([item.width * [None] for item in style])
     chars = [
         iamraw.Char(
             value=value,

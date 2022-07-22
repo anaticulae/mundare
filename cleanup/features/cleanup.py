@@ -261,15 +261,16 @@ def write_result(
         iamraw.path.textposition(outpath, prefix=prefix + postfix),
         textpositions,
     )
-    # write reduced font store
-    utila.file_replace(
-        iamraw.path.fontheader(outpath, prefix=prefix + postfix),
-        fontheader,
-    )
-    utila.file_replace(
-        iamraw.path.fontcontent(outpath, prefix=prefix + postfix),
-        fontcontent,
-    )
+    if fontheader is not None and fontcontent is not None:
+        # write reduced font store
+        utila.file_replace(
+            iamraw.path.fontheader(outpath, prefix=prefix + postfix),
+            fontheader,
+        )
+        utila.file_replace(
+            iamraw.path.fontcontent(outpath, prefix=prefix + postfix),
+            fontcontent,
+        )
     write_images(outpath, images)
     # write lines
     if horizontals is not None:
