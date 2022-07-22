@@ -96,13 +96,18 @@ def remove_skip_area(
     todo = [item.name.lower() for item in texmex.TextState]
     todo = [item for item in todo if item not in 'hidden visible']
     for element in todo:
+        replacement = texmex.TextState[element.upper()]
         invalids = cleanup.part.invalid.create(
             inpaths,
             prefix,
             pages,
             **{element: True},
         )[0]
-        ptns = cleanup_ptn(ptns, invalids)
+        ptns = cleanup_ptn(
+            ptns,
+            invalids,
+            default=replacement,
+        )
     return ptns, horizontals, lines, images
 
 
