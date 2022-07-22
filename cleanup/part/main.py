@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import collections
 import os
 
 import configo
@@ -15,6 +14,7 @@ import iamraw
 import utila
 
 import cleanup.load
+import cleanup.part.invalid
 import cleanup.ptn
 import cleanup.writer.result
 
@@ -72,33 +72,15 @@ def remove_skip_area(
     prefix,
     pages: tuple = None,
 ):
-    pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
-    codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
-    formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
-    captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
-    images, tables = cleanup.load.load_images_tables(
+    invalids, noimages = cleanup.part.invalid.create(
         inpaths,
-        pages=pages,
+        prefix,
+        pages,
     )
-    invalids = create_invalid_area(
-        pagenumbers,
-        images,
-        tables,
-        codes,
-        formulas,
-        captions,
-    )
+    images, _ = cleanup.load.load_images_tables(inpaths, pages)
     ptns = cleanup_ptn(ptns, invalids)
     horizontals = cleanup_horizontals(horizontals, invalids)
     lines = cleanup_lines(lines, invalids)
-    noimages = create_invalid_area(
-        pagenumbers=pagenumbers,
-        images=[],
-        tables=tables,
-        codes=codes,
-        formulas=formulas,
-        captions=captions,
-    )
     images = cleanup_images(images, noimages)
     return ptns, horizontals, lines, images
 
@@ -187,34 +169,3 @@ def valid_bounding(
         if overlapping_rate >= overlapping_min:
             return False
     return True
-
-
-def create_invalid_area(
-    pagenumbers,
-    images,
-    tables,
-    codes,
-    formulas,
-    captions,
-) -> dict:
-    invalid = collections.defaultdict(list)
-    for number in pagenumbers:
-        invalid[number.pdfpage].append(tuple(number.bounding))
-    for page in images:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in tables:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in codes:
-        tokens = utila.flatten([item.tokens_bounding for item in page.content])
-        invalid[page.page].extend(tokens)
-        # caption = utila.flatten([it.caption_bounding for it in page.content])
-        # invalid[page.page].extend(caption)
-    for page in formulas:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    for page in captions:
-        invalid[page.page].extend([item.bounding for item in page.content])
-    # reduce rectangle count
-    result = {
-        key: utila.rectangle_merge(value) for key, value in invalid.items()
-    }
-    return result
