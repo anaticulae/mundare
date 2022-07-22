@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.2
+
+### Fix
+
+* run cleanup without fontstore (acbbc029183a)
+
 ## v0.2.1
 
 ### Fix
