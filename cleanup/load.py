@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import configo
 import iamraw
 import serializeraw
@@ -51,7 +49,7 @@ def codes_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.codero_result(inpath)
-        if not os.path.exists(path):
+        if not utila.exists(path):
             continue
         utila.debug(f'codes: {path}')
         loaded = serializeraw.load_codes(path, pages=pages)
@@ -63,7 +61,7 @@ def formulas_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.formula(inpath)
-        if not os.path.exists(path):
+        if not utila.exists(path):
             continue
         utila.debug(f'formulas: {path}')
         loaded = serializeraw.load_rawformulas(path, pages=pages)
@@ -75,7 +73,7 @@ def captions_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.caption_result(inpath)
-        if not os.path.exists(path):
+        if not utila.exists(path):
             continue
         utila.debug(f'formulas: {path}')
         loaded = serializeraw.load_captions(path, pages=pages)
@@ -155,7 +153,7 @@ def load_images_tables(inpaths: list, pages: tuple = None):
     images, tables = [], []
     # load images and tables from multiple `inpaths`
     for inpath in inpaths:
-        imagepath = os.path.join(inpath, 'rawmaker__images_images')
+        imagepath = utila.join(inpath, 'rawmaker__images_images')
         if utila.exists(imagepath):
             images.extend(
                 serializeraw.load_image_infos_frompath(
