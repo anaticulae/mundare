@@ -64,8 +64,13 @@ def create_invalid_area(
     invalid = collections.defaultdict(list)
     for number in pagenumbers:
         invalid[number.pdfpage].append(tuple(number.bounding))
+    for page in footnotes:
+        for footnote in page.content:
+            if not footnote.bounding:
+                utila.error(f'missing footnote bounding: {footnote}')
+                continue
+            invalid[page.page].append(tuple(footnote.bounding))
     for data in (
-            footnotes,
             images,
             tables,
             formulas,
