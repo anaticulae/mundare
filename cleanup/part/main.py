@@ -11,6 +11,7 @@ import os
 
 import configo
 import iamraw
+import texmex
 import utila
 
 import cleanup.load
@@ -96,7 +97,11 @@ def remove_skip_area(
     return ptns, horizontals, lines, images
 
 
-def cleanup_ptn(ptns, invalids):
+def cleanup_ptn(
+    ptns,
+    invalids,
+    default=texmex.TextState.HIDDEN,
+):
     for ptn in ptns:
         if ptn.page not in invalids:
             # no invalid possible
@@ -107,7 +112,7 @@ def cleanup_ptn(ptns, invalids):
             if not valid_bounding(item.bounding, invalids, ptn.page)
         ]
         for line in invalid_lines:
-            line.hide()
+            line.state_change(default)
     return ptns
 
 
