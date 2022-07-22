@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add footnotes (8497c0a64ab8)
+* make hidden state more precise (4708fe4bfa7f)
+* run separate invalidation steps (329f846e5e7b)
+* add parameter to set different cleaning states (9618663909f0)
+* allow single cleaning (ccc5765df0b4)
+
 ## v0.2.2
 
 ### Fix
