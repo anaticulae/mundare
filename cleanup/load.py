@@ -149,19 +149,28 @@ def fontstore_frompath(inpaths, prefix, pages):
     return None
 
 
-def load_images_tables(inpaths: list, pages: tuple = None):
-    images, tables = [], []
+def load_images(inpaths: list, pages: tuple = None):
+    result = []
     # load images and tables from multiple `inpaths`
     for inpath in inpaths:
         imagepath = utila.join(inpath, 'rawmaker__images_images')
-        if utila.exists(imagepath):
-            images.extend(
-                serializeraw.load_image_infos_frompath(
-                    imagepath,
-                    pages=pages,
-                ))
+        if not utila.exists(imagepath):
+            continue
+        result.extend(
+            serializeraw.load_image_infos_frompath(
+                imagepath,
+                pages=pages,
+            ))
+    return result
+
+
+def load_tables(inpaths: list, pages: tuple = None):
+    result = []
+    # load tables from multiple `inpaths`
+    for inpath in inpaths:
         tableropath = iamraw.path.tablero_result(inpath)
         utila.debug(f'tablero: {tableropath}')
-        if utila.exists(tableropath):
-            tables.extend(serializeraw.load_tables(tableropath, pages=pages))
-    return images, tables
+        if not utila.exists(tableropath):
+            continue
+        result.extend(serializeraw.load_tables(tableropath, pages=pages))
+    return result

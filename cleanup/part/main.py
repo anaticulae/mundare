@@ -76,8 +76,14 @@ def remove_skip_area(
         inpaths,
         prefix,
         pages,
+        captions=True,
+        codes=True,
+        formulas=True,
+        images=True,
+        pagenumbers=True,
+        tables=True,
     )
-    images, _ = cleanup.load.load_images_tables(inpaths, pages)
+    images = cleanup.load.load_images(inpaths, pages)
     ptns = cleanup_ptn(ptns, invalids)
     horizontals = cleanup_horizontals(horizontals, invalids)
     lines = cleanup_lines(lines, invalids)

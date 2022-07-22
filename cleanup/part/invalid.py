@@ -14,15 +14,27 @@ import utila
 import cleanup.load
 
 
-def create(inpaths, prefix, pages: tuple = None):
-    pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
-    codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
-    formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
-    captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
-    images, tables = cleanup.load.load_images_tables(
-        inpaths,
-        pages=pages,
-    )
+def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
+    pagenumbers, codes, formulas, captions, images, tables = ([], [], [], [],
+                                                              [], [])
+    if kwargs.get('pagenumbers', False):
+        pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
+    if kwargs.get('codes', False):
+        codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
+    if kwargs.get('formulas', False):
+        formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
+    if kwargs.get('captions', False):
+        captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
+    if kwargs.get('images', False):
+        images = cleanup.load.load_images(
+            inpaths,
+            pages=pages,
+        )
+    if kwargs.get('tables', False):
+        tables = cleanup.load.load_tables(
+            inpaths,
+            pages=pages,
+        )
     invalids = create_invalid_area(
         pagenumbers,
         images,
