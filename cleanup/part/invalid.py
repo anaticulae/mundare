@@ -32,13 +32,13 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
     if kwargs.get('footnote', False):
         footnotes = cleanup.load.footnotes_frompath(inpaths, pages=pages)
     invalids = create_invalid_area(
-        pagenumbers,
-        images,
-        tables,
-        codes,
-        formulas,
-        captions,
-        footnotes,
+        captions=captions,
+        codes=codes,
+        footnotes=footnotes,
+        formulas=formulas,
+        images=images,
+        pagenumbers=pagenumbers,
+        tables=tables,
     )
     noimages = create_invalid_area(
         captions=captions,
@@ -53,13 +53,13 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
 
 
 def create_invalid_area(
-    pagenumbers,
-    images,
-    tables,
-    codes,
-    formulas,
     captions,
+    codes,
     footnotes,
+    formulas,
+    images,
+    pagenumbers,
+    tables,
 ) -> dict:
     invalid = collections.defaultdict(list)
     for number in pagenumbers:
