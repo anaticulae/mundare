@@ -36,11 +36,16 @@ def cleaner(  # pylint:disable=R0914
         prefix,
         pages,
     )
+    images = cleanup.load.load_images(
+        inpaths,
+        pages,
+    )
     # remove content here
     ptns, horizontals, lines, images = remove_skip_area(
         ptns,
         horizontals,
         lines,
+        images=images,
         inpaths=inpaths,
         prefix=prefix,
         pages=pages,
@@ -68,6 +73,7 @@ def remove_skip_area(
     ptns,
     horizontals,
     lines,
+    images,
     inpaths: list,
     prefix,
     pages: tuple = None,
@@ -83,7 +89,6 @@ def remove_skip_area(
         pagenumbers=True,
         tables=True,
     )
-    images = cleanup.load.load_images(inpaths, pages)
     ptns = cleanup_ptn(ptns, invalids)
     horizontals = cleanup_horizontals(horizontals, invalids)
     lines = cleanup_lines(lines, invalids)
