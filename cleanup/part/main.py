@@ -15,8 +15,8 @@ import iamraw
 import serializeraw
 import utila
 
-import cleanup.dump
 import cleanup.load
+import cleanup.ptn
 
 
 def cleaner(  # pylint:disable=R0914
@@ -46,7 +46,7 @@ def cleaner(  # pylint:disable=R0914
         pages=pages,
     )
     fontstore = cleanup.load.fontstore_frompath(inpaths, prefix, pages)
-    document, textpositions, fontheader, fontcontent = cleanup.dump.dump_ptn(
+    document, textpositions, fontheader, fontcontent = cleanup.ptn.dump_ptn(
         ptns,
         fontstore,
     )
