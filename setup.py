@@ -45,6 +45,7 @@ if __name__ == "__main__":
         packages=[
             'cleanup',
             'cleanup.features',
+            'cleanup.part',
             'cleanup.translate',
         ],
         entry_points={
