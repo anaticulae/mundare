@@ -17,24 +17,18 @@ import cleanup.load
 def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
     pagenumbers, codes, formulas, captions, images, tables = ([], [], [], [],
                                                               [], [])
-    if kwargs.get('pagenumbers', False):
+    if kwargs.get('pagenumber', False):
         pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
-    if kwargs.get('codes', False):
+    if kwargs.get('code', False):
         codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
-    if kwargs.get('formulas', False):
+    if kwargs.get('formula', False):
         formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
-    if kwargs.get('captions', False):
+    if kwargs.get('caption', False):
         captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
-    if kwargs.get('images', False):
-        images = cleanup.load.load_images(
-            inpaths,
-            pages=pages,
-        )
-    if kwargs.get('tables', False):
-        tables = cleanup.load.load_tables(
-            inpaths,
-            pages=pages,
-        )
+    if kwargs.get('figure', False):
+        images = cleanup.load.load_images(inpaths, pages=pages)
+    if kwargs.get('table', False):
+        tables = cleanup.load.load_tables(inpaths, pages=pages)
     invalids = create_invalid_area(
         pagenumbers,
         images,
