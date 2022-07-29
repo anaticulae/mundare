@@ -8,9 +8,9 @@
 #==============================================================================
 
 # Internal packages
-utila>=2.83.0<3.0.0
-iamraw>=4.80.1<5.0.0
+utila>=2.85.2<3.0.0
+iamraw>=4.80.3<5.0.0
 
 configo>=0.20.0<1.0.0
 # font parser TODO: REMOVE LATER
-rawmaker>=2.37.7<3.0.0
+rawmaker>=2.39.2<3.0.0
