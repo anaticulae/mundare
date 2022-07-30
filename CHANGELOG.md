@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* clean footer and header area (70ee6156edbd)
+* add headnote loader (452f33dc2336)
+
+### Fix
+
+* skip invalid footnote bounding (bc52ee3ead7b)
+
 ## v0.3.0
 
 ### Feature
