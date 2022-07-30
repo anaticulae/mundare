@@ -15,8 +15,8 @@ import cleanup.load
 
 
 def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
-    pagenumbers, codes, formulas, captions, images, tables, footnotes =\
-        ([], [], [], [], [], [], [])
+    pagenumbers, codes, formulas, captions, images, tables, footnotes, headnotes =\
+        ([], [], [], [], [], [], [], [])
     if kwargs.get('pagenumber', False):
         pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
     if kwargs.get('code', False):
@@ -31,11 +31,14 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         tables = cleanup.load.load_tables(inpaths, pages=pages)
     if kwargs.get('footnote', False):
         footnotes = cleanup.load.footnotes_frompath(inpaths, pages=pages)
+    if kwargs.get('headnote', False):
+        headnotes = cleanup.load.headnotes_frompath(inpaths, pages=pages)
     invalids = create_invalid_area(
         captions=captions,
         codes=codes,
         footnotes=footnotes,
         formulas=formulas,
+        headnotes=headnotes,
         images=images,
         pagenumbers=pagenumbers,
         tables=tables,
@@ -45,6 +48,7 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         codes=codes,
         footnotes=footnotes,
         formulas=formulas,
+        headnotes=headnotes,
         images=[],
         pagenumbers=pagenumbers,
         tables=tables,
@@ -57,6 +61,7 @@ def create_invalid_area(
     codes,
     footnotes,
     formulas,
+    headnotes,
     images,
     pagenumbers,
     tables,
