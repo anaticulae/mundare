@@ -82,7 +82,8 @@ def remove_skip_area(
     invalids, noimages = cleanup.part.invalid.create(
         inpaths,
         prefix,
-        pages,
+        pages=pages,
+        ptns=ptns,
         caption=True,
         code=True,
         footnote=True,
@@ -99,9 +100,10 @@ def remove_skip_area(
     for element in todo:
         replacement = texmex.TextState[element.upper()]
         invalids = cleanup.part.invalid.create(
-            inpaths,
-            prefix,
-            pages,
+            inpaths=inpaths,
+            prefix=prefix,
+            pages=pages,
+            ptns=ptns,
             **{element: True},
         )[0]
         ptns = cleanup_ptn(
@@ -127,6 +129,9 @@ def cleanup_ptn(
             if not valid_bounding(item.bounding, invalids, ptn.page)
         ]
         for line in invalid_lines:
+            if line.state != texmex.TextState.VISIBLE:
+                utila.verbose(f'do not overwrite state: {line} with {default}')
+                continue
             line.state_change(default)
     return ptns
 

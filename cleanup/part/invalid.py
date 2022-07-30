@@ -14,7 +14,13 @@ import utila
 import cleanup.load
 
 
-def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
+def create(
+    inpaths,
+    prefix,
+    pages: tuple = None,
+    ptns: list = None,
+    **kwargs: dict,
+):
     pagenumbers, codes, formulas, captions, images, tables, footnotes, headnotes =\
         ([], [], [], [], [], [], [], [])
     if kwargs.get('pagenumber', False):
@@ -42,6 +48,7 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         images=images,
         pagenumbers=pagenumbers,
         tables=tables,
+        ptns=ptns,
     )
     noimages = create_invalid_area(
         captions=captions,
@@ -52,11 +59,12 @@ def create(inpaths, prefix, pages: tuple = None, **kwargs: dict):
         images=[],
         pagenumbers=pagenumbers,
         tables=tables,
+        ptns=ptns,
     )
     return invalids, noimages
 
 
-def create_invalid_area(
+def create_invalid_area(  # pylint:disable=R0914
     captions,
     codes,
     footnotes,
@@ -65,6 +73,7 @@ def create_invalid_area(
     images,
     pagenumbers,
     tables,
+    ptns,
 ) -> dict:
     invalid = collections.defaultdict(list)
     for number in pagenumbers:
@@ -75,6 +84,7 @@ def create_invalid_area(
                 utila.error(f'missing footnote bounding: {footnote}')
                 continue
             invalid[page.page].append(tuple(footnote.bounding))
+    invalid.update(create_header_footer(headnotes, ptns))
     for data in (
             images,
             tables,
@@ -93,3 +103,27 @@ def create_invalid_area(
         key: utila.rectangle_merge(value) for key, value in invalid.items()
     }
     return result
+
+
+def create_header_footer(headnotes, ptns) -> dict:
+    invalid = collections.defaultdict(list)
+    for headnote in headnotes:
+        ptn = utila.select_page(ptns, page=headnote.page)
+        if not ptn:
+            continue
+        pagewidth, pageheight = ptn.width, ptn.height
+        if headnote.header:
+            invalid[headnote.page].append((
+                0.0,
+                0.0,
+                pagewidth,
+                headnote.header.end * pageheight,
+            ))
+        if headnote.footer:
+            invalid[headnote.page].append((
+                0.0,
+                headnote.footer.start * pageheight,
+                pagewidth,
+                headnote.footer.end * pageheight,
+            ))
+    return invalid
