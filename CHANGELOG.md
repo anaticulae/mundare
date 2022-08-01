@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.2
+
+### Fix
+
+* fix var access (7932a1b1e319)
+
 ## v0.4.1
 
 ## v0.4.0
