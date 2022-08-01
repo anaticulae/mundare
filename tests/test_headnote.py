@@ -17,10 +17,10 @@ import utilatest
 import tests
 
 
-@pytest.mark.parametrize(
-    'source',
-    [power.BACHELOR037_PDF],
-)
+@pytest.mark.parametrize('source', (
+    pytest.param(power.BACHELOR026_PDF, id='bachelor026'),
+    pytest.param(power.BACHELOR037_PDF, id='bachelor037'),
+))
 @utilatest.longrun
 def test_headnotes(source, td, mp):
     source = power.link(source)
