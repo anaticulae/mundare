@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import texmex
 import utila
@@ -16,9 +17,13 @@ import utilatest
 import tests
 
 
+@pytest.mark.parametrize(
+    'source',
+    [power.BACHELOR037_PDF],
+)
 @utilatest.longrun
-def test_headnotes(td, mp):
-    source = power.link(power.BACHELOR037_PDF)
+def test_headnotes(source, td, mp):
+    source = power.link(source)
     utila.run(f'headnote -i {source} -o {td.tmpdir}')
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {td.tmpdir}',
