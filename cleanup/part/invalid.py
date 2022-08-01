@@ -122,7 +122,7 @@ def create_header_footer(headnotes, ptns) -> dict:
         if headnote.footer:
             invalid[headnote.page].append((
                 0.0,
-                headnote.footer.start * pageheight,
+                headnote.footer.begin * pageheight,
                 pagewidth,
                 headnote.footer.end * pageheight,
             ))
