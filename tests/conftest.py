@@ -23,7 +23,7 @@ WORKER = 6
 power.setup(cleanup.ROOT)
 
 RESOURCES = [
-    (power.DISS172_PDF, '135:140'),
+    (power.DISS172_PDF, '100:140'),
     (power.DISS205_PDF, '130:140'),
     (power.MASTER072_PDF, '0:10'),
     (power.MASTER116_PDF, '15:25'),
