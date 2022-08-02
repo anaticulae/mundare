@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add parameter to skip cleanup resources (412e9b2df65b)
+
+### Fix
+
+* increase footnote bounding to catch all footnotes (80efe95f1eb0)
+
 ## v0.4.2
 
 ### Fix
