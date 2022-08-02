@@ -25,7 +25,7 @@ def test_diss205p139(td, mp):
         unlock=True,
     )
     tests.run(f'--pages {page} -o {td.tmpdir}', mp=mp)
-    serializeraw.load_document.cache_clear()
+    tests.cache_clear()
     ptn = serializeraw.ptcn_frompath(td.tmpdir)[0]
     assert ptn[0].text.startswith('Algorithmus 7.3:')
     assert ptn[1].text.startswith('Lösung bei der Minimierung')

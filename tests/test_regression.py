@@ -11,6 +11,7 @@ import power
 import serializeraw
 import utilatest
 
+import tests
 import tests.utils
 
 
@@ -47,7 +48,7 @@ def translate(source, page: int, td, mp) -> str:
     utilatest.fixture_requires(source)
     tests.utils.prepare(source, page, td)
     tests.run('', mp=mp)
-    serializeraw.load_document.cache_clear()
+    tests.cache_clear()
     ptn = serializeraw.ptn_frompath(td.tmpdir)[0]
     raw = ptn.debug
     return raw
@@ -64,11 +65,6 @@ def test_hc_diss128_rawmaker_error(td, mp):
     tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
 
 
-def clear_cache():
-    serializeraw.load_document.cache_clear()
-    serializeraw.load_textpositions.cache_clear()
-
-
 @utilatest.longrun
 def test_run_cleanup_multiple_times(td, mp):
     """Ensure that hidden data is loaded before running cleanup step.
@@ -81,17 +77,17 @@ def test_run_cleanup_multiple_times(td, mp):
     """
     source = power.link(power.HOME007_PDF)
     before = [len(page) for page in serializeraw.ptn_frompath(path=source)]
-    clear_cache()
+    tests.cache_clear()
     tests.run(
         f'-i {source} -o {td.tmpdir}',
         mp=mp,
     )
-    clear_cache()
+    tests.cache_clear()
     after = [len(page) for page in serializeraw.ptn_frompath(path=td.tmpdir)]
     assert after != before
     for _ in range(4):
         tests.run(f'-i {td.tmpdir} -o {td.tmpdir}', mp=mp)
-        clear_cache()
+        tests.cache_clear()
         current = [
             len(page) for page in serializeraw.ptn_frompath(path=td.tmpdir)
         ]

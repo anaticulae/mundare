@@ -37,8 +37,7 @@ def test_pagenumber_remove_x(source, td, mp):
     befores = serializeraw.ptn_frompath(td.tmpdir)
     tests.run(f'-i {td.tmpdir} -o {td.tmpdir}', mp=mp)
     # clear cache to load filtered data
-    serializeraw.load_document.cache_clear()
-    serializeraw.load_textpositions.cache_clear()
+    tests.cache_clear()
     afters = serializeraw.ptn_frompath(td.tmpdir)
     for before, after in zip(befores, afters):
         assert before.page == after.page
