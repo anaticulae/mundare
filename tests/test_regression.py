@@ -14,6 +14,7 @@ import utilatest
 import tests.utils
 
 
+@utilatest.longrun
 def test_translate_diss143page25(td, mp):
     """Regression test to ensure that all lines are matched together.
 
@@ -33,6 +34,7 @@ def test_translate_diss143page25(td, mp):
     assert raw
 
 
+@utilatest.longrun
 def test_master116p18table(td, mp):
     """Do not remove very near caption line in table."""
     source = power.MASTER116_PDF
@@ -67,6 +69,7 @@ def clear_cache():
     serializeraw.load_textpositions.cache_clear()
 
 
+@utilatest.longrun
 def test_run_cleanup_multiple_times(td, mp):
     """Ensure that hidden data is loaded before running cleanup step.
 

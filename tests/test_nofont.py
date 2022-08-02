@@ -9,10 +9,12 @@
 
 import power
 import utila
+import utilatest
 
 import tests
 
 
+@utilatest.longrun
 def test_no_fontstore_bachelor56(td, mp):
     """Run cleanup without any font information.
 
