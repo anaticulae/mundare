@@ -23,6 +23,7 @@ import cleanup.writer.result
 def cleaner(  # pylint:disable=R0914
     inpaths: list,
     outpath: str,
+    config: bool = None,
     prefix: str = '',
     postfix: str = '',
     pages=None,
@@ -50,6 +51,7 @@ def cleaner(  # pylint:disable=R0914
         inpaths=inpaths,
         prefix=prefix,
         pages=pages,
+        config=config,
     )
     fontstore = cleanup.load.fontstore_frompath(inpaths, prefix, pages)
     document, textpositions, fontheader, fontcontent = cleanup.ptn.dump_ptn(
@@ -77,6 +79,7 @@ def remove_skip_area(
     images,
     inpaths: list,
     prefix,
+    config: dict = None,
     pages: tuple = None,
 ):
     invalids, noimages = cleanup.part.invalid.create(
@@ -84,13 +87,7 @@ def remove_skip_area(
         prefix,
         pages=pages,
         ptns=ptns,
-        caption=True,
-        code=True,
-        footnote=True,
-        formula=True,
-        image=True,
-        pagenumber=True,
-        table=True,
+        **config,
     )
     horizontals = cleanup_horizontals(horizontals, invalids)
     lines = cleanup_lines(lines, invalids)
@@ -98,6 +95,9 @@ def remove_skip_area(
     todo = [item.name.lower() for item in texmex.TextState]
     todo = [item for item in todo if item not in 'hidden visible']
     for element in todo:
+        if config and not config.get(element, False):
+            utila.debug(f'do no remove: {element}')
+            continue
         replacement = texmex.TextState[element.upper()]
         invalids = cleanup.part.invalid.create(
             inpaths=inpaths,

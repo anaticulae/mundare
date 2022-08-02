@@ -24,6 +24,14 @@ WORKPLAN = [
         'cleanup',
         inputs=[
             utila.Value('postfix', str, defaultvar=''),
+            utila.Bool('no_caption'),
+            utila.Bool('no_code'),
+            utila.Bool('no_footnote'),
+            utila.Bool('no_formula'),
+            utila.Bool('no_headnote'),
+            utila.Bool('no_image'),
+            utila.Bool('no_pagenumber'),
+            utila.Bool('no_table'),
         ],
     ),
     utila.create_step(
