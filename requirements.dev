@@ -13,12 +13,12 @@ utilatest==0.15.3
 power==2.13.1
 hardcore==0.5.3
 genex==0.34.0
-genref>=1.3.5<2.0.0
+genref>=1.3.6<2.0.0
 
 # used in unit tests
 codero>=0.5.0<1.0.0
 figureo>=0.17.3<1.0.0
-footnote>=0.2.1<1.0.0
+footnote>=0.2.2<1.0.0
 formulero>=0.6.1<1.0.0
 groupme>=0.36.1<1.0.0
 headnote>=0.1.1<1.0.0
