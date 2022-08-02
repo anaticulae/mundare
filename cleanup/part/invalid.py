@@ -80,10 +80,18 @@ def create_invalid_area(  # pylint:disable=R0914
         invalid[number.pdfpage].append(tuple(number.bounding))
     for page in footnotes:
         for footnote in page.content:
-            if not footnote.bounding:
+            bbox = footnote.bounding
+            if not bbox:
                 utila.error(f'missing footnote bounding: {footnote}')
                 continue
-            invalid[page.page].append(tuple(footnote.bounding))
+            # increase bounding to match footnotes correctly.
+            # left and right is no problem, cause in gernal there is
+            # nothing when we handle normal footnotes
+            # bottom is also not a problem
+            # top is a problem, we do not want to hide any normal text content
+            scale = (0.8, 1.0, 1.3, 1.05)
+            bbox = utila.rect_scale(bbox, scale=scale)
+            invalid[page.page].append(bbox)
     invalid.update(create_header_footer(headnotes, ptns))
     for data in (
             images,
