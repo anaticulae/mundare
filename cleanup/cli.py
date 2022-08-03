@@ -16,6 +16,8 @@ Load PageTextNavigators, codes, figures and tables.
 
 It removes text which is inside codes, figures and or tables and writes
 PageTextNavigators afterwards.
+
+Select cleanup All: [caption code footnote formula headnote image pagenumber table]
 """
 
 WORKPLAN = [
@@ -23,6 +25,7 @@ WORKPLAN = [
     utila.create_step(
         'cleanup',
         inputs=[
+            utila.Value('select', str, defaultvar='all'),
             utila.Value('postfix', str, defaultvar=''),
             utila.Bool('no_caption'),
             utila.Bool('no_code'),

@@ -7,12 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import sys
+
 import utila
 
 import cleanup.part.main
 
 
 def work(  # pylint:disable=R0913
+    select: str,
     postfix: str,
     no_caption: bool = False,
     no_code: bool = False,
@@ -38,6 +41,10 @@ def work(  # pylint:disable=R0913
         pagenumber=not no_pagenumber,
         table=not no_table,
     )
+    config = config_select(
+        config,
+        select=select,
+    )
     # POSTFIX as value first!
     cleanup.part.main.cleaner(
         inpaths=inputs,
@@ -48,3 +55,20 @@ def work(  # pylint:disable=R0913
         pages=pages,
     )
     return utila.NO_RESULT
+
+
+VALIDS = utila.splititems("""\
+caption code footnote formula headnote image pagenumber table
+""")
+
+
+def config_select(config: dict, select: str) -> dict:
+    select = select.lower().strip()
+    if select == 'all':
+        return config
+    select = select.replace('image', 'figure')
+    config = {item: True for item in select.split()}
+    if any(item not in VALIDS for item in config.keys()):
+        utila.error(f'invalid selection: {config}')
+        sys.exit(utila.FAILURE)
+    return config
