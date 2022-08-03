@@ -31,7 +31,7 @@ def create(
         formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
     if kwargs.get('caption', False):
         captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
-    if kwargs.get('figure', False):
+    if kwargs.get('image', False):
         images = cleanup.load.load_images(inpaths, pages=pages)
     if kwargs.get('table', False):
         tables = cleanup.load.load_tables(inpaths, pages=pages)

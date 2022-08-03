@@ -37,7 +37,7 @@ def work(  # pylint:disable=R0913
         footnote=not no_footnote,
         formula=not no_formula,
         headnote=not no_headnote,
-        figure=not no_image,
+        image=not no_image,
         pagenumber=not no_pagenumber,
         table=not no_table,
     )
@@ -66,7 +66,6 @@ def config_select(config: dict, select: str) -> dict:
     select = select.lower().strip()
     if select == 'all':
         return config
-    select = select.replace('image', 'figure')
     config = {item: True for item in select.split()}
     if any(item not in VALIDS for item in config.keys()):
         utila.error(f'invalid selection: {config}')
