@@ -36,7 +36,7 @@ def test_pagenumber_remove_x(source, td, mp):
     pdfpages = set(item.pdfpage for item in pagenumbers)
     assert pdfpages
     befores = serializeraw.ptn_frompath(td.tmpdir)
-    tests.run(f'-i {td.tmpdir} -o {td.tmpdir}', mp=mp)
+    tests.run(f'--select=pagenumber -i {td.tmpdir} -o {td.tmpdir}', mp=mp)
     # clear cache to load filtered data
     tests.cache_clear()
     afters = serializeraw.ptn_frompath(td.tmpdir)
