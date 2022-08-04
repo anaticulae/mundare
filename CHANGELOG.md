@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* add select parameter to run a single cleanup (30b06c8c7a7b)
+
 ## v0.5.0
 
 ### Feature
