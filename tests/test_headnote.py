@@ -23,6 +23,7 @@ import tests
 ))
 @utilatest.longrun
 def test_headnotes(source, td, mp):
+    utilatest.fixture_requires(source)
     source = power.link(source)
     utila.run(f'headnote -i {source} -o {td.tmpdir}')
     tests.run(

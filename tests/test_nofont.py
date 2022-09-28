@@ -15,6 +15,7 @@ import tests
 
 
 @utilatest.longrun
+@utilatest.requires(power.BACHELOR056_PDF)
 def test_no_fontstore_bachelor56(td, mp):
     """Run cleanup without any font information.
 

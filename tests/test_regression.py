@@ -8,7 +8,9 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
+import utila
 import utilatest
 
 import tests
@@ -61,11 +63,14 @@ def test_hc_diss128_rawmaker_error(td, mp):
     scale_fromchar(char).
     """
     source = power.link(power.HC_DISS128)
+    if not utila.exists(source):
+        pytest.skip(reason='generate HC_DISS128')
     pages = '32,45,62,83,97,98'
     tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
 
 
 @utilatest.longrun
+@utilatest.requires(power.HOME007_PDF)
 def test_run_cleanup_multiple_times(td, mp):
     """Ensure that hidden data is loaded before running cleanup step.
 

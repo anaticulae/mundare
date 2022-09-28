@@ -44,6 +44,7 @@ def test_horizontals_diss172p138(td, mp):
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER193_PDF)
 def test_horizontals_master193(td, mp):
     source = power.link(power.MASTER193_PDF)
     utila.copy_content(

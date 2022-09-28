@@ -57,6 +57,7 @@ def test_figures(td, mp):
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER193_PDF)
 def test_footnotes(td, mp):
     """Remove text in footnotes area."""
     source = power.link(power.MASTER193_PDF)
