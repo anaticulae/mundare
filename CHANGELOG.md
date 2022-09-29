@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v0.7.0 (2022-09-29)
+
+### Feature
+
+* raise ValueError if empty translation is given (308ce6c2d30c)
+
+### Fix
+
+* adjust comparison for linux (2c2c8769a331)
+* clarify error message (eb23aa6f24de)
+
+### Chore
+
+* upgrade requirements.txt (7aab57d2e24c)
+* increase worker count on CI (99d0794bea56)
+* add separate generator step (0e80894db06e)
+* add Jenkinsfile (3c76813919ab)
+* upgrade requirements.txt (26cbf1f2326d)
+
 ## v0.6.0
 
 ### Feature
