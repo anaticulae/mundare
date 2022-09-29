@@ -40,6 +40,7 @@ RESOURCES = [
 
 WORKER = utilatest.worker_count(4, onci=len(RESOURCES))
 
+
 def extract(resources):
     genex.extract(
         files=resources,
