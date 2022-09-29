@@ -97,7 +97,10 @@ def translate(
 
 
 def find(container, start, search):
+    # TODO: COMPARISON ON LINUX DOES NOT WORK, STR DOES.
+    search = hash(str(search))
     for index, item in enumerate(container[start:], start=start):
+        item = hash(str(item))
         if search == item:
             return index
     return -1
