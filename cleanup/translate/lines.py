@@ -61,7 +61,7 @@ def translate(
     >>> translate(('A', 'B', 'C', 'D', 'E'), ('A', 'C', 'D', 'F', 'G'))
     Traceback (most recent call last):
     ...
-    ValueError: src and dest does not match: **index:3** **F**
+    ValueError: src and dest does not match. Could not match index: **3** width data: **F**
     """
     result = []
     left = 0
@@ -70,15 +70,16 @@ def translate(
         collected = find(src, start=left, search=dest_item)
         if collected == -1:
             if hasattr(src, 'page'):
-                utila.error(src.page)
+                utila.error(f'page: {src.page}')
                 utila.error('SOURCE')
                 for item in src:
-                    utila.log(f'{hash(str(item))}:   {str(item).strip()}')
+                    utila.error(f'{hash(str(item))}:   {str(item).strip()}')
                 utila.error('=======================')
                 utila.error('DEST')
                 for item in vdest:
-                    utila.log(f'{hash(str(item))}:   {str(item).strip()}')
-            error = f'src and dest does not match: **index:{right}** **{dest_item}**'
+                    utila.error(f'{hash(str(item))}:   {str(item).strip()}')
+            error = ('src and dest does not match. Could not match index: '
+                     f'**{right}** width data: **{dest_item}**')
             raise ValueError(error)
         if not result and collected == right:
             left = collected + 1
