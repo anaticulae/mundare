@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -15,6 +16,7 @@ import utilatest
 import tests.utils
 
 
+@pytest.mark.xfail(reason='software integration')
 @utilatest.requires(power.DISS205_PDF)
 def test_diss205p139(td, mp):
     """Ensure that code example is hidden correctly."""
