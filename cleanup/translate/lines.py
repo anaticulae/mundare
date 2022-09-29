@@ -62,7 +62,14 @@ def translate(
     Traceback (most recent call last):
     ...
     ValueError: src and dest does not match. Could not match index: **3** width data: **F**
+
+    >>> translate((), ('A',))
+    Traceback (most recent call last):
+        ...
+    ValueError: source is empty: ('A',)
     """
+    if not src:
+        raise ValueError(f'source is empty: {dest}')
     result = []
     left = 0
     vdest = [item for item in dest if isinstance(item, str) or item.visible]
