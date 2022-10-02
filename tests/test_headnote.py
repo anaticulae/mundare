@@ -22,7 +22,7 @@ import tests
     pytest.param(power.BACHELOR037_PDF, id='bachelor037'),
 ))
 @utilatest.longrun
-def test_headnotes(source, td, mp):
+def test_headnotes_ensure_load(source, td, mp):
     utilatest.fixture_requires(source)
     source = power.link(source)
     utila.run(f'headnote -i {source} -o {td.tmpdir}')
