@@ -36,3 +36,18 @@ def test_headnotes_ensure_load(source, td, mp):
     )
     content = [item for item in headnote_only if item]
     assert content, 'could not load headnote-state-content'
+
+
+@utilatest.longrun
+@utilatest.requires(power.BACHELOR063_PDF)
+def test_headnotes_bachelor063(td, mp):
+    source = power.BACHELOR063_PDF
+    source = power.link(source)
+    utila.run(f'headnote -i {source} -o {td.tmpdir}')
+    tests.run(f'-i {source} -i {td.tmpdir} -o {td.tmpdir}', mp=mp)
+    headnote_only = serializeraw.ptn_frompath(
+        td.tmpdir,
+        state=texmex.TextState.HEADNOTE,
+    )
+    content = [item for item in headnote_only if item]
+    assert content, 'could not load headnote-state-content'
