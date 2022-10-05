@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.7.1 (2022-10-05)
+
+### Chore
+
+* upgrade requirements.txt (8e762ecc0979)
+* privileged container is not necessary (28f17f2632db)
+* upgrade baw (965825b63ce4)
+* upgrade requirements.txt (2447cb02a5b7)
+* extend test data generator (9452047697ce)
+
 ## v0.7.0 (2022-09-29)
 
 ### Feature
