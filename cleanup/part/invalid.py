@@ -114,6 +114,9 @@ def create_header_footer(headnotes, ptns) -> dict:
                 pagewidth,
                 headnote.header.end * pageheight,
             ))
+            if refs := headnote.header.refs:
+                for ref in refs:
+                    invalid[headnote.page].append(ref)
         if headnote.footer:
             invalid[headnote.page].append((
                 0.0,
@@ -121,6 +124,9 @@ def create_header_footer(headnotes, ptns) -> dict:
                 pagewidth,
                 headnote.footer.end * pageheight,
             ))
+            if refs := headnote.footer.refs:
+                for ref in refs:
+                    invalid[headnote.page].append(ref)
     return invalid
 
 
