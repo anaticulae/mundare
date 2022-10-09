@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.8.0 (2022-10-09)
+
+### Feature
+
+* remove refs in invalid area (78eb71602c54)
+
+### Chore
+
+* upgrade requirements.txt (cc9f718d59ce)
+
 ## v0.7.1 (2022-10-05)
 
 ### Chore
