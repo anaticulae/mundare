@@ -51,3 +51,19 @@ def test_headnotes_bachelor063(td, mp):
     )
     content = [item for item in headnote_only if item]
     assert content, 'could not load headnote-state-content'
+
+
+@utilatest.longrun
+@utilatest.requires(power.BACHELOR063_PDF)
+def test_bachelor063_cleanup_horizontals(td, mp):
+    """Use header.refs to remove horizontals."""
+    source, pages = power.BACHELOR063_PDF, '--pages=0:10'
+    source = power.link(source)
+    before = serializeraw.load_horizontals(source, pages=(2,))
+    utila.run(f'headnote -i {source} -o {td.tmpdir} {pages}')
+    tests.run(f'-i {source} -i {td.tmpdir} -o {td.tmpdir} {pages}', mp=mp)
+    after = serializeraw.load_horizontals(td.tmpdir, pages=(2,))
+    assert after != before
+    assert len(before[0].content) == 3
+    # remove headnote and footnote
+    assert len(after[0].content) == 1
