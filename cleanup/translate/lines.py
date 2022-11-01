@@ -34,6 +34,9 @@ def translates(sources, destinations) -> texmex.Translations:
         if src is None or dest is None:
             # could not compute diff for empty page
             continue
+        if not src and not dest:
+            # translation is not required, cause pages are empty
+            continue
         assert src.page == dest.page, f'{src.page} == {dest.page}'
         # sync pages to avoid asyncs with empty pages
         translated = translate(src, dest)
