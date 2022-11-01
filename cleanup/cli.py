@@ -12,10 +12,10 @@ import utila
 import cleanup
 
 DESCRIPTION = """\
-Load PageTextNavigators, codes, figures and tables.
+Load PTNs, codes, figures and tables.
 
 It removes text which is inside codes, figures and or tables and writes
-PageTextNavigators afterwards.
+PTNs afterwards.
 
 Select cleanup All: [caption code footnote formula headnote image pagenumber table]
 """

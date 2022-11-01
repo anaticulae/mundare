@@ -15,7 +15,7 @@ import texmex
 import utila
 
 
-def dump_ptn(ptns: texmex.PageTextNavigators, fontstore: iamraw.FontStore):
+def dump_ptn(ptns: texmex.PTNs, fontstore: iamraw.FontStore):
     # TODO: USE BETTER DEFAULT?
     dimension = ptns[0].pagesize if ptns else (595.28, 841.86)
     document = iamraw.Document(dimension=dimension)
@@ -72,7 +72,7 @@ def merge_neighbors(lines, positions):
             # add content
             before.lines.extend(line.lines)
             # update rectangle
-            before.box = utila.rectangle_max((before.box, line.box))
+            before.box = utila.rect_max((before.box, line.box))
             # merge textpositions
             textpositions[-1] = iamraw.TextPosition(
                 bounding=tuple(before.box),
@@ -97,23 +97,21 @@ def create_line(item, fontstore: iamraw.FontStore) -> iamraw.Line:
         state=item.state,
     )
     style = item.style.content
-    sizes = utila.flatten([item.width * [item.size] for item in style])
-    rises = utila.flatten([item.width * [item.rise] for item in style])
-    underlines = utila.flatten([
-        (item.width) * [item.underline] for item in style
-    ])
+    sizes = utila.flat([item.width * [item.size] for item in style])
+    rises = utila.flat([item.width * [item.rise] for item in style])
+    underlines = utila.flat([(item.width) * [item.underline] for item in style])
     if fontstore:
-        fonts = utila.flatten([
+        fonts = utila.flat([
             (item.width) * [fontstore[item.font].pdfref] for item in style
         ])
-        flags = utila.flatten([
+        flags = utila.flat([
             item.width *
             [serializeraw.fonts.toflag(fontstore[item.font].flags)]
             for item in style
         ])
     else:
-        fonts = utila.flatten([item.width * [None] for item in style])
-        flags = utila.flatten([item.width * [None] for item in style])
+        fonts = utila.flat([item.width * [None] for item in style])
+        flags = utila.flat([item.width * [None] for item in style])
     chars = [
         iamraw.Char(
             value=value,

@@ -51,8 +51,8 @@ def translates(sources, destinations) -> texmex.Translations:
 
 
 def translate(
-    src: texmex.PageTextNavigator,
-    dest: texmex.PageTextNavigator,
+    src: texmex.PTN,
+    dest: texmex.PTN,
 ) -> list:
     """\
     >>> translate(('A', 'B', 'C', 'D'), ('A', 'B', 'C', 'D'))
