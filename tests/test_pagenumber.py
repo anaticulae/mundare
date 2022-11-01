@@ -33,7 +33,7 @@ def test_pagenumber_remove_x(source, td, mp):
         unlock=True,
     )
     pagenumbers = serializeraw.load_pagenumbers(td.tmpdir)
-    pdfpages = set(item.pdfpage for item in pagenumbers)
+    pdfpages = set(item.pdfpage for item in pagenumbers)  # pylint:disable=E1101
     assert pdfpages
     befores = serializeraw.ptn_frompath(td.tmpdir)
     tests.run(f'--select=pagenumber -i {td.tmpdir} -o {td.tmpdir}', mp=mp)

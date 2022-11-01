@@ -124,7 +124,7 @@ def test_formulas(td, mp):
     clean = utila.select_page(ptn_dumped, page=page)
     # remove some lines due formulero
     assert len(before) == 38
-    assert len(clean) in (30, 31)
+    assert len(clean) in {30, 31}
 
 
 @utilatest.requires(power.BACHELOR051_PDF)
