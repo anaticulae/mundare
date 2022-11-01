@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.8.1 (2022-11-01)
+
+### Fix
+
+* do not determine translation for empty pages (a77fc9a29fe0)
+* clarify error message (f34c5ce74513)
+
+### Chore
+
+* upgrade requirements.txt (954eb2ce5df1)
+* upgrade environment (39389221e20d)
+* convert nightly to all (3ef044347cc5)
+
 ## v0.8.0 (2022-10-09)
 
 ### Feature
