@@ -66,10 +66,10 @@ def translate(
     >>> translate((), ('A',))
     Traceback (most recent call last):
         ...
-    ValueError: source is empty: ('A',)
+    ValueError: source is empty: () | ('A',)
     """
     if not src:
-        raise ValueError(f'source is empty: {dest}')
+        raise ValueError(f'source is empty: {src} | {dest}')
     result = []
     left = 0
     vdest = [item for item in dest if isinstance(item, str) or item.visible]
