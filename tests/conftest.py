@@ -23,6 +23,7 @@ PACKAGE = cleanup.PROCESS
 power.setup(cleanup.ROOT)
 
 RESOURCES = [
+    (power.BACHELOR090_PDF, '0:15,20:30'),
     (power.DISS172_PDF, '100:140'),
     (power.DISS205_PDF, '130:140'),
     (power.MASTER072_PDF, '0:10'),
