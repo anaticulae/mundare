@@ -28,6 +28,7 @@ def ptn_frompath(inpaths, prefix, pages):
             pages=pages,
             sort=False,
             state=LOAD_HIDDEN,
+            fill_empty=False,
         )
         if ptns is not None:
             return ptns
