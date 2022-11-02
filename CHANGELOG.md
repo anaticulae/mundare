@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.9.0 (2022-11-02)
+
+### Feature
+
+* do not fill gaps due cleaning pages (a3769a955186)
+
+### Chore
+
+* update classifier (fb512a74df5a)
+* add resource with gap inside (f54c5caca1c4)
+* upgrade requirements.txt (6c357c10fd66)
+
 ## v0.8.1 (2022-11-01)
 
 ### Fix
