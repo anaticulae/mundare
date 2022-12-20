@@ -39,7 +39,7 @@ def test_source_compare_reduction_fast(source, pages, td, mp):
     pytest.param(power.BACHELOR056_PDF, id='bachelor56'),
     pytest.param(power.DISS143_PDF, id='diss143'),
     pytest.param(power.HC_DISS128, id='hcdiss128'),
-    pytest.param(power.HOME040_PDF, id='home040'),
+    pytest.param(power.HOME043_PDF, id='home043'),
 ])
 def test_source_compare_reduction_slow(source, td, mp):
     compare(source, ':', td, mp)

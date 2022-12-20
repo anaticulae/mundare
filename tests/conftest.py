@@ -37,7 +37,7 @@ RESOURCES = [
     power.DISS143_PDF,
     power.HC_DISS128,
     power.HOME007_PDF,
-    power.HOME040_PDF,
+    power.HOME043_PDF,
 ]
 
 WORKER = utilatest.worker_count(4, onci=len(RESOURCES))
