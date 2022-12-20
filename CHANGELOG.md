@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.9.1 (2022-12-20)
+
+### Chore
+
+* add missing resource generator (f8d34b3b33d7)
+* upgrade requirements.txt (eeb4b0fa0440)
+* upgrade library (8101d7b373a3)
+
 ## v0.9.0 (2022-11-02)
 
 ### Feature
