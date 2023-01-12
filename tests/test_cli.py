@@ -76,7 +76,7 @@ def test_footnotes(td, mp):
 
 @utilatest.requires(power.BACHELOR051_PDF)
 def test_tables(td, mp):
-    """Verify multiple input soruces and tablero cleanup."""
+    """Verify multiple input sources and tablero cleanup."""
     source = power.link(power.BACHELOR051_PDF)
     page = 25
     # create table to verify removing table content
