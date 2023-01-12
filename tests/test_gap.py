@@ -15,20 +15,20 @@ import utilatest
 import tests
 
 
-def before(testdir):
+def before(td):
     source = power.link(power.BACHELOR090_PDF)
     utila.copy_content(
         src=source,
-        dst=testdir.tmpdir,
+        dst=td.tmpdir,
         unlock=True,
     )
-    ensure_gap(testdir)
+    ensure_gap(td)
 
 
-def ensure_gap(testdir):
+def ensure_gap(td):
     utila.cache_clear()
     ptn = serializeraw.ptn_frompath(
-        testdir.tmpdir,
+        td.tmpdir,
         fill_empty=False,
     )
     pages = [page.page for page in ptn]
@@ -39,7 +39,7 @@ def ensure_gap(testdir):
 
 
 @utilatest.requires(power.BACHELOR090_PDF)
-def test_bachelor90_withgap(testdir, mp):
-    before(testdir)
-    tests.run(f'-i {testdir.tmpdir} -o {testdir.tmpdir}', mp=mp)
-    ensure_gap(testdir)
+def test_bachelor90_withgap(td, mp):
+    before(td)
+    tests.run(f'-i {td.tmpdir} -o {td.tmpdir}', mp=mp)
+    ensure_gap(td)
