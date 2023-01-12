@@ -38,10 +38,10 @@ def work(
 
 def determine_translation(source, dest, pages: tuple = None) -> str:
     if not utila.exists(source):
-        utila.error(f'missing source: {source}')
+        utila.error(f'missing src: {source}')
         return utila.NO_RESULT
     if not utila.exists(dest):
-        utila.error(f'missing dest: {dest}')
+        utila.error(f'missing dst: {dest}')
         return utila.NO_RESULT
     text_before = serializeraw.load_document(source, pages=pages)
     text = serializeraw.load_document(dest, pages=pages)
