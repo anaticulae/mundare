@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import sys
-
 import utila
 
 import cleanup.part.main
@@ -68,6 +66,5 @@ def config_select(config: dict, select: str) -> dict:
         return config
     config = {item: True for item in select.split()}
     if any(item not in VALIDS for item in config.keys()):
-        utila.error(f'invalid selection: {config}')
-        sys.exit(utila.FAILURE)
+        utila.exitx(msg=f'invalid selection: {config}')
     return config
