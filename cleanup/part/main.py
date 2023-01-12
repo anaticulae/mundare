@@ -96,7 +96,7 @@ def remove_skip_area(
     todo = [item for item in todo if item not in 'hidden visible']
     for element in todo:
         if config and not config.get(element, False):
-            utila.debug(f'do no remove: {element}')
+            utila.debug(f'do not remove: {element}')
             continue
         replacement = texmex.TextState[element.upper()]
         invalids = cleanup.part.invalid.create(
