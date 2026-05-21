@@ -25,12 +25,12 @@ src      dest       translation
 """
 
 import texmex
-import utila
+import utilo
 
 
 def translates(sources, destinations) -> texmex.Translations:
     result = []
-    for src, dest in utila.sync_pages((sources, destinations), numbers=False):
+    for src, dest in utilo.sync_pages((sources, destinations), numbers=False):
         if src is None or dest is None:
             # could not compute diff for empty page
             continue
@@ -80,14 +80,14 @@ def translate(
         collected = find(src, start=left, search=dest_item)
         if collected == -1:
             if hasattr(src, 'page'):
-                utila.error(f'page: {src.page}')
-                utila.error('SOURCE')
+                utilo.error(f'page: {src.page}')
+                utilo.error('SOURCE')
                 for item in src:
-                    utila.error(f'{hash(str(item))}:   {str(item).strip()}')
-                utila.error('=======================')
-                utila.error('DEST')
+                    utilo.error(f'{hash(str(item))}:   {str(item).strip()}')
+                utilo.error('=======================')
+                utilo.error('DEST')
                 for item in vdest:
-                    utila.error(f'{hash(str(item))}:   {str(item).strip()}')
+                    utilo.error(f'{hash(str(item))}:   {str(item).strip()}')
             error = ('src and dest does not match. Could not match index: '
                      f'**{right}** width data: **{dest_item}**')
             raise ValueError(error)

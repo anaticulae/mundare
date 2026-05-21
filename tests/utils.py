@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def prepare(source, pages, td):
-    utila.run(f'rawmaker -i {source} -o {td.tmpdir} --pages={pages} '
+    utilo.run(f'rawmaker -i {source} -o {td.tmpdir} --pages={pages} '
               '--text --fonts --images')
-    utila.run(f'figureo -i {source} '
+    utilo.run(f'figureo -i {source} '
               f'-i {td.tmpdir} -o {td.tmpdir} --pages={pages}')

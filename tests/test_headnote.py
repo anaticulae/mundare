@@ -7,25 +7,25 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
 import texmex
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
 
 @pytest.mark.parametrize('source', (
-    pytest.param(power.BACHELOR026_PDF, id='bachelor026'),
-    pytest.param(power.BACHELOR037_PDF, id='bachelor037'),
+    pytest.param(hoverpower.BACHELOR026_PDF, id='bachelor026'),
+    pytest.param(hoverpower.BACHELOR037_PDF, id='bachelor037'),
 ))
-@utilatest.longrun
+@utilotest.longrun
 def test_headnotes_ensure_load(source, td, mp):
-    utilatest.fixture_requires(source)
-    source = power.link(source)
-    utila.run(f'headnote -i {source} -o {td.tmpdir}')
+    utilotest.fixture_requires(source)
+    source = hoverpower.link(source)
+    utilo.run(f'headnote -i {source} -o {td.tmpdir}')
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {td.tmpdir}',
         mp=mp,
@@ -38,12 +38,12 @@ def test_headnotes_ensure_load(source, td, mp):
     assert content, 'could not load headnote-state-content'
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR063_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_headnotes_bachelor063(td, mp):
-    source = power.BACHELOR063_PDF
-    source = power.link(source)
-    utila.run(f'headnote -i {source} -o {td.tmpdir}')
+    source = hoverpower.BACHELOR063_PDF
+    source = hoverpower.link(source)
+    utilo.run(f'headnote -i {source} -o {td.tmpdir}')
     tests.run(f'-i {source} -i {td.tmpdir} -o {td.tmpdir}', mp=mp)
     headnote_only = serializeraw.ptn_frompath(
         td.tmpdir,
@@ -53,14 +53,14 @@ def test_headnotes_bachelor063(td, mp):
     assert content, 'could not load headnote-state-content'
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR063_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_bachelor063_cleanup_horizontals(td, mp):
     """Use header.refs to remove horizontals."""
-    source, pages = power.BACHELOR063_PDF, '--pages=0:10'
-    source = power.link(source)
+    source, pages = hoverpower.BACHELOR063_PDF, '--pages=0:10'
+    source = hoverpower.link(source)
     before = serializeraw.load_horizontals(source, pages=(2,))
-    utila.run(f'headnote -i {source} -o {td.tmpdir} {pages}')
+    utilo.run(f'headnote -i {source} -o {td.tmpdir} {pages}')
     tests.run(f'-i {source} -i {td.tmpdir} -o {td.tmpdir} {pages}', mp=mp)
     after = serializeraw.load_horizontals(td.tmpdir, pages=(2,))
     assert after != before

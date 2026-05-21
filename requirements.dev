@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest==0.26.1
+utilotest==0.26.1
 
 # test data provider
-power==2.21.1
+hoverpower==2.21.1
 hardcore==0.8.1
-genex==0.37.1
+gennex==0.37.1
 genref>=1.3.12<2.0.0
 
 # used in unit tests

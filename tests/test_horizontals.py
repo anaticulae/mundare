@@ -7,20 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import cleanup.load
 import tests
 
 
-@utilatest.requires(power.DISS172_PDF)
+@utilotest.requires(hoverpower.DISS172_PDF)
 def test_horizontals_diss172p138(td, mp):
     """Remove horizontals which are part of a detected table."""
-    source, page = power.link(power.DISS172_PDF), 138
-    utila.copy_content(
+    source, page = hoverpower.link(hoverpower.DISS172_PDF), 138
+    utilo.copy_content(
         source,
         td.tmpdir,
         unlock=True,
@@ -43,11 +43,11 @@ def test_horizontals_diss172p138(td, mp):
     assert after != before
 
 
-@utilatest.longrun
-@utilatest.requires(power.MASTER193_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.MASTER193_PDF)
 def test_horizontals_master193(td, mp):
-    source = power.link(power.MASTER193_PDF)
-    utila.copy_content(
+    source = hoverpower.link(hoverpower.MASTER193_PDF)
+    utilo.copy_content(
         source,
         td.tmpdir,
         unlock=True,

@@ -11,7 +11,7 @@ import os
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 
 def write(outpath, images):
@@ -23,6 +23,6 @@ def write(outpath, images):
         for image in page.content:
             if not image.hidden:
                 continue
-            imagepath = utila.join(baseimage, f'{image.hashedimage}.yaml')
+            imagepath = utilo.join(baseimage, f'{image.hashedimage}.yaml')
             dumped = serializeraw.dump_image_info(image)
-            utila.file_replace(imagepath, dumped)
+            utilo.file_replace(imagepath, dumped)

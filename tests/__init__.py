@@ -8,11 +8,11 @@
 # =============================================================================
 
 import serializeraw
-import utilatest
+import utilotest
 
 import cleanup
 
-run, failure = utilatest.create_cli_runner(cleanup)  #pylint: disable=invalid-name
+run, failure = utilotest.create_cli_runner(cleanup)  #pylint: disable=invalid-name
 
 
 def cache_clear():

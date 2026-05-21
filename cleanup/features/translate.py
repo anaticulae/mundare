@@ -8,7 +8,7 @@
 # =============================================================================
 
 import serializeraw
-import utila
+import utilo
 
 import cleanup.translate.lines
 
@@ -37,12 +37,12 @@ def work(
 
 
 def determine_translation(src, dst, pages: tuple = None) -> str:
-    if not utila.exists(src):
-        utila.error(f'missing src: {src}')
-        return utila.NO_RESULT
-    if not utila.exists(dst):
-        utila.error(f'missing dst: {dst}')
-        return utila.NO_RESULT
+    if not utilo.exists(src):
+        utilo.error(f'missing src: {src}')
+        return utilo.NO_RESULT
+    if not utilo.exists(dst):
+        utilo.error(f'missing dst: {dst}')
+        return utilo.NO_RESULT
     text_before = serializeraw.load_document(src, pages=pages)
     text = serializeraw.load_document(dst, pages=pages)
     text_translated = cleanup.translate.lines.translates(

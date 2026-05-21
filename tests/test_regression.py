@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import tests.utils
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_translate_diss143page25(td, mp):
     """Regression test to ensure that all lines are matched together.
 
@@ -31,23 +31,23 @@ def test_translate_diss143page25(td, mp):
     Before changing to single line, it was not possible to determine
     transformation: 2. B -> 1. B
     """
-    source = power.DISS143_PDF
+    source = hoverpower.DISS143_PDF
     # fails before
     raw = translate(source, 25, td, mp)
     assert raw
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_master116p18table(td, mp):
     """Do not remove very near caption line in table."""
-    source = power.MASTER116_PDF
+    source = hoverpower.MASTER116_PDF
     raw = translate(source, 18, td, mp)
     # ensure that caption line in table is not cleaned
     assert 'Tab. 2.1.: Übersicht Hybridlokomotiven [Kon13]' in raw
 
 
 def translate(source, page: int, td, mp) -> str:
-    utilatest.fixture_requires(source)
+    utilotest.fixture_requires(source)
     tests.utils.prepare(source, page, td)
     tests.run('', mp=mp)
     tests.cache_clear()
@@ -56,21 +56,21 @@ def translate(source, page: int, td, mp) -> str:
     return raw
 
 
-@utilatest.requires(power.HC_DISS128)
+@utilotest.requires(hoverpower.HC_DISS128)
 def test_hc_diss128_rawmaker_error(td, mp):
     """Negative font size produces an error while using rawmaker
 
     scale_fromchar(char).
     """
-    source = power.link(power.HC_DISS128)
-    if not utila.exists(source):
+    source = hoverpower.link(hoverpower.HC_DISS128)
+    if not utilo.exists(source):
         pytest.skip(reason='generate HC_DISS128')
     pages = '32,45,62,83,97,98'
     tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
 
 
-@utilatest.longrun
-@utilatest.requires(power.HOME007_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.HOME007_PDF)
 def test_run_cleanup_multiple_times(td, mp):
     """Ensure that hidden data is loaded before running cleanup step.
 
@@ -80,7 +80,7 @@ def test_run_cleanup_multiple_times(td, mp):
 
     See 2ac5651e78c02c5520d5d
     """
-    source = power.link(power.HOME007_PDF)
+    source = hoverpower.link(hoverpower.HOME007_PDF)
     before = [len(page) for page in serializeraw.ptn_frompath(path=source)]
     tests.cache_clear()
     tests.run(

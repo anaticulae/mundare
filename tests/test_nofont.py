@@ -7,22 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utila
-import utilatest
+import hoverpower
+import utilo
+import utilotest
 
 import tests
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR056_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR056_PDF)
 def test_no_fontstore_bachelor56(td, mp):
     """Run cleanup without any font information.
 
     Ensure that no fontstore file is generated.
     """
-    source = power.link(power.BACHELOR056_PDF)
-    utila.copy_content(
+    source = hoverpower.link(hoverpower.BACHELOR056_PDF)
+    utilo.copy_content(
         source,
         td.tmpdir,
         pattern='rawmaker__text_*.yaml',
@@ -30,4 +30,4 @@ def test_no_fontstore_bachelor56(td, mp):
     )
     tests.run('-i . -o .', mp=mp)
     # 5=> text, textpos and two backups, cleanup_translate and no fontstore
-    assert len(utila.file_list(td.tmpdir)) == 5
+    assert len(utilo.file_list(td.tmpdir)) == 5

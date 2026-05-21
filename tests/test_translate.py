@@ -7,23 +7,23 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import cleanup.translate.lines
 import tests
 import tests.utils
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_translate_lines(td):
-    source, pages = power.BACHELOR037_PDF, '22,23,24'
+    source, pages = hoverpower.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, td)
     # do not cache load_documents, do not use tests.run
-    utila.run(f'cleanup --cleanup --backup -i {td.tmpdir} -o {td.tmpdir}')
+    utilo.run(f'cleanup --cleanup --backup -i {td.tmpdir} -o {td.tmpdir}')
     ptn = serializeraw.ptn_frompath(td.tmpdir)
     backup = serializeraw.ptn_frompath(td.tmpdir, backup=True)
     assert ptn != backup, 'cached load_documents? check backup=False'
@@ -32,16 +32,16 @@ def test_translate_lines(td):
     assert len(translated) == 2
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_translate(td, mp):
-    source, pages = power.BACHELOR037_PDF, '22,23,24'
+    source, pages = hoverpower.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, td)
     tests.run(
         f'-i {td.tmpdir} -o {td.tmpdir}',
         mp=mp,
     )
-    done = utila.file_list(
+    done = utilo.file_list(
         td.tmpdir,
         recursive=False,
     )

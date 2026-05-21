@@ -7,21 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests.utils
 
 
 @pytest.mark.xfail(reason='software integration')
-@utilatest.requires(power.DISS205_PDF)
+@utilotest.requires(hoverpower.DISS205_PDF)
 def test_diss205p139(td, mp):
     """Ensure that code example is hidden correctly."""
-    source, page = power.link(power.DISS205_PDF), 139
-    utila.copy_content(
+    source, page = hoverpower.link(hoverpower.DISS205_PDF), 139
+    utilo.copy_content(
         source,
         td.tmpdir,
         unlock=True,

@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
 import texmex
-import utilatest
+import utilotest
 
 import tests
 
 
-@utilatest.requires(power.MASTER072_PDF)
+@utilotest.requires(hoverpower.MASTER072_PDF)
 def test_footnotes_master072(td, mp):
-    source = power.link(power.MASTER072_PDF)
+    source = hoverpower.link(hoverpower.MASTER072_PDF)
     tests.run(
         f'-i {source}  -o {td.tmpdir}',
         mp=mp,

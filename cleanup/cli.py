@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import cleanup
 
@@ -21,42 +21,42 @@ Select cleanup All: [caption code footnote formula headnote image pagenumber tab
 """
 
 WORKPLAN = [
-    utila.create_step('backup'),
-    utila.create_step(
+    utilo.create_step('backup'),
+    utilo.create_step(
         'cleanup',
         inputs=[
-            utila.Value('select', str, defaultvar='all'),
-            utila.Value('postfix', str, defaultvar=''),
-            utila.Bool('no_caption'),
-            utila.Bool('no_code'),
-            utila.Bool('no_footnote'),
-            utila.Bool('no_formula'),
-            utila.Bool('no_headnote'),
-            utila.Bool('no_image'),
-            utila.Bool('no_pagenumber'),
-            utila.Bool('no_table'),
+            utilo.Value('select', str, defaultvar='all'),
+            utilo.Value('postfix', str, defaultvar=''),
+            utilo.Bool('no_caption'),
+            utilo.Bool('no_code'),
+            utilo.Bool('no_footnote'),
+            utilo.Bool('no_formula'),
+            utilo.Bool('no_headnote'),
+            utilo.Bool('no_image'),
+            utilo.Bool('no_pagenumber'),
+            utilo.Bool('no_table'),
         ],
     ),
-    utila.create_step(
+    utilo.create_step(
         'translate',
         inputs=[
-            utila.ResultFile(
+            utilo.ResultFile(
                 producer='rawmaker',
                 name='text_text',
                 optional=True,
             ),
-            utila.ResultFile(
+            utilo.ResultFile(
                 producer='rawmaker',
                 name='text_text',
                 ext='baml',
                 optional=True,
             ),
-            utila.ResultFile(
+            utilo.ResultFile(
                 producer='rawmaker',
                 name='oneline_text_text',
                 optional=True,
             ),
-            utila.ResultFile(
+            utilo.ResultFile(
                 producer='rawmaker',
                 name='oneline_text_text',
                 ext='baml',
@@ -68,13 +68,13 @@ WORKPLAN = [
 ]
 
 
-@utila.saveme
+@utilo.saveme
 def main():
-    utila.featurepack(
+    utilo.featurepack(
         root=cleanup.ROOT,
         workplan=WORKPLAN,
         featurepackage='cleanup.features',
-        config=utila.FeaturePackConfig(
+        config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=False,
             name=cleanup.PROCESS,

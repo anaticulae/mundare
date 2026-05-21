@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def work(inputs: list, outputs, prefix: str = ''):
@@ -17,14 +17,14 @@ def work(inputs: list, outputs, prefix: str = ''):
     raw = f'rawmaker__{prefixed}'
     pattern = f'({raw}text|{raw}fonts|{raw}line|{raw}horizontals)_*.yaml'
     for inpath in inputs:
-        utila.copy_content(
+        utilo.copy_content(
             inpath,
             outputs,
             pattern=pattern,
             rename=rename_backup,
             unlock=True,
         )
-    return utila.NO_RESULT
+    return utilo.NO_RESULT
 
 
 BACKUP_EXT = 'baml'

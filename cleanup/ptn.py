@@ -12,7 +12,7 @@ import rawmaker.features.fonts
 import serializeraw
 import serializeraw.fonts
 import texmex
-import utila
+import utilo
 
 
 def dump_ptn(ptns: texmex.PTNs, fontstore: iamraw.FontStore):
@@ -72,7 +72,7 @@ def merge_neighbors(lines, positions):
             # add content
             before.lines.extend(line.lines)
             # update rectangle
-            before.box = utila.rect_max((before.box, line.box))
+            before.box = utilo.rect_max((before.box, line.box))
             # merge textpositions
             textpositions[-1] = iamraw.TextPosition(
                 bounding=tuple(before.box),
@@ -97,21 +97,21 @@ def create_line(item, fontstore: iamraw.FontStore) -> iamraw.Line:
         state=item.state,
     )
     style = item.style.content
-    sizes = utila.flat([item.width * [item.size] for item in style])
-    rises = utila.flat([item.width * [item.rise] for item in style])
-    underlines = utila.flat([(item.width) * [item.underline] for item in style])
+    sizes = utilo.flat([item.width * [item.size] for item in style])
+    rises = utilo.flat([item.width * [item.rise] for item in style])
+    underlines = utilo.flat([(item.width) * [item.underline] for item in style])
     if fontstore:
-        fonts = utila.flat([
+        fonts = utilo.flat([
             (item.width) * [fontstore[item.font].pdfref] for item in style
         ])
-        flags = utila.flat([
+        flags = utilo.flat([
             item.width *
             [serializeraw.fonts.toflag(fontstore[item.font].flags)]
             for item in style
         ])
     else:
-        fonts = utila.flat([item.width * [None] for item in style])
-        flags = utila.flat([item.width * [None] for item in style])
+        fonts = utilo.flat([item.width * [None] for item in style])
+        flags = utilo.flat([item.width * [None] for item in style])
     chars = [
         iamraw.Char(
             value=value,

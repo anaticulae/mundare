@@ -9,7 +9,7 @@
 
 import collections
 
-import utila
+import utilo
 
 import cleanup.load
 
@@ -89,19 +89,19 @@ def create_invalid_area(  # pylint:disable=R0914
         for page in data:
             invalid[page.page].extend([item.bounding for item in page.content])
     for page in codes:
-        tokens = utila.flat([item.tokens_bounding for item in page.content])
+        tokens = utilo.flat([item.tokens_bounding for item in page.content])
         invalid[page.page].extend(tokens)
-        # caption = utila.flat([it.caption_bounding for it in page.content])
+        # caption = utilo.flat([it.caption_bounding for it in page.content])
         # invalid[page.page].extend(caption)
     # reduce rectangle count
-    result = {key: utila.rect_merge(value) for key, value in invalid.items()}
+    result = {key: utilo.rect_merge(value) for key, value in invalid.items()}
     return result
 
 
 def create_header_footer(headnotes, ptns) -> dict:
     invalid = collections.defaultdict(list)
     for headnote in headnotes:
-        ptn = utila.select_page(ptns, page=headnote.page)
+        ptn = utilo.select_page(ptns, page=headnote.page)
         if not ptn:
             continue
         pagewidth, pageheight = ptn.width, ptn.height
@@ -134,7 +134,7 @@ def create_footnotes(footnotes) -> dict:
         for footnote in page.content:
             bbox = footnote.bounding
             if not bbox:
-                utila.error(f'missing footnote bounding: {footnote}')
+                utilo.error(f'missing footnote bounding: {footnote}')
                 continue
             # increase bounding to match footnotes correctly.
             # left and right is no problem, cause in gernal there is
@@ -142,6 +142,6 @@ def create_footnotes(footnotes) -> dict:
             # bottom is also not a problem
             # top is a problem, we do not want to hide any normal text content
             scale = (0.8, 1.0, 1.3, 1.05)
-            bbox = utila.rect_scale(bbox, scale=scale)
+            bbox = utilo.rect_scale(bbox, scale=scale)
             invalid[page.page].append(bbox)
     return invalid

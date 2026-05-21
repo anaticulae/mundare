@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import cleanup.part.main
 
@@ -52,10 +52,10 @@ def work(  # pylint:disable=R0913
         postfix=postfix,
         pages=pages,
     )
-    return utila.NO_RESULT
+    return utilo.NO_RESULT
 
 
-VALIDS = utila.splititems("""\
+VALIDS = utilo.splititems("""\
 caption code footnote formula headnote image pagenumber table
 """)
 
@@ -66,5 +66,5 @@ def config_select(config: dict, select: str) -> dict:
         return config
     config = {item: True for item in select.split()}
     if any(item not in VALIDS for item in config.keys()):
-        utila.exitx(msg=f'invalid selection: {config}')
+        utilo.exitx(msg=f'invalid selection: {config}')
     return config

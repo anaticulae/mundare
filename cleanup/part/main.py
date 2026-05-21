@@ -9,10 +9,10 @@
 
 import os
 
-import configo
+import configos
 import iamraw
 import texmex
-import utila
+import utilo
 
 import cleanup.load
 import cleanup.part.invalid
@@ -96,7 +96,7 @@ def remove_skip_area(
     todo = [item for item in todo if item not in 'hidden visible']
     for element in todo:
         if config and not config.get(element, False):
-            utila.debug(f'do not remove: {element}')
+            utilo.debug(f'do not remove: {element}')
             continue
         replacement = texmex.TextState[element.upper()]
         invalids = cleanup.part.invalid.create(
@@ -130,7 +130,7 @@ def cleanup_ptn(
         ]
         for line in invalid_lines:
             if line.state != texmex.TextState.VISIBLE:
-                utila.verbose(f'do not overwrite state: {line} with {default}')
+                utilo.verbose(f'do not overwrite state: {line} with {default}')
                 continue
             line.state_change(default)
     return ptns
@@ -187,7 +187,7 @@ def cleanup_images(images, invalids):
     return images
 
 
-OVERLAPPING_RATE_MIN = configo.HV_PERCENT_PLUS(default=90)
+OVERLAPPING_RATE_MIN = configos.HV_PERCENT_PLUS(default=90)
 
 
 def valid_bounding(
@@ -201,7 +201,7 @@ def valid_bounding(
     except KeyError:
         return True
     for invalid in invalid_area:
-        overlapping_rate = utila.rect_overlapping(invalid, bounding)
+        overlapping_rate = utilo.rect_overlapping(invalid, bounding)
         if overlapping_rate >= overlapping_min:
             return False
     return True

@@ -7,26 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import tests.conftest
 
 
-@utilatest.nightly
+@utilotest.nightly
 @pytest.mark.parametrize(
     'source',
-    utilatest.test_resources(tests.conftest.RESOURCES),
+    utilotest.test_resources(tests.conftest.RESOURCES),
 )
 def test_pagenumber_remove_x(source, td, mp):
     """Hide detected page number to improve footnote extraction result."""
-    source = power.link(source)
+    source = hoverpower.link(source)
     pattern = '(rawmaker__text|rawmaker__fonts|pagenumber__result)_*.yaml'
-    utila.copy_content(
+    utilo.copy_content(
         source,
         td.tmpdir,
         pattern=pattern,

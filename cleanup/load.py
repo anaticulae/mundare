@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 import iamraw
 import serializeraw
-import utila
+import utilo
 
-HORIZONTALS_WIDTH_MIN = configo.HV_INT_PLUS(default=50)
+HORIZONTALS_WIDTH_MIN = configos.HV_INT_PLUS(default=50)
 
 # If we do not load hidden and run cleanup multiple times, hidden data is
 # lost and not accessible later.
@@ -21,7 +21,7 @@ LOAD_HIDDEN = None
 
 def ptn_frompath(inpaths, prefix, pages):
     for inpath in inpaths:
-        utila.debug(f'ptn: {inpath}')
+        utilo.debug(f'ptn: {inpath}')
         ptns = serializeraw.ptn_frompath(
             inpath,
             prefix=prefix,
@@ -38,9 +38,9 @@ def ptn_frompath(inpaths, prefix, pages):
 def pagenumber_frompath(inpaths, pages):
     for inpath in inpaths:
         path = iamraw.path.pagenumber_result(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'pagenumber: {path}')
+        utilo.debug(f'pagenumber: {path}')
         loaded = serializeraw.load_pagenumbers(path, pages=pages)
         return loaded
     return []
@@ -50,9 +50,9 @@ def codes_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.codero_result(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'codes: {path}')
+        utilo.debug(f'codes: {path}')
         loaded = serializeraw.load_codes(path, pages=pages)
         result.extend(loaded)
     return result
@@ -62,9 +62,9 @@ def formulas_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.formula(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'formulas: {path}')
+        utilo.debug(f'formulas: {path}')
         loaded = serializeraw.load_rawformulas(path, pages=pages)
         result.extend(loaded)
     return result
@@ -74,9 +74,9 @@ def captions_frompath(inpaths, prefix, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.caption_result(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'formulas: {path}')
+        utilo.debug(f'formulas: {path}')
         loaded = serializeraw.load_captions(path, pages=pages)
         result.extend(loaded)
     return result
@@ -86,9 +86,9 @@ def footnotes_frompath(inpaths, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.footnote_result(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'footnote: {path}')
+        utilo.debug(f'footnote: {path}')
         loaded = serializeraw.load_footnotes(path, pages=pages)
         result.extend(loaded)
     return result
@@ -98,9 +98,9 @@ def headnotes_frompath(inpaths, pages):  # pylint:disable=W0613
     result = []
     for inpath in inpaths:
         path = iamraw.path.headnote_result(inpath)
-        if not utila.exists(path):
+        if not utilo.exists(path):
             continue
-        utila.debug(f'headnote: {path}')
+        utilo.debug(f'headnote: {path}')
         loaded = serializeraw.load_headerfooter(path, pages=pages)
         result.extend(loaded)
     return result
@@ -125,9 +125,9 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
     prefix = ''  # DISABLE PREFIX
     horizontals, lines = None, None
     for inpath in inpaths:
-        utila.debug(f'lines: {inpath}')
-        if utila.exists(iamraw.path.horizontals(inpath)):
-            # if utila.exists(iamraw.path.horizontals(inpath, prefix)):
+        utilo.debug(f'lines: {inpath}')
+        if utilo.exists(iamraw.path.horizontals(inpath)):
+            # if utilo.exists(iamraw.path.horizontals(inpath, prefix)):
             # use list, to signal that line source file exists.
             horizontals = horizontals or []
             horizontals.extend(
@@ -137,8 +137,8 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
                     pages=pages,
                     width_min=HORIZONTALS_WIDTH_MIN,
                 ))
-        if utila.exists(iamraw.path.line(inpath)):
-            # if utila.exists(iamraw.path.line(inpath, prefix)):
+        if utilo.exists(iamraw.path.line(inpath)):
+            # if utilo.exists(iamraw.path.line(inpath, prefix)):
             # use list, to signal that line source file exists.
             lines = lines or []
             lines.extend(
@@ -149,13 +149,13 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
                 ))
     if horizontals:
         for pdfpage in horizontals:
-            utila.verbose(
+            utilo.verbose(
                 f'p{pdfpage.page} horizontal: {len(pdfpage.content)}',
                 end=' ',
             )
     if lines:
         for pdfpage in lines:
-            utila.verbose(
+            utilo.verbose(
                 f'p{pdfpage.page} lines: {len(pdfpage.content)}',
                 end=' ',
             )
@@ -164,7 +164,7 @@ def lines_frompath(inpaths: list, prefix: str, pages: tuple) -> tuple:
 
 def fontstore_frompath(inpaths, prefix, pages):
     for inpath in inpaths:
-        utila.debug(f'fontstore: {inpath}')
+        utilo.debug(f'fontstore: {inpath}')
         fontstore = serializeraw.fs_frompath(
             inpath,
             prefix=prefix,
@@ -180,7 +180,7 @@ def load_images(inpaths: list, pages: tuple = None):
     # load images and tables from multiple `inpaths`
     for inpath in inpaths:
         imagepath = iamraw.path.images(inpath)
-        if not utila.exists(imagepath):
+        if not utilo.exists(imagepath):
             continue
         result.extend(
             serializeraw.load_image_infos_frompath(
@@ -195,8 +195,8 @@ def load_tables(inpaths: list, pages: tuple = None):
     # load tables from multiple `inpaths`
     for inpath in inpaths:
         tableropath = iamraw.path.tablero_result(inpath)
-        utila.debug(f'tablero: {tableropath}')
-        if not utila.exists(tableropath):
+        utilo.debug(f'tablero: {tableropath}')
+        if not utilo.exists(tableropath):
             continue
         result.extend(serializeraw.load_tables(tableropath, pages=pages))
     return result

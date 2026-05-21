@@ -7,21 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
 
 @pytest.mark.parametrize('source, pages', [
-    pytest.param(power.BACHELOR056_PDF, '0:10,20:25', id='partial'),
-    pytest.param(power.BACHELOR056_PDF, '15', id='fifteen'),
-    pytest.param(power.BACHELOR056_PDF, '27', id='27'),
-    pytest.param(power.BACHELOR056_PDF, '5,6,7', id='fiveSixSeven'),
-    pytest.param(power.DISS143_PDF, '27', id='diss143'),
+    pytest.param(hoverpower.BACHELOR056_PDF, '0:10,20:25', id='partial'),
+    pytest.param(hoverpower.BACHELOR056_PDF, '15', id='fifteen'),
+    pytest.param(hoverpower.BACHELOR056_PDF, '27', id='27'),
+    pytest.param(hoverpower.BACHELOR056_PDF, '5,6,7', id='fiveSixSeven'),
+    pytest.param(hoverpower.DISS143_PDF, '27', id='diss143'),
 ])
 def test_source_compare_reduction_fast(source, pages, td, mp):
     """Ensure that resource is loaded and dumped correctly.
@@ -32,23 +32,23 @@ def test_source_compare_reduction_fast(source, pages, td, mp):
     compare(source, pages, td, mp)
 
 
-@utilatest.nightly
+@utilotest.nightly
 @pytest.mark.parametrize('source', [
-    pytest.param(power.BACHELOR037_PDF, id='bachelor037'),
-    pytest.param(power.BACHELOR051_PDF, id='bachelor51'),
-    pytest.param(power.BACHELOR056_PDF, id='bachelor56'),
-    pytest.param(power.DISS143_PDF, id='diss143'),
-    pytest.param(power.HC_DISS128, id='hcdiss128'),
-    pytest.param(power.HOME043_PDF, id='home043'),
+    pytest.param(hoverpower.BACHELOR037_PDF, id='bachelor037'),
+    pytest.param(hoverpower.BACHELOR051_PDF, id='bachelor51'),
+    pytest.param(hoverpower.BACHELOR056_PDF, id='bachelor56'),
+    pytest.param(hoverpower.DISS143_PDF, id='diss143'),
+    pytest.param(hoverpower.HC_DISS128, id='hcdiss128'),
+    pytest.param(hoverpower.HOME043_PDF, id='home043'),
 ])
 def test_source_compare_reduction_slow(source, td, mp):
     compare(source, ':', td, mp)
 
 
 def compare(source, pages, td, mp):
-    utilatest.fixture_requires(source)
-    source = power.link(source)
-    utila.copy_content(
+    utilotest.fixture_requires(source)
+    source = hoverpower.link(source)
+    utilo.copy_content(
         source,
         td.tmpdir,
         pattern='(rawmaker__text|rawmaker__fonts)_*.yaml',
@@ -58,7 +58,7 @@ def compare(source, pages, td, mp):
         f'-i {td.tmpdir} -o {td.tmpdir} --postfix=cleaned --pages={pages}',
         mp=mp,
     )
-    pages = utila.parse_pages(pages)
+    pages = utilo.parse_pages(pages)
     ptn = serializeraw.ptn_frompath(
         td.tmpdir,
         pages=pages,
