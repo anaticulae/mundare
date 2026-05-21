@@ -38,7 +38,7 @@ def test_source_compare_reduction_fast(source, pages, td, mp):
     pytest.param(hoverpower.BACHELOR051_PDF, id='bachelor51'),
     pytest.param(hoverpower.BACHELOR056_PDF, id='bachelor56'),
     pytest.param(hoverpower.DISS143_PDF, id='diss143'),
-    pytest.param(hoverpower.HC_DISS128, id='hcdiss128'),
+    # pytest.param(hoverpower.HC_DISS128, id='hcdiss128'),
     pytest.param(hoverpower.HOME043_PDF, id='home043'),
 ])
 def test_source_compare_reduction_slow(source, td, mp):

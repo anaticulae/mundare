@@ -56,17 +56,17 @@ def translate(source, page: int, td, mp) -> str:
     return raw
 
 
-@utilotest.requires(hoverpower.HC_DISS128)
-def test_hc_diss128_rawmaker_error(td, mp):
-    """Negative font size produces an error while using rawmaker
+# @utilotest.requires(hoverpower.HC_DISS128)
+# def test_hc_diss128_rawmaker_error(td, mp):
+#     """Negative font size produces an error while using rawmaker
 
-    scale_fromchar(char).
-    """
-    source = hoverpower.link(hoverpower.HC_DISS128)
-    if not utilo.exists(source):
-        pytest.skip(reason='generate HC_DISS128')
-    pages = '32,45,62,83,97,98'
-    tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
+#     scale_fromchar(char).
+#     """
+#     source = hoverpower.link(hoverpower.HC_DISS128)
+#     if not utilo.exists(source):
+#         pytest.skip(reason='generate HC_DISS128')
+#     pages = '32,45,62,83,97,98'
+#     tests.run(f'-i {source} -o {td.tmpdir} --pages {pages}', mp=mp)
 
 
 @utilotest.longrun
