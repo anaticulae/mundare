@@ -1,177 +1,728 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-06-04)
+
+### Chores
+
+- **conftest**: Adjust parameter
+  ([`df5caa5`](https://github.com/anaticulae/mundare/commit/df5caa5c4d8275100a1a51fd07510cc85df316ca))
+
+- **conftest**: Disable missing tools
+  ([`5270019`](https://github.com/anaticulae/mundare/commit/5270019403ffbe093d05bf65bde10a5f72ff740d))
+
+- **github**: Add .github
+  ([`99f2924`](https://github.com/anaticulae/mundare/commit/99f2924e023228b7a133d74e8b314783914519a5))
+
+- **hoverpower**: Shrink download
+  ([`6065117`](https://github.com/anaticulae/mundare/commit/6065117de46a49a0d765c340d2773cdaf2f554dd))
+
+- **Jenkins**: Add pre-release step
+  ([`76c9f44`](https://github.com/anaticulae/mundare/commit/76c9f4432f936a87e32ddceb1a70ed9d38d46d8c))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`2e54fe0`](https://github.com/anaticulae/mundare/commit/2e54fe02c7ae8b6b668f7e2c30458309e21e4fcf))
+
+- **Jenkins**: Upgrade pipe library
+  ([`e41db30`](https://github.com/anaticulae/mundare/commit/e41db3039181dd04388e1af773713e0589917495))
+
+- **project**: Rename project
+  ([`cc917b5`](https://github.com/anaticulae/mundare/commit/cc917b530c92ace71dee25a09401a22808cf7f29))
+
+- **project**: Use modern approach
+  ([`0ae47f9`](https://github.com/anaticulae/mundare/commit/0ae47f9b2ea748d47d212ea302dada0ff25d2a25))
+
+- **project**: Use modern approach
+  ([`975e8c6`](https://github.com/anaticulae/mundare/commit/975e8c6a869552950fd0dacab7802f45a8184f12))
+
+- **requirements**: Add pagenumber
+  ([`2e9fb69`](https://github.com/anaticulae/mundare/commit/2e9fb6903be59f58a0afe038b16cc070cf9d62a5))
+
+- **requirements**: Remove outdated file
+  ([`1e12dc8`](https://github.com/anaticulae/mundare/commit/1e12dc89214a9a5dcfce49062ec5bc5f231caaea))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`d481c82`](https://github.com/anaticulae/mundare/commit/d481c825db0eaf6104f07c5d4442dae6a094436d))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bbda311`](https://github.com/anaticulae/mundare/commit/bbda31128c5e8815f7496afe2d3ddc8158597fd9))
+
+- **setup**: Remove outdated file
+  ([`80fd512`](https://github.com/anaticulae/mundare/commit/80fd512ccaa283ea3e299eeebad1eb3d183171a0))
+
+### Code Style
+
+- **linter**: Solve linter warnings
+  ([`7c4aeaf`](https://github.com/anaticulae/mundare/commit/7c4aeaff6662dd107e676435b812300ce768ceb8))
+
+- **main**: Fix spelling error
+  ([`a042a0a`](https://github.com/anaticulae/mundare/commit/a042a0a3b04dd7eaa43c4960bb37145b854df4e1))
+
+- **test**: Fix spelling error
+  ([`c417a10`](https://github.com/anaticulae/mundare/commit/c417a101d917350d53e54d0285684994ccf3cfb3))
+
+- **translate**: Shorten spelling
+  ([`a950d23`](https://github.com/anaticulae/mundare/commit/a950d2309c138805920fe5c07b2498ec791fefa6))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`cadbf23`](https://github.com/anaticulae/mundare/commit/cadbf2369fbfbd6d781b7bf67ed97e3c880f671c))
+
+### Refactoring
+
+- **cleanup**: Replace with utila code
+  ([`c862614`](https://github.com/anaticulae/mundare/commit/c862614647b7809cda3a37d84ddf58143b48c683))
+
+- **rename**: Adjust package names
+  ([`e83206e`](https://github.com/anaticulae/mundare/commit/e83206ea842e0ba954a2825ab323d70a484bfdb2))
+
+- **replace**: Automated replacement
+  ([`18c0e76`](https://github.com/anaticulae/mundare/commit/18c0e7645f9bbadaee890d643ed5109c546b38c8))
+
+- **translate**: Shorten naming
+  ([`c191135`](https://github.com/anaticulae/mundare/commit/c19113580f06aa23a20adf6e7b95cea06571c141))
+
+### Testing
+
+- **disable**: Disable failing test
+  ([`0850243`](https://github.com/anaticulae/mundare/commit/0850243a8c8bea00f190ef1bea86c901a7170a3f))
+
+- **skip**: Skip failing tests
+  ([`31a2abb`](https://github.com/anaticulae/mundare/commit/31a2abb2d6ebdc22e32a465cf45b465558c67491))
+
 
 ## v0.9.1 (2022-12-20)
 
-### Chore
+### Chores
 
-* add missing resource generator (f8d34b3b33d7)
-* upgrade requirements.txt (eeb4b0fa0440)
-* upgrade library (8101d7b373a3)
+- **Jenkins**: Upgrade library
+  ([`8101d7b`](https://github.com/anaticulae/mundare/commit/8101d7b373a35fd2e07ee611be41a5c5e40a9e54))
+
+- **requirements**: Upgrade requirements.txt
+  ([`eeb4b0f`](https://github.com/anaticulae/mundare/commit/eeb4b0fa0440ba457ee75289d43dcd2c5139d39b))
+
+- **resources**: Add missing resource generator
+  ([`f8d34b3`](https://github.com/anaticulae/mundare/commit/f8d34b3b33d7ae114dd52386b1393eb58581faa9))
+
 
 ## v0.9.0 (2022-11-02)
 
-### Feature
+### Chores
 
-* do not fill gaps due cleaning pages (a3769a955186)
+- **requirements**: Upgrade requirements.txt
+  ([`6c357c1`](https://github.com/anaticulae/mundare/commit/6c357c10fd6600aefb1e67d58bab118459a269fe))
 
-### Chore
+- **resources**: Add resource with gap inside
+  ([`f54c5ca`](https://github.com/anaticulae/mundare/commit/f54c5caca1c40e5ffd9b4dbac207a2fea5a2db55))
 
-* update classifier (fb512a74df5a)
-* add resource with gap inside (f54c5caca1c4)
-* upgrade requirements.txt (6c357c10fd66)
+- **setup**: Update classifier
+  ([`fb512a7`](https://github.com/anaticulae/mundare/commit/fb512a74df5ab7bd3e0382650821d3c9633cf7d9))
+
+### Features
+
+- **gap**: Do not fill gaps due cleaning pages
+  ([`a3769a9`](https://github.com/anaticulae/mundare/commit/a3769a9551867ef52fe176086c738eb7f87a73c1))
+
 
 ## v0.8.1 (2022-11-01)
 
-### Fix
+### Bug Fixes
 
-* do not determine translation for empty pages (a77fc9a29fe0)
-* clarify error message (f34c5ce74513)
+- **lines**: Clarify error message
+  ([`f34c5ce`](https://github.com/anaticulae/mundare/commit/f34c5ce7451392a71cc106d116bf1ca21bd66733))
 
-### Chore
+- **translate**: Do not determine translation for empty pages
+  ([`a77fc9a`](https://github.com/anaticulae/mundare/commit/a77fc9a29fe00b0f7e09c9a544eba651c66c3b59))
 
-* upgrade requirements.txt (954eb2ce5df1)
-* upgrade environment (39389221e20d)
-* convert nightly to all (3ef044347cc5)
+### Chores
+
+- **Jenkins**: Convert nightly to all
+  ([`3ef0443`](https://github.com/anaticulae/mundare/commit/3ef044347cc515f8493e77060e9bcb6796135cb2))
+
+- **Jenkins**: Upgrade environment
+  ([`3938922`](https://github.com/anaticulae/mundare/commit/39389221e20de70804e1f7fea5a4c509e1074768))
+
+- **requirements**: Upgrade requirements.txt
+  ([`954eb2c`](https://github.com/anaticulae/mundare/commit/954eb2ce5df19f28dd8c90ed19e44687006e63fd))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`7b3128a`](https://github.com/anaticulae/mundare/commit/7b3128a3bd3ca64a6ec0c6d919fd9f77788583b4))
+
+### Testing
+
+- **linter**: Solve linter warnings
+  ([`a8e8484`](https://github.com/anaticulae/mundare/commit/a8e84848542721f9d74bfbad2a6be990042e224a))
+
 
 ## v0.8.0 (2022-10-09)
 
-### Feature
+### Chores
 
-* remove refs in invalid area (78eb71602c54)
+- **requirements**: Upgrade requirements.txt
+  ([`cc9f718`](https://github.com/anaticulae/mundare/commit/cc9f718d59ce31034f3244f351a8096d7b24e4e8))
 
-### Chore
+### Features
 
-* upgrade requirements.txt (cc9f718d59ce)
+- **part**: Remove refs in invalid area
+  ([`78eb716`](https://github.com/anaticulae/mundare/commit/78eb71602c54e3d9667bcdf3978c939b9d327301))
+
+### Testing
+
+- **headnote**: Ensure that headnote horizontals are removed
+  ([`73a68a7`](https://github.com/anaticulae/mundare/commit/73a68a7d8ef251ce2bb3e7aa4f16cc12b0beaa1e))
+
 
 ## v0.7.1 (2022-10-05)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (8e762ecc0979)
-* privileged container is not necessary (28f17f2632db)
-* upgrade baw (965825b63ce4)
-* upgrade requirements.txt (2447cb02a5b7)
-* extend test data generator (9452047697ce)
+- **Jenkinsfile**: Privileged container is not necessary
+  ([`28f17f2`](https://github.com/anaticulae/mundare/commit/28f17f2632db7069cd524a702177cc0606201ad5))
+
+- **Jenkinsfile**: Upgrade baw
+  ([`965825b`](https://github.com/anaticulae/mundare/commit/965825b63ce4ba7f18c51b01e34a0761db290db0))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8e762ec`](https://github.com/anaticulae/mundare/commit/8e762ecc0979367d5fa719c44af93ae29952f9bc))
+
+- **requirements**: Upgrade requirements.txt
+  ([`2447cb0`](https://github.com/anaticulae/mundare/commit/2447cb02a5b759cb93a13bb29840719f69a7c868))
+
+- **resources**: Extend test data generator
+  ([`9452047`](https://github.com/anaticulae/mundare/commit/9452047697ce17a263fde7b3823a70d1e350b422))
+
+### Testing
+
+- **headnote**: Ensure that headnotes cleanup works correctly
+  ([`477ecc1`](https://github.com/anaticulae/mundare/commit/477ecc1c1aebc8660940e431e3e03a8f53a02a96))
+
+- **rename**: Clarify headnote name
+  ([`eb4f2a3`](https://github.com/anaticulae/mundare/commit/eb4f2a31059e762967371f2c5b3b49ccc6f15530))
+
 
 ## v0.7.0 (2022-09-29)
 
-### Feature
+### Bug Fixes
 
-* raise ValueError if empty translation is given (308ce6c2d30c)
+- **lines**: Adjust comparison for linux
+  ([`2c2c876`](https://github.com/anaticulae/mundare/commit/2c2c8769a33194834b0d3df4a1ed3aea615704bc))
 
-### Fix
+- **lines**: Clarify error message
+  ([`eb23aa6`](https://github.com/anaticulae/mundare/commit/eb23aa6f24def66c5c77450f1b03c3848c627739))
 
-* adjust comparison for linux (2c2c8769a331)
-* clarify error message (eb23aa6f24de)
+### Chores
 
-### Chore
+- **ci**: Add Jenkinsfile
+  ([`3c76813`](https://github.com/anaticulae/mundare/commit/3c76813919ab6c2557c36bef9a57646b211ed3cb))
 
-* upgrade requirements.txt (7aab57d2e24c)
-* increase worker count on CI (99d0794bea56)
-* add separate generator step (0e80894db06e)
-* add Jenkinsfile (3c76813919ab)
-* upgrade requirements.txt (26cbf1f2326d)
+- **Jenkinsfile**: Add separate generator step
+  ([`0e80894`](https://github.com/anaticulae/mundare/commit/0e80894db06ecde91335ba70f03ba202c733e4d1))
 
-## v0.6.0
+- **requirements**: Upgrade requirements.txt
+  ([`7aab57d`](https://github.com/anaticulae/mundare/commit/7aab57d2e24cad9e5f43dac0a8a41a06e47b8599))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`26cbf1f`](https://github.com/anaticulae/mundare/commit/26cbf1f2326df56c63d0dcab258da3f604f328ca))
 
-* add select parameter to run a single mundare (30b06c8c7a7b)
+- **resources**: Increase worker count on CI
+  ([`99d0794`](https://github.com/anaticulae/mundare/commit/99d0794bea56537b5e602e870a33f0f9b95e48c4))
 
-## v0.5.0
+### Code Style
 
-### Feature
+- **changelog**: Adjust automation tool
+  ([`77f6ff0`](https://github.com/anaticulae/mundare/commit/77f6ff098e33c1e5c84c5a758468a88f086395cc))
 
-* add parameter to skip mundare resources (412e9b2df65b)
+- **test**: Format code
+  ([`715a19b`](https://github.com/anaticulae/mundare/commit/715a19b80aa87dd7f92561129e73a5e2e8569c7a))
 
-### Fix
+### Features
 
-* increase footnote bounding to catch all footnotes (80efe95f1eb0)
+- **line**: Raise ValueError if empty translation is given
+  ([`308ce6c`](https://github.com/anaticulae/mundare/commit/308ce6c2d30c3c4aea256419e92d6327dd57e69c))
 
-## v0.4.2
+### Testing
 
-### Fix
+- **disable**: Disable test after software integration
+  ([`4dbe551`](https://github.com/anaticulae/mundare/commit/4dbe551d7a1026bca4744403ecbd6395050842fd))
 
-* fix var access (7932a1b1e319)
+- **skip**: Skip non generated resources
+  ([`0f593f3`](https://github.com/anaticulae/mundare/commit/0f593f3328701b6abfd48cc5db74deb2e8078db6))
 
-## v0.4.1
 
-## v0.4.0
+## v0.6.0 (2022-08-05)
 
-### Feature
+### Chores
 
-* clean footer and header area (70ee6156edbd)
-* add headnote loader (452f33dc2336)
+- **requirements**: Upgrade requirements.txt
+  ([`9c0ec6f`](https://github.com/anaticulae/mundare/commit/9c0ec6f2c9f8050fc901bd4cb79d6f6213f848b6))
 
-### Fix
+### Features
 
-* skip invalid footnote bounding (bc52ee3ead7b)
+- **cleanup**: Add select parameter to run a single cleanup
+  ([`30b06c8`](https://github.com/anaticulae/mundare/commit/30b06c8c7a7ba0605569777768b7d0d20a68d100))
 
-## v0.3.0
+### Refactoring
 
-### Feature
+- **rename**: Clarify naming
+  ([`a8ef27a`](https://github.com/anaticulae/mundare/commit/a8ef27a7a481fc0c9f4f5304e9fd78caff1017ae))
 
-* add footnotes (8497c0a64ab8)
-* make hidden state more precise (4708fe4bfa7f)
-* run separate invalidation steps (329f846e5e7b)
-* add parameter to set different cleaning states (9618663909f0)
-* allow single cleaning (ccc5765df0b4)
+### Testing
 
-## v0.2.2
+- **pagenumber**: Make test more precise
+  ([`d9d8161`](https://github.com/anaticulae/mundare/commit/d9d8161d7d907e471941ccaaf4b2bd1a24b5bcfc))
 
-### Fix
 
-* run mundare without fontstore (acbbc029183a)
+## v0.5.0 (2022-08-02)
 
-## v0.2.1
+### Bug Fixes
 
-### Fix
+- **invalid**: Increase footnote bounding to catch all footnotes
+  ([`80efe95`](https://github.com/anaticulae/mundare/commit/80efe95f1eb09a34616651c6839544e80f6035ce))
 
-* load hidden data (2ac5651e78c0)
+### Chores
 
-## v0.2.0
+- **requirements**: Upgrade requirements.txt
+  ([`792689c`](https://github.com/anaticulae/mundare/commit/792689c99365943500d9d18468af1e896aa1a718))
 
-### Feature
+- **resources**: Extend resources to pass unit test
+  ([`668459b`](https://github.com/anaticulae/mundare/commit/668459b2a5e2c27aca19921c5f77c675876ca44f))
 
-* hide pagenumber in mundare step (6775ee1cceb3)
-* add pagenumber loader (7bd152b94193)
+- **resources**: Extend test data generator
+  ([`dc0a92a`](https://github.com/anaticulae/mundare/commit/dc0a92a31272a67e236cf413ddc5af2da114ef69))
 
-## v0.1.5
+- **test**: Keep dev build fast
+  ([`b5dbb97`](https://github.com/anaticulae/mundare/commit/b5dbb97bb8e2541ab86db8662e32e3c5255bec51))
 
-### Feature
+### Features
 
-* log number of loaded horizontals and lines (bcfcc69d2504)
+- **cli**: Add parameter to skip cleanup resources
+  ([`412e9b2`](https://github.com/anaticulae/mundare/commit/412e9b2df65be23a2741d10f430bad1c9dc0ae89))
 
-### Fix
+### Refactoring
 
-* decrease required min width (52f64c2aa178)
+- **invalid**: Reduce complexity
+  ([`d390669`](https://github.com/anaticulae/mundare/commit/d3906690acdac670a8fc14d2a5ba43b03d554f19))
 
-## v0.1.4
+### Testing
 
-### Fix
+- **pagenumber**: Make test more expressive
+  ([`632a361`](https://github.com/anaticulae/mundare/commit/632a361446c5b283c10eccf4e9f6b80a5de19f9a))
 
-* do not fail on white page document, single page (0a38e08349ec)
+- **refactor**: Simplify caching
+  ([`ae23fd9`](https://github.com/anaticulae/mundare/commit/ae23fd9769e0e868c8200d85535001464b9ef937))
 
-## v0.1.3
+- **translate**: Adjust unit test
+  ([`fc67c2f`](https://github.com/anaticulae/mundare/commit/fc67c2f249c1c456f3f7e7e44d6b5da4e8dbc591))
 
-## v0.1.2
 
-### Feature
+## v0.4.2 (2022-08-01)
 
-* inform about missing translation (58cc047ba202)
+### Bug Fixes
 
-### Fix
+- **cleanup**: Fix var access
+  ([`7932a1b`](https://github.com/anaticulae/mundare/commit/7932a1b1e3198fa9b1f03491180382eb2cd47895))
 
-* adjust file inputs (7ba14f7a71fe)
+### Chores
 
-## v0.1.1
+- **resources**: Extend test data generator
+  ([`e25365e`](https://github.com/anaticulae/mundare/commit/e25365ea6894d0e05476ba3fe2717062e0c1680c))
 
-## v0.1.0
+### Testing
 
-### Feature
+- **headnote**: Increase re usability
+  ([`315ab15`](https://github.com/anaticulae/mundare/commit/315ab15183e9235cf7826320071b09c9e3ee4f5d))
 
-* move code from rawmaker project (44a310117f71)
+- **headnote**: Verify bachelor026
+  ([`3ffe31c`](https://github.com/anaticulae/mundare/commit/3ffe31c64241af8f4cbbd2cd932aa4d78e70256a))
 
-## v0.0.0 Initial release
+
+## v0.4.1 (2022-08-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`971e698`](https://github.com/anaticulae/mundare/commit/971e6985013aefe0de2332368d6a19051a13e89d))
+
+
+## v0.4.0 (2022-07-30)
+
+### Bug Fixes
+
+- **invalid**: Skip invalid footnote bounding
+  ([`bc52ee3`](https://github.com/anaticulae/mundare/commit/bc52ee3ead7b2896163148d314e59b9e6fd6dbde))
+
+### Chores
+
+- **requirements**: Add headnote
+  ([`cc61223`](https://github.com/anaticulae/mundare/commit/cc61223805627ee6e7ddbf862447c89498c5dbd5))
+
+- **requirements**: Upgrade requirements.txt
+  ([`19e7096`](https://github.com/anaticulae/mundare/commit/19e70966f959c2a7ce983889e97cf786505f6006))
+
+### Features
+
+- **cleanup**: Clean footer and header area
+  ([`70ee615`](https://github.com/anaticulae/mundare/commit/70ee6156edbdec881f624fc132d940f46e0836a8))
+
+- **load**: Add headnote loader
+  ([`452f33d`](https://github.com/anaticulae/mundare/commit/452f33dc2336f12ed486ae9c5690d154aa574129))
+
+### Testing
+
+- **fix**: Adjust horizontal test
+  ([`ceb1bfe`](https://github.com/anaticulae/mundare/commit/ceb1bfe26ebb278e3604369503bd90afab65d801))
+
+
+## v0.3.0 (2022-07-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`34a5457`](https://github.com/anaticulae/mundare/commit/34a54577ce3a6fbe689d93f03823cd3d04ee2d7b))
+
+- **resources**: Extend test data generator
+  ([`e35fc48`](https://github.com/anaticulae/mundare/commit/e35fc489490a328c96813683e66b90f3afc35390))
+
+- **test**: Keep longrun fast
+  ([`3d57670`](https://github.com/anaticulae/mundare/commit/3d576703acc6a0b7622dcb2f055b745559c66249))
+
+### Code Style
+
+- **docs**: Adjust description
+  ([`fd55685`](https://github.com/anaticulae/mundare/commit/fd55685d679223966d9cf8e6edeb7a8a89b7b109))
+
+### Features
+
+- **cleanup**: Add footnotes
+  ([`8497c0a`](https://github.com/anaticulae/mundare/commit/8497c0a64ab82187b597fb13d6fa4db4b34d4880))
+
+- **main**: Add parameter to set different cleaning states
+  ([`9618663`](https://github.com/anaticulae/mundare/commit/9618663909f06fcc4365b147db55c2b9d0982756))
+
+- **main**: Make hidden state more precise
+  ([`4708fe4`](https://github.com/anaticulae/mundare/commit/4708fe4bfa7f5664e1008f9a2b42706925e69e66))
+
+- **part**: Allow single cleaning
+  ([`ccc5765`](https://github.com/anaticulae/mundare/commit/ccc5765df0b4bbb5fe741a2581ad8a6924957bff))
+
+- **part**: Run separate invalidation steps
+  ([`329f846`](https://github.com/anaticulae/mundare/commit/329f846e5e7b218821d87e39566c369621855385))
+
+### Refactoring
+
+- **clean**: Move to separate module
+  ([`1b9bf1a`](https://github.com/anaticulae/mundare/commit/1b9bf1adebea12f9c35cde14e8e6e7975ce383a7))
+
+- **invalid**: Move to separate module
+  ([`069c3fb`](https://github.com/anaticulae/mundare/commit/069c3fbbfb9e512cb7c2d426debc2c23570ea484))
+
+- **invalid**: Simplify code
+  ([`ebc3571`](https://github.com/anaticulae/mundare/commit/ebc35716ac6839f4a009766810f2be74166d18fb))
+
+- **invalid**: Sort parameter names
+  ([`78f3cf3`](https://github.com/anaticulae/mundare/commit/78f3cf3de14363d6bf4e1aa474fa7b0ef19ee0cc))
+
+- **load**: Replace with iamraw code
+  ([`36f02a7`](https://github.com/anaticulae/mundare/commit/36f02a743e0eb49bf5c1d920f50acc0139610faa))
+
+- **load**: Replace with utila code
+  ([`500fcd8`](https://github.com/anaticulae/mundare/commit/500fcd841bc874741d2494dc97e69f596594cf98))
+
+- **main**: Do not load images more than once
+  ([`1d96cc4`](https://github.com/anaticulae/mundare/commit/1d96cc4c33afc23f4a8b2bb081ed4a0934f5f004))
+
+- **move**: Move result writer to separate module
+  ([`19f9222`](https://github.com/anaticulae/mundare/commit/19f922219dee18ca750ccaab424af25f508bbe01))
+
+- **rename**: Rename ptn writer
+  ([`4502462`](https://github.com/anaticulae/mundare/commit/450246296827de13ab480adbe629615d424f2529))
+
+
+## v0.2.2 (2022-07-22)
+
+### Bug Fixes
+
+- **dump**: Run cleanup without fontstore
+  ([`acbbc02`](https://github.com/anaticulae/mundare/commit/acbbc029183a31e11d813d14866babcc714a204a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ac0e383`](https://github.com/anaticulae/mundare/commit/ac0e3833e1809ff2a229bf99cfbc4a9a4eba338a))
+
+### Testing
+
+- **fontstore**: Do not dump any fontstore
+  ([`5f8d7a0`](https://github.com/anaticulae/mundare/commit/5f8d7a0b96ad116ed814cd5f5b6331eed4b4b13d))
+
+- **regression**: Ensures to load hidden data correctly
+  ([`4b54632`](https://github.com/anaticulae/mundare/commit/4b54632c55a4970732764c609e9803cf61232e22))
+
+
+## v0.2.1 (2022-07-19)
+
+### Bug Fixes
+
+- **load**: Load hidden data
+  ([`2ac5651`](https://github.com/anaticulae/mundare/commit/2ac5651e78c02c5520d5d16c731c9e2552e99b25))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4f5b1f9`](https://github.com/anaticulae/mundare/commit/4f5b1f9bb1acdb4ac475eb4a2f9a3f50393dda45))
+
+- **resources**: Extend test data generator
+  ([`e0df26d`](https://github.com/anaticulae/mundare/commit/e0df26d76520993b44a3b6780e214c478a568992))
+
+
+## v0.2.0 (2022-07-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2415932`](https://github.com/anaticulae/mundare/commit/24159325b044835cf2ad66585bd6c7263f631684))
+
+- **resources**: Extend test data generator
+  ([`e108d65`](https://github.com/anaticulae/mundare/commit/e108d659637130649f4b908e7860d4833bdae7dd))
+
+### Features
+
+- **cleanup**: Hide pagenumber in cleanup step
+  ([`6775ee1`](https://github.com/anaticulae/mundare/commit/6775ee1cceb3a07aa5cb49a0eefd6dc19733de55))
+
+- **load**: Add pagenumber loader
+  ([`7bd152b`](https://github.com/anaticulae/mundare/commit/7bd152b941934c1d0fc02244bc16972dd89b2eea))
+
+### Testing
+
+- **cli**: Adjust unit test
+  ([`cb3aa4e`](https://github.com/anaticulae/mundare/commit/cb3aa4e3351600f1f148b1d0e8f831ff19726f3c))
+
+- **pagenumber**: Increase test coverage
+  ([`6eb8dcd`](https://github.com/anaticulae/mundare/commit/6eb8dcdc46f7559923d27ab244a123a39453d535))
+
+
+## v0.1.5 (2022-07-14)
+
+### Bug Fixes
+
+- **horizontal**: Decrease required min width
+  ([`52f64c2`](https://github.com/anaticulae/mundare/commit/52f64c2aa178cd65bbb5db69f12d40448d08d49c))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e00468`](https://github.com/anaticulae/mundare/commit/0e004684bebd29215b3a8521a4f1aa5e04eccde3))
+
+- **resources**: Extend test data generator
+  ([`3459cdf`](https://github.com/anaticulae/mundare/commit/3459cdfc824d670c5b74c92ac042ca4326d8ac8d))
+
+### Features
+
+- **load**: Log number of loaded horizontals and lines
+  ([`bcfcc69`](https://github.com/anaticulae/mundare/commit/bcfcc69d250477aafa3d0d5e35f839c31543adcf))
+
+### Testing
+
+- **horizontals**: Do not lose any horizontals on master193
+  ([`126d565`](https://github.com/anaticulae/mundare/commit/126d565ae42f3ebed2ac0bf5274d4731af02a63b))
+
+- **refactor**: Ensure to load horizontals correctly
+  ([`356ea6f`](https://github.com/anaticulae/mundare/commit/356ea6f5055e616588ab17bf37b5b08c0bc9767e))
+
+
+## v0.1.4 (2022-07-10)
+
+### Bug Fixes
+
+- **load**: Do not fail on white page document, single page
+  ([`0a38e08`](https://github.com/anaticulae/mundare/commit/0a38e08349ec96ea73bd593f4778fac150cfd571))
+
+### Chores
+
+- **fixtures**: Provide fixtures
+  ([`902f488`](https://github.com/anaticulae/mundare/commit/902f48823b919e5a54ab76036c5a83cc9b17dad9))
+
+- **requirements**: Add hardcore
+  ([`e34c2de`](https://github.com/anaticulae/mundare/commit/e34c2dec001c2f72fc56d97c0fffd30ddbfb4578))
+
+- **requirements**: Rawmaker is mandatory
+  ([`925cd13`](https://github.com/anaticulae/mundare/commit/925cd135e91981a59820c237e24fb1339014a47f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`39f111d`](https://github.com/anaticulae/mundare/commit/39f111de321cd13487b10960c325fb34fa3bbd05))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f9256d8`](https://github.com/anaticulae/mundare/commit/f9256d82d43d51916d6713986c63125035545881))
+
+- **resources**: Extend test data generator
+  ([`1cb7be4`](https://github.com/anaticulae/mundare/commit/1cb7be42b8e37393c6c9f6da8cec909c3c1c88e4))
+
+- **resources**: Remove default config
+  ([`6c99b8a`](https://github.com/anaticulae/mundare/commit/6c99b8aeecdada1e970ed2bc8904f289d4cd3bc0))
+
+### Code Style
+
+- **format**: Format code
+  ([`59bb28c`](https://github.com/anaticulae/mundare/commit/59bb28c68a21ea75dd889026b1867588accef2c8))
+
+### Refactoring
+
+- **test**: Shorten code
+  ([`37e90f5`](https://github.com/anaticulae/mundare/commit/37e90f56f52b5c32b3ffccd45c1c25b6deb616cb))
+
+### Testing
+
+- **adjust**: Unlock after upgrading
+  ([`fadb161`](https://github.com/anaticulae/mundare/commit/fadb1616fa5ffa9f602536429ca9e38fbeddcf03))
+
+- **dumper**: Verify more documents
+  ([`4d15198`](https://github.com/anaticulae/mundare/commit/4d1519831ab326252692638f1afaee389a169bb3))
+
+- **fix**: Make test more robust
+  ([`1bc6e28`](https://github.com/anaticulae/mundare/commit/1bc6e28eb15298c6ce2ba3671ee23282b4964b47))
+
+- **refactor**: Shorten code
+  ([`3c178f9`](https://github.com/anaticulae/mundare/commit/3c178f926b8e409efeb5739ac0f7e2c9654bf1ad))
+
+- **refactor**: Use shorten fixtures
+  ([`65476cb`](https://github.com/anaticulae/mundare/commit/65476cbc66168e04e7cc06f42f195a7b23d51c23))
+
+- **regression**: Verify hc diss128
+  ([`6837bad`](https://github.com/anaticulae/mundare/commit/6837bad7a43b379f60ce68f04e4592491c5bd5a8))
+
+
+## v0.1.3 (2022-06-11)
+
+### Chores
+
+- **requirements**: Add configo
+  ([`63a1c8c`](https://github.com/anaticulae/mundare/commit/63a1c8c622382ceb549598612463b7b1052a4a5f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e48b123`](https://github.com/anaticulae/mundare/commit/e48b123f39d380f0a95702da2ac7d81dd3eceb4c))
+
+- **resources**: Extend test data generator
+  ([`ed14300`](https://github.com/anaticulae/mundare/commit/ed143000bfb0392296954b0f725b6accf0c363de))
+
+- **resources**: Generate tables
+  ([`d0d5521`](https://github.com/anaticulae/mundare/commit/d0d5521e1bc7a1de0fa10a588adb1e43302abc79))
+
+### Refactoring
+
+- **cleanup**: Move parameter to interface
+  ([`efc2a0a`](https://github.com/anaticulae/mundare/commit/efc2a0a0d0aa05fdeba3e51cfd612e04bb8e0164))
+
+- **cleanup**: Use new naming
+  ([`1ba24c8`](https://github.com/anaticulae/mundare/commit/1ba24c82c8e1662e00ed03c4220ba61336105632))
+
+- **cleanup**: Use real holy value
+  ([`2394ed9`](https://github.com/anaticulae/mundare/commit/2394ed955a32405e0d5b865425f3f9f33cfbc3af))
+
+### Testing
+
+- **horizontals**: Remove horizontals which are part of table
+  ([`27b3033`](https://github.com/anaticulae/mundare/commit/27b3033ba2b7554508802fbe9355205951c65962))
+
+
+## v0.1.2 (2022-05-16)
+
+### Bug Fixes
+
+- **cli**: Adjust file inputs
+  ([`7ba14f7`](https://github.com/anaticulae/mundare/commit/7ba14f7a71fe5fa0e80ec20899a6cc4b7a5992e9))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c14e9d1`](https://github.com/anaticulae/mundare/commit/c14e9d1c87755dfeb9791602632b01458a2d93be))
+
+- **resources**: Add missing resource
+  ([`0a01894`](https://github.com/anaticulae/mundare/commit/0a018942c31f662bec2738922a89d4c9612109e2))
+
+- **resources**: Sort resource alphabetically
+  ([`fdfe9f5`](https://github.com/anaticulae/mundare/commit/fdfe9f5387568ce51964398c98223ca419598a63))
+
+### Features
+
+- **translate**: Inform about missing translation
+  ([`58cc047`](https://github.com/anaticulae/mundare/commit/58cc047ba20250661d311d75980bdbd0fa70ede9))
+
+### Testing
+
+- **skip**: Skip non generated tests
+  ([`458f56f`](https://github.com/anaticulae/mundare/commit/458f56f3e1a80e3ff2d989548cd0448afa0b7e4f))
+
+
+## v0.1.1 (2022-04-25)
+
+### Chores
+
+- **requirements**: Add codero
+  ([`67ec78c`](https://github.com/anaticulae/mundare/commit/67ec78cf8d04428da361ef48ca6331d3bd082265))
+
+- **requirements**: Add groupme
+  ([`ecb982f`](https://github.com/anaticulae/mundare/commit/ecb982f7463766d4542acfd843c2588169b60161))
+
+- **resources**: Add diss205
+  ([`18dc470`](https://github.com/anaticulae/mundare/commit/18dc470b49e22aa976c641383fd0f8c63828a292))
+
+- **resources**: Extend test data generator
+  ([`3b1e714`](https://github.com/anaticulae/mundare/commit/3b1e714ad1dab1fa5c4cce4b44308e627759107b))
+
+- **test**: Adjust test scheduler
+  ([`5c53aa8`](https://github.com/anaticulae/mundare/commit/5c53aa87d441484abddf982a0760fa9dbd16218b))
+
+### Refactoring
+
+- **load**: Clarify code
+  ([`56f1b49`](https://github.com/anaticulae/mundare/commit/56f1b496ee55a01cebf17a90a0650268377f6da5))
+
+### Testing
+
+- **codero**: Ensure that diss205 page 139 code is hidden correctly
+  ([`182a613`](https://github.com/anaticulae/mundare/commit/182a613bc088a68b0f5aa42784b7b71e9ec38af9))
+
+- **refactor**: Distinguish between fast and slow tests
+  ([`59a52b0`](https://github.com/anaticulae/mundare/commit/59a52b0733f1fe65ea4bc89916e9f55f558d9f2e))
+
+- **refactor**: Increase code re usability
+  ([`3fd25b9`](https://github.com/anaticulae/mundare/commit/3fd25b9f224ca189205fc2755c3808f0f2993260))
+
+- **refactor**: Move reduction test to separate module
+  ([`4b21bfa`](https://github.com/anaticulae/mundare/commit/4b21bfa004557a3b1040b0796987a9c2cc3a4773))
+
+- **refactor**: Shorten naming
+  ([`f9121b5`](https://github.com/anaticulae/mundare/commit/f9121b50b49c899e99b0ad1d5d2ca8b29192ac44))
+
+- **refactor**: Simplify code
+  ([`b28a421`](https://github.com/anaticulae/mundare/commit/b28a4212613f4fdd4c9739c3f8c2c9dca37d546b))
+
+- **refactor**: Simplify code
+  ([`1e7206b`](https://github.com/anaticulae/mundare/commit/1e7206bade0eb2b0c0cb445b8183b92d34ceee7c))
+
+
+## v0.1.0 (2022-04-24)
+
+### Chores
+
+- **requirements**: Add missing imports
+  ([`845c386`](https://github.com/anaticulae/mundare/commit/845c386db36722bd7277a5d6b05b207b581ce5a4))
+
+### Features
+
+- **move**: Move code from rawmaker project
+  ([`44a3101`](https://github.com/anaticulae/mundare/commit/44a310117f71b82d32e908da8c0080923eff37e2))
+
+### Testing
+
+- **move**: Move tests from rawmaker
+  ([`c19dfac`](https://github.com/anaticulae/mundare/commit/c19dfac4b6814139c53ff60ecb49b4006e62f513))
+
+
+## v0.0.0 (2022-04-24)
+
+- Initial Release
