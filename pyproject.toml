@@ -32,6 +32,7 @@ dev = [
     "utilotest>=1.0.4,<2.0.0",
     "hoverpower>=1.4.0,<2.0.0",
     "gennex>=1.0.3,<2.0.0",
+    "pagenumber>=1.0.0,<2.0.0",
 ]
 
 [project.urls]
