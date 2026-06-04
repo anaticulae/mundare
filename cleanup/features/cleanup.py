@@ -29,16 +29,16 @@ def work(  # pylint:disable=R0913
     pages: tuple = None,
 ):
     # figure is important, do not rename, see TextState
-    config = dict(
-        caption=not no_caption,
-        code=not no_code,
-        footnote=not no_footnote,
-        formula=not no_formula,
-        headnote=not no_headnote,
-        image=not no_image,
-        pagenumber=not no_pagenumber,
-        table=not no_table,
-    )
+    config = {
+        "caption": not no_caption,
+        "code": not no_code,
+        "footnote": not no_footnote,
+        "formula": not no_formula,
+        "headnote": not no_headnote,
+        "image": not no_image,
+        "pagenumber": not no_pagenumber,
+        "table": not no_table,
+    }
     config = config_select(
         config,
         select=select,
