@@ -46,13 +46,13 @@ WORKER = utilotest.worker_count(4, onci=len(RESOURCES))
 def extract(resources):
     gennex.extract(
         files=resources,
-        codero=True,
-        footnote=True,
-        groupme=True,
-        headnote=True,
+        # codero=True,
+        # footnote=True,
+        # groupme=True,
+        # headnote=True,
         pagenumber=True,
         pdflog=False,
-        tablero=True,
+        # tablero=True,
         worker=WORKER,
     )
 
