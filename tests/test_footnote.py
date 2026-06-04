@@ -8,6 +8,7 @@
 # =============================================================================
 
 import hoverpower
+import pytest
 import serializeraw
 import texmex
 import utilotest
@@ -15,6 +16,7 @@ import utilotest
 import tests
 
 
+@pytest.mark.xfail(reason='require footnote')
 @utilotest.requires(hoverpower.MASTER072_PDF)
 def test_footnotes_master072(td, mp):
     source = hoverpower.link(hoverpower.MASTER072_PDF)

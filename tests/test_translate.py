@@ -8,6 +8,7 @@
 # =============================================================================
 
 import hoverpower
+import pytest
 import serializeraw
 import utilo
 import utilotest
@@ -17,6 +18,7 @@ import tests
 import tests.utils
 
 
+@pytest.mark.xfail(reason='require figureo')
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_translate_lines(td):
@@ -32,6 +34,7 @@ def test_translate_lines(td):
     assert len(translated) == 2
 
 
+@pytest.mark.xfail(reason='require figureo')
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_translate(td, mp):

@@ -17,6 +17,7 @@ import utilotest
 import tests
 
 
+@pytest.mark.xfail(reason='require headnote')
 @pytest.mark.parametrize('source', (
     pytest.param(hoverpower.BACHELOR026_PDF, id='bachelor026'),
     pytest.param(hoverpower.BACHELOR037_PDF, id='bachelor037'),
@@ -38,6 +39,7 @@ def test_headnotes_ensure_load(source, td, mp):
     assert content, 'could not load headnote-state-content'
 
 
+@pytest.mark.xfail(reason='headnote')
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_headnotes_bachelor063(td, mp):
@@ -53,6 +55,7 @@ def test_headnotes_bachelor063(td, mp):
     assert content, 'could not load headnote-state-content'
 
 
+@pytest.mark.xfail(reason='require headnote')
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_bachelor063_cleanup_horizontals(td, mp):

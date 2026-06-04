@@ -9,6 +9,7 @@
 
 import hoverpower
 import iamraw
+import pytest
 import serializeraw
 import texmex
 import utilo
@@ -56,6 +57,7 @@ def test_figures(td, mp):
     assert len(clean) + 4 <= len(before)
 
 
+@pytest.mark.xfail(reason='require footnote')
 @utilotest.longrun
 @utilotest.requires(hoverpower.MASTER193_PDF)
 def test_footnotes(td, mp):
@@ -104,6 +106,7 @@ def test_tables(td, mp):
     assert len(clean) < len(before)
 
 
+@pytest.mark.xfail(reason='require formulero')
 @utilotest.longrun
 @utilotest.requires(hoverpower.DISS143_PDF)
 def test_formulas(td, mp):

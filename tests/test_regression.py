@@ -10,13 +10,13 @@
 import hoverpower
 import pytest
 import serializeraw
-import utilo
 import utilotest
 
 import tests
 import tests.utils
 
 
+@pytest.mark.xfail(reason='require figureo')
 @utilotest.longrun
 def test_translate_diss143page25(td, mp):
     """Regression test to ensure that all lines are matched together.
@@ -37,6 +37,7 @@ def test_translate_diss143page25(td, mp):
     assert raw
 
 
+@pytest.mark.xfail(reason='require figureo')
 @utilotest.longrun
 def test_master116p18table(td, mp):
     """Do not remove very near caption line in table."""

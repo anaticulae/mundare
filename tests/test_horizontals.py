@@ -8,6 +8,7 @@
 # =============================================================================
 
 import hoverpower
+import pytest
 import serializeraw
 import utilo
 import utilotest
@@ -16,6 +17,7 @@ import cleanup.load
 import tests
 
 
+@pytest.mark.xfail(reason='require tablero')
 @utilotest.requires(hoverpower.DISS172_PDF)
 def test_horizontals_diss172p138(td, mp):
     """Remove horizontals which are part of a detected table."""
