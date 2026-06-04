@@ -51,7 +51,7 @@ def extract(resources):
         groupme=True,
         headnote=True,
         pagenumber=True,
-        pdfinfo=False,
+        pdflog=False,
         tablero=True,
         worker=WORKER,
     )
