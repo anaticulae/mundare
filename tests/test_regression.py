@@ -72,12 +72,12 @@ def translate(source, page: int, td, mp) -> str:
 
 @utilotest.longrun
 @utilotest.requires(hoverpower.HOME007_PDF)
-def test_run_cleanup_multiple_times(td, mp):
-    """Ensure that hidden data is loaded before running cleanup step.
+def test_run_mundare_multiple_times(td, mp):
+    """Ensure that hidden data is loaded before running mundare step.
 
-    If we do not load hidden data, this data gots lost if we run cleanup
+    If we do not load hidden data, this data gots lost if we run mundare
     again. To access hidden data later, we have to load it on every
-    cleanup step.
+    mundare step.
 
     See 2ac5651e78c02c5520d5d
     """

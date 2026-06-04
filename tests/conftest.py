@@ -14,13 +14,13 @@ import utilotest
 from utilotest import mp  # pylint:disable=W0611
 from utilotest import td  # pylint:disable=W0611
 
-import cleanup
+import mundare
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-PACKAGE = cleanup.PROCESS
+PACKAGE = mundare.PROCESS
 
-hoverpower.setup(cleanup.ROOT)
+hoverpower.setup(mundare.ROOT)
 
 RESOURCES = [
     (hoverpower.BACHELOR090_PDF, '0:15,20:30'),

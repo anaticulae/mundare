@@ -1,5 +1,5 @@
 [project]
-name = "cleanup"
+name = "mundare"
 version = "0.9.1"
 description = ""
 requires-python = ">=3.12"
@@ -36,11 +36,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/anaticulae/cleanup"
-Repository = "https://github.com/anaticulae/cleanup"
+Homepage = "https://github.com/anaticulae/mundare"
+Repository = "https://github.com/anaticulae/mundare"
 
 [project.scripts]
-cleanup = "cleanup.cli:main"
+mundare = "mundare.cli:main"
 
 [build-system]
 requires = [
@@ -80,11 +80,11 @@ where = [
     ".",
 ]
 include = [
-    "cleanup",
-    "cleanup.features",
-    "cleanup.part",
-    "cleanup.translate",
-    "cleanup.writer",
+    "mundare",
+    "mundare.features",
+    "mundare.part",
+    "mundare.translate",
+    "mundare.writer",
 ]
 exclude = [
     "tests*",

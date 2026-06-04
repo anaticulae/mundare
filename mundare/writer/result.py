@@ -11,7 +11,7 @@ import iamraw
 import serializeraw
 import utilo
 
-import cleanup.writer.image
+import mundare.writer.image
 
 
 def write(
@@ -47,7 +47,7 @@ def write(
             iamraw.path.fontcontent(outpath, prefix=prefix + postfix),
             fontcontent,
         )
-    cleanup.writer.image.write(outpath, images)
+    mundare.writer.image.write(outpath, images)
     # write lines
     if horizontals is not None:
         # None signals that the source does not contain any horizontal file

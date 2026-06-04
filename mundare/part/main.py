@@ -14,10 +14,10 @@ import iamraw
 import texmex
 import utilo
 
-import cleanup.load
-import cleanup.part.invalid
-import cleanup.ptn
-import cleanup.writer.result
+import mundare.load
+import mundare.part.invalid
+import mundare.ptn
+import mundare.writer.result
 
 
 def cleaner(  # pylint:disable=R0914
@@ -32,13 +32,13 @@ def cleaner(  # pylint:disable=R0914
         inpaths = [os.getcwd()]
     if not outpath:
         outpath = inpaths[0]
-    ptns = cleanup.load.ptn_frompath(inpaths, prefix, pages)
-    horizontals, lines = cleanup.load.lines_frompath(
+    ptns = mundare.load.ptn_frompath(inpaths, prefix, pages)
+    horizontals, lines = mundare.load.lines_frompath(
         inpaths,
         prefix,
         pages,
     )
-    images = cleanup.load.load_images(
+    images = mundare.load.load_images(
         inpaths,
         pages,
     )
@@ -53,12 +53,12 @@ def cleaner(  # pylint:disable=R0914
         pages=pages,
         config=config,
     )
-    fontstore = cleanup.load.fontstore_frompath(inpaths, prefix, pages)
-    document, textpositions, fontheader, fontcontent = cleanup.ptn.dump_ptn(
+    fontstore = mundare.load.fontstore_frompath(inpaths, prefix, pages)
+    document, textpositions, fontheader, fontcontent = mundare.ptn.dump_ptn(
         ptns,
         fontstore,
     )
-    cleanup.writer.result.write(
+    mundare.writer.result.write(
         outpath,
         document,
         textpositions,
@@ -82,16 +82,16 @@ def remove_skip_area(
     config: dict = None,
     pages: tuple = None,
 ):
-    invalids, noimages = cleanup.part.invalid.create(
+    invalids, noimages = mundare.part.invalid.create(
         inpaths,
         prefix,
         pages=pages,
         ptns=ptns,
         **config,
     )
-    horizontals = cleanup_horizontals(horizontals, invalids)
-    lines = cleanup_lines(lines, invalids)
-    images = cleanup_images(images, noimages)
+    horizontals = mundare_horizontals(horizontals, invalids)
+    lines = mundare_lines(lines, invalids)
+    images = mundare_images(images, noimages)
     todo = [item.name.lower() for item in texmex.TextState]
     todo = [item for item in todo if item not in 'hidden visible']
     for element in todo:
@@ -99,14 +99,14 @@ def remove_skip_area(
             utilo.debug(f'do not remove: {element}')
             continue
         replacement = texmex.TextState[element.upper()]
-        invalids = cleanup.part.invalid.create(
+        invalids = mundare.part.invalid.create(
             inpaths=inpaths,
             prefix=prefix,
             pages=pages,
             ptns=ptns,
             **{element: True},
         )[0]
-        ptns = cleanup_ptn(
+        ptns = mundare_ptn(
             ptns,
             invalids,
             default=replacement,
@@ -114,7 +114,7 @@ def remove_skip_area(
     return ptns, horizontals, lines, images
 
 
-def cleanup_ptn(
+def mundare_ptn(
     ptns,
     invalids,
     default=texmex.TextState.HIDDEN,
@@ -136,7 +136,7 @@ def cleanup_ptn(
     return ptns
 
 
-def cleanup_horizontals(horizontals, invalids):
+def mundare_horizontals(horizontals, invalids):
     if not horizontals:
         return horizontals
     horizontals = [
@@ -152,7 +152,7 @@ def cleanup_horizontals(horizontals, invalids):
     return horizontals
 
 
-def cleanup_lines(lines, invalids):
+def mundare_lines(lines, invalids):
     if not lines:
         return lines
     lines = [
@@ -169,7 +169,7 @@ def cleanup_lines(lines, invalids):
     return lines
 
 
-def cleanup_images(images, invalids):
+def mundare_images(images, invalids):
     """Skip images which are overlapped by table, formula, code or
     something else.
 

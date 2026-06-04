@@ -58,7 +58,7 @@ def test_headnotes_bachelor063(td, mp):
 @pytest.mark.xfail(reason='require headnote')
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR063_PDF)
-def test_bachelor063_cleanup_horizontals(td, mp):
+def test_bachelor063_mundare_horizontals(td, mp):
     """Use header.refs to remove horizontals."""
     source, pages = hoverpower.BACHELOR063_PDF, '--pages=0:10'
     source = hoverpower.link(source)

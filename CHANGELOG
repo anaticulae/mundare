@@ -78,13 +78,13 @@ Every noteable change is logged here.
 
 ### Feature
 
-* add select parameter to run a single cleanup (30b06c8c7a7b)
+* add select parameter to run a single mundare (30b06c8c7a7b)
 
 ## v0.5.0
 
 ### Feature
 
-* add parameter to skip cleanup resources (412e9b2df65b)
+* add parameter to skip mundare resources (412e9b2df65b)
 
 ### Fix
 
@@ -123,7 +123,7 @@ Every noteable change is logged here.
 
 ### Fix
 
-* run cleanup without fontstore (acbbc029183a)
+* run mundare without fontstore (acbbc029183a)
 
 ## v0.2.1
 
@@ -135,7 +135,7 @@ Every noteable change is logged here.
 
 ### Feature
 
-* hide pagenumber in cleanup step (6775ee1cceb3)
+* hide pagenumber in mundare step (6775ee1cceb3)
 * add pagenumber loader (7bd152b94193)
 
 ## v0.1.5

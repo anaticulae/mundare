@@ -26,7 +26,7 @@ import tests
 def test_source_compare_reduction_fast(source, pages, td, mp):
     """Ensure that resource is loaded and dumped correctly.
 
-    This is required before we can test that cleanup reduces some data
+    This is required before we can test that mundare reduces some data
     out of ptn.
     """
     compare(source, pages, td, mp)

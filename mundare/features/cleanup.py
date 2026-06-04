@@ -9,7 +9,7 @@
 
 import utilo
 
-import cleanup.part.main
+import mundare.part.main
 
 
 def work(  # pylint:disable=R0913
@@ -44,7 +44,7 @@ def work(  # pylint:disable=R0913
         select=select,
     )
     # POSTFIX as value first!
-    cleanup.part.main.cleaner(
+    mundare.part.main.cleaner(
         inpaths=inputs,
         outpath=outputs,
         config=config,

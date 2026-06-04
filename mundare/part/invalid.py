@@ -11,7 +11,7 @@ import collections
 
 import utilo
 
-import cleanup.load
+import mundare.load
 
 
 def create(
@@ -24,21 +24,21 @@ def create(
     pagenumbers, codes, formulas, captions, images, tables, footnotes, headnotes =\
         ([], [], [], [], [], [], [], [])
     if kwargs.get('pagenumber', False):
-        pagenumbers = cleanup.load.pagenumber_frompath(inpaths, pages)
+        pagenumbers = mundare.load.pagenumber_frompath(inpaths, pages)
     if kwargs.get('code', False):
-        codes = cleanup.load.codes_frompath(inpaths, prefix, pages)
+        codes = mundare.load.codes_frompath(inpaths, prefix, pages)
     if kwargs.get('formula', False):
-        formulas = cleanup.load.formulas_frompath(inpaths, prefix, pages)
+        formulas = mundare.load.formulas_frompath(inpaths, prefix, pages)
     if kwargs.get('caption', False):
-        captions = cleanup.load.captions_frompath(inpaths, prefix, pages)
+        captions = mundare.load.captions_frompath(inpaths, prefix, pages)
     if kwargs.get('image', False):
-        images = cleanup.load.load_images(inpaths, pages=pages)
+        images = mundare.load.load_images(inpaths, pages=pages)
     if kwargs.get('table', False):
-        tables = cleanup.load.load_tables(inpaths, pages=pages)
+        tables = mundare.load.load_tables(inpaths, pages=pages)
     if kwargs.get('footnote', False):
-        footnotes = cleanup.load.footnotes_frompath(inpaths, pages=pages)
+        footnotes = mundare.load.footnotes_frompath(inpaths, pages=pages)
     if kwargs.get('headnote', False):
-        headnotes = cleanup.load.headnotes_frompath(inpaths, pages=pages)
+        headnotes = mundare.load.headnotes_frompath(inpaths, pages=pages)
     invalids = create_invalid_area(
         captions=captions,
         codes=codes,

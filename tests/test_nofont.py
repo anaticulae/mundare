@@ -17,7 +17,7 @@ import tests
 @utilotest.longrun
 @utilotest.requires(hoverpower.BACHELOR056_PDF)
 def test_no_fontstore_bachelor56(td, mp):
-    """Run cleanup without any font information.
+    """Run mundare without any font information.
 
     Ensure that no fontstore file is generated.
     """
@@ -29,5 +29,5 @@ def test_no_fontstore_bachelor56(td, mp):
         unlock=True,
     )
     tests.run('-i . -o .', mp=mp)
-    # 5=> text, textpos and two backups, cleanup_translate and no fontstore
+    # 5=> text, textpos and two backups, mundare_translate and no fontstore
     assert len(utilo.file_list(td.tmpdir)) == 5

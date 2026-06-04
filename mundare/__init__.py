@@ -7,7 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-from cleanup.cli import main
+import os
 
-if __name__ == "__main__":
-    main()
+__version__ = '0.9.1'
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROCESS = 'mundare'

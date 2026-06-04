@@ -7,9 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import os
+from mundare.cli import main
 
-__version__ = '0.9.1'
-
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-PROCESS = 'cleanup'
+if __name__ == "__main__":
+    main()

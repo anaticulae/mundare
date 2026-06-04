@@ -14,7 +14,7 @@ import utilo
 
 HORIZONTALS_WIDTH_MIN = configos.HV_INT_PLUS(default=50)
 
-# If we do not load hidden and run cleanup multiple times, hidden data is
+# If we do not load hidden and run mundare multiple times, hidden data is
 # lost and not accessible later.
 LOAD_HIDDEN = None
 

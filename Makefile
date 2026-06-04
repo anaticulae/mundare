@@ -3,7 +3,7 @@
 VERSION := $(shell git rev-parse --short HEAD 2>/dev/null || echo "latest")
 CURDIR := $(CURDIR)
 
-NAME = cleanup
+NAME = mundare
 IMAGE := $(NAME):$(VERSION)
 IMAGE_BASE := ghcr.io/anaticulae/$(IMAGE)
 
@@ -38,7 +38,7 @@ docker-lint: docker-build
 
 docker-decrypt: docker-build
 	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/cleanup\
+			-v /tmp/power:/tmp/mundare\
 			-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo\
 			-e HOVERPOWER_SECRET=$(HOVERPOWER_SECRET)\
 			$(IMAGE_BASE) "powerdecrypt"

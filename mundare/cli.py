@@ -9,7 +9,7 @@
 
 import utilo
 
-import cleanup
+import mundare
 
 DESCRIPTION = """\
 Load PTNs, codes, figures and tables.
@@ -17,13 +17,13 @@ Load PTNs, codes, figures and tables.
 It removes text which is inside codes, figures and or tables and writes
 PTNs afterwards.
 
-Select cleanup All: [caption code footnote formula headnote image pagenumber table]
+Select mundare All: [caption code footnote formula headnote image pagenumber table]
 """
 
 WORKPLAN = [
     utilo.create_step('backup'),
     utilo.create_step(
-        'cleanup',
+        'mundare',
         inputs=[
             utilo.Value('select', str, defaultvar='all'),
             utilo.Value('postfix', str, defaultvar=''),
@@ -71,14 +71,14 @@ WORKPLAN = [
 @utilo.saveme
 def main():
     utilo.featurepack(
-        root=cleanup.ROOT,
+        root=mundare.ROOT,
         workplan=WORKPLAN,
-        featurepackage='cleanup.features',
+        featurepackage='mundare.features',
         config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=False,
-            name=cleanup.PROCESS,
+            name=mundare.PROCESS,
             pages=True,
-            version=cleanup.__version__,
+            version=mundare.__version__,
         ),
     )

@@ -13,7 +13,7 @@ import serializeraw
 import utilo
 import utilotest
 
-import cleanup.load
+import mundare.load
 import tests
 
 
@@ -29,7 +29,7 @@ def test_horizontals_diss172p138(td, mp):
     )
     before = serializeraw.load_horizontals(
         td.tmpdir,
-        width_min=cleanup.load.HORIZONTALS_WIDTH_MIN,
+        width_min=mundare.load.HORIZONTALS_WIDTH_MIN,
         pages=page,
     )
     tests.run(
@@ -39,7 +39,7 @@ def test_horizontals_diss172p138(td, mp):
     tests.cache_clear()
     after = serializeraw.load_horizontals(
         td.tmpdir,
-        width_min=cleanup.load.HORIZONTALS_WIDTH_MIN,
+        width_min=mundare.load.HORIZONTALS_WIDTH_MIN,
         pages=page,
     )
     assert after != before
@@ -56,7 +56,7 @@ def test_horizontals_master193(td, mp):
     )
     before = serializeraw.load_horizontals(
         td.tmpdir,
-        width_min=cleanup.load.HORIZONTALS_WIDTH_MIN,
+        width_min=mundare.load.HORIZONTALS_WIDTH_MIN,
     )
     tests.run(
         f'-i {td.tmpdir} -o {td.tmpdir}',
@@ -65,7 +65,7 @@ def test_horizontals_master193(td, mp):
     tests.cache_clear()
     after = serializeraw.load_horizontals(
         td.tmpdir,
-        width_min=cleanup.load.HORIZONTALS_WIDTH_MIN,
+        width_min=mundare.load.HORIZONTALS_WIDTH_MIN,
     )
     # page 25 is deleted cause horizontal as underline in footer is
     # removed by new footnote skipper.

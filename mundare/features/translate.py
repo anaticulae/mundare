@@ -10,7 +10,7 @@
 import serializeraw
 import utilo
 
-import cleanup.translate.lines
+import mundare.translate.lines
 
 
 def work(
@@ -45,7 +45,7 @@ def determine_translation(src, dst, pages: tuple = None) -> str:
         return utilo.NO_RESULT
     text_before = serializeraw.load_document(src, pages=pages)
     text = serializeraw.load_document(dst, pages=pages)
-    text_translated = cleanup.translate.lines.translates(
+    text_translated = mundare.translate.lines.translates(
         sources=text_before,
         destinations=text,
     )

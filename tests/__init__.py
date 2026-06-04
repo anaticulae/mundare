@@ -10,9 +10,9 @@
 import serializeraw
 import utilotest
 
-import cleanup
+import mundare
 
-run, failure = utilotest.create_cli_runner(cleanup)  #pylint: disable=invalid-name
+run, failure = utilotest.create_cli_runner(mundare)  #pylint: disable=invalid-name
 
 
 def cache_clear():

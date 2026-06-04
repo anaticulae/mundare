@@ -15,11 +15,11 @@ import texmex
 import utilo
 import utilotest
 
-import cleanup.features.backup
+import mundare.features.backup
 import tests
 
 
-def test_run_cleanup(mp):
+def test_run_mundare(mp):
     tests.run('--help', mp=mp)
 
 
@@ -33,7 +33,7 @@ def test_bachelor56(td, mp):
         unlock=True,
     )
     tests.run(
-        '-i . -o . --cleanup --postfix=cleaned --pages=0',
+        '-i . -o . --mundare --postfix=cleaned --pages=0',
         mp=mp,
     )
     assert len(utilo.file_list(td.tmpdir)) == 8
@@ -78,7 +78,7 @@ def test_footnotes(td, mp):
 
 @utilotest.requires(hoverpower.BACHELOR051_PDF)
 def test_tables(td, mp):
-    """Verify multiple input sources and tablero cleanup."""
+    """Verify multiple input sources and tablero mundare."""
     source = hoverpower.link(hoverpower.BACHELOR051_PDF)
     page = 25
     # create table to verify removing table content
@@ -90,7 +90,7 @@ def test_tables(td, mp):
     ]
     dumped = serializeraw.dump_tables(tables)
     utilo.file_create('tablero__decide_decide.yaml', dumped)
-    # run cleanup
+    # run mundare
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {td.tmpdir} --pages={page}',
         mp=mp,
@@ -115,7 +115,7 @@ def test_formulas(td, mp):
     page = 27
     utilo.run(
         f'formulero -i {hoverpower.DISS143_PDF} -o {outdir} --pages={page}')
-    # run cleanup
+    # run mundare
     tests.run(
         f'-i {source} -i {td.tmpdir} -o {outdir} --pages={page}',
         mp=mp,
@@ -142,6 +142,6 @@ def test_backup(td, mp):
     # four backup files written
     backupfiles = utilo.file_list(
         td.tmpdir,
-        include=cleanup.features.backup.BACKUP_EXT,
+        include=mundare.features.backup.BACKUP_EXT,
     )
     assert len(backupfiles) == 6
