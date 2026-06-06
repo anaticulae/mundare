@@ -23,7 +23,7 @@ Select mundare All: [caption code footnote formula headnote image pagenumber tab
 WORKPLAN = [
     utilo.create_step('backup'),
     utilo.create_step(
-        'mundare',
+        'cleanup',
         inputs=[
             utilo.Value('select', str, defaultvar='all'),
             utilo.Value('postfix', str, defaultvar=''),

@@ -33,7 +33,7 @@ def test_bachelor56(td, mp):
         unlock=True,
     )
     tests.run(
-        '-i . -o . --mundare --postfix=cleaned --pages=0',
+        '-i . -o . --cleanup --postfix=cleaned --pages=0',
         mp=mp,
     )
     assert len(utilo.file_list(td.tmpdir)) == 8

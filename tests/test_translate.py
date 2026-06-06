@@ -25,7 +25,7 @@ def test_translate_lines(td):
     source, pages = hoverpower.BACHELOR037_PDF, '22,23,24'
     tests.utils.prepare(source, pages, td)
     # do not cache load_documents, do not use tests.run
-    utilo.run(f'mundare --mundare --backup -i {td.tmpdir} -o {td.tmpdir}')
+    utilo.run(f'mundare --cleanup --backup -i {td.tmpdir} -o {td.tmpdir}')
     ptn = serializeraw.ptn_frompath(td.tmpdir)
     backup = serializeraw.ptn_frompath(td.tmpdir, backup=True)
     assert ptn != backup, 'cached load_documents? check backup=False'
