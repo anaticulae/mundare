@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-06-06)
+
+### Bug Fixes
+
+- **cli**: Adjust feature name
+  ([`312ce4a`](https://github.com/anaticulae/mundare/commit/312ce4af440da27d00f337223281c460e0d9a764))
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`4e1d093`](https://github.com/anaticulae/mundare/commit/4e1d093c3e47228344a930ac66635e1b77c9c6e0))
+
+
 ## v1.0.0 (2026-06-04)
 
 ### Chores
