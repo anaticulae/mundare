@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v1.0.2 (2026-07-05)
+
+### Bug Fixes
+
+- **pyproject**: Add cli backward port
+  ([`74724ab`](https://github.com/anaticulae/mundare/commit/74724ab7b88910211078cc93e912644ac4ff07f8))
+
+### Chores
+
+- **make**: Do not run release twice
+  ([`151ec79`](https://github.com/anaticulae/mundare/commit/151ec790172c22a5c21524c59b10a29d36683de7))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`06a4401`](https://github.com/anaticulae/mundare/commit/06a440180ab34553c137f8acaa36a0c21b168888))
+
+
 ## v1.0.1 (2026-06-06)
 
 ### Bug Fixes
