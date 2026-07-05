@@ -41,6 +41,7 @@ Repository = "https://github.com/anaticulae/mundare"
 
 [project.scripts]
 mundare = "mundare.cli:main"
+cleanup = "mundare.cli:main"
 
 [build-system]
 requires = [
