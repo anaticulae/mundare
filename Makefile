@@ -5,45 +5,63 @@ CURDIR := $(CURDIR)
 
 NAME = mundare
 IMAGE := $(NAME):$(VERSION)
-IMAGE_BASE := ghcr.io/anaticulae/$(IMAGE)
+IMAGE_NAME := ghcr.io/anaticulae/$(IMAGE)
 
 docker-build:
-	docker build -t $(IMAGE_BASE) .
+	docker build -t $(IMAGE_NAME) .
 
 docker-upload:
-	docker push $(IMAGE_BASE)
+	docker push $(IMAGE_NAME)
 
 docker-doctest: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/power\
-			$(IMAGE_BASE) "baw test docs"
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		$(IMAGE_NAME)\
+		"baw test docs"
 
 docker-fasttest: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/power\
-			$(IMAGE_BASE) "baw test fast"
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		-v /tmp/headnote:/tmp/headnote\
+		$(IMAGE_NAME)\
+		"baw test fast"
 
-docker-longtest: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/power\
-			$(IMAGE_BASE) "baw test long"
+docker-longtest: docker-decrypt
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		-v /tmp/headnote:/tmp/headnote\
+		$(IMAGE_NAME)\
+		"baw test long"
 
-docker-alltest: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/power\
-			$(IMAGE_BASE) "baw test all"
+docker-alltest: docker-decrypt
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		-v /tmp/headnote:/tmp/headnote\
+		$(IMAGE_NAME)\
+		"baw test all"
 
 docker-lint: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE) "baw lint all"
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		$(IMAGE_NAME)\
+		"baw lint all"
 
 docker-decrypt: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-v /tmp/power:/tmp/mundare\
-			-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo\
-			-e HOVERPOWER_SECRET=$(HOVERPOWER_SECRET)\
-			$(IMAGE_BASE) "powerdecrypt"
+	docker run\
+		-v $(CURDIR):/var/workdir\
+		-v /tmp/headnote:/tmp/headnote\
+		-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo\
+		-e HOVERPOWER_SECRET\
+		$(IMAGE_NAME)\
+		"powerdownload && powerdecrypt"
 
 docker-release: docker-build
-	docker run -v $(CURDIR):/var/workdir\
-			-e GH_TOKEN=$(GH_TOKEN) $(IMAGE_BASE)\
-			"baw release --no_test --no_linter"
+	@if git describe --exact-match --tags HEAD >/dev/null 2>&1; then\
+		echo "Current commit is already tagged. Skipping release.";\
+	else \
+		docker run\
+			-v $(CURDIR):/var/workdir\
+			-e GH_TOKEN\
+			$(IMAGE_NAME)\
+			"baw release --no_test --no_linter";\
+	fi
